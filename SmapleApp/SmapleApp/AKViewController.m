@@ -44,11 +44,20 @@
 										 blue:103.0f / 255.0f
 										alpha:1.0f];
 	
+	// Color Effect
+	AKColorImageEffect *colorEffect = [[AKColorImageEffect alloc] init];
+	[colorEffect setBlendMode:kCGBlendModeColor];
+	[colorEffect setColor:[UIColor colorWithRed:  0.0f / 255.0f
+										  green:152.0f / 255.0f
+										   blue:255.0f / 255.0f
+										  alpha:1.0f]];
+	
 	[gradientEffect setColors:[NSArray arrayWithObjects:beginColor, endColor, nil]];
 	
 	[renderer setImageEffects:[NSArray arrayWithObjects:
 							   noiseEffect,
 							   gradientEffect,
+							   colorEffect,
 							   nil]];
 	
 	UIImage *image = [renderer imageWithSize:[imageView frame].size

@@ -23,6 +23,8 @@
 		1FA641C71586D6FA00350AC6 /* AKNoiseImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */; };
 		1FDCA5931587A0BA0010B272 /* AKGradientImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */; };
 		1FDCA5941587A0BA0010B272 /* AKGradientImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */; };
+		1FDCA5AF1587A8FF0010B272 /* AKColorImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */; };
+		1FDCA5B01587A8FF0010B272 /* AKColorImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */; };
 		1FFDAC2D1587828A00837D3A /* UIImage+AKPixelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */; };
 		1FFDAC2E1587828A00837D3A /* UIImage+AKPixelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDAC2C1587828A00837D3A /* UIImage+AKPixelData.m */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 		1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKNoiseImageEffect.m; sourceTree = "<group>"; };
 		1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKGradientImageEffect.h; sourceTree = "<group>"; };
 		1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKGradientImageEffect.m; sourceTree = "<group>"; };
+		1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKColorImageEffect.h; sourceTree = "<group>"; };
+		1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKColorImageEffect.m; sourceTree = "<group>"; };
 		1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AKPixelData.h"; sourceTree = "<group>"; };
 		1FFDAC2C1587828A00837D3A /* UIImage+AKPixelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AKPixelData.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +153,8 @@
 			children = (
 				1FA641BD1586D38000350AC6 /* AKImageEffect.h */,
 				1FA641BE1586D38000350AC6 /* AKImageEffect.m */,
+				1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */,
+				1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */,
 				1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */,
 				1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */,
 				1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */,
@@ -188,6 +194,7 @@
 				1FA641C61586D6FA00350AC6 /* AKNoiseImageEffect.h in Headers */,
 				1FFDAC2D1587828A00837D3A /* UIImage+AKPixelData.h in Headers */,
 				1FDCA5931587A0BA0010B272 /* AKGradientImageEffect.h in Headers */,
+				1FDCA5AF1587A8FF0010B272 /* AKColorImageEffect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +301,7 @@
 				1FA641C71586D6FA00350AC6 /* AKNoiseImageEffect.m in Sources */,
 				1FFDAC2E1587828A00837D3A /* UIImage+AKPixelData.m in Sources */,
 				1FDCA5941587A0BA0010B272 /* AKGradientImageEffect.m in Sources */,
+				1FDCA5B01587A8FF0010B272 /* AKColorImageEffect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
