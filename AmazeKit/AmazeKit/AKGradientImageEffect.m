@@ -29,7 +29,7 @@
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
-	// Create the noise layer.
+	// Create the gradient layer.
 	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
