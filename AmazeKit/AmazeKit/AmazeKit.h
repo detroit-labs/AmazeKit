@@ -9,6 +9,7 @@
 
 // Image Effects
 #import "AKImageEffect.h"
+#import "AKGradientImageEffect.h"
 #import "AKNoiseImageEffect.h"
 
 // Image Renderer

@@ -21,15 +21,34 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-	UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 200.0f, 50.0f)];
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 250.0f, 75.0f)];
 	
 	AKImageRenderer *renderer = [[AKImageRenderer alloc] init];
 	
+	// Noise Effect
 	AKNoiseImageEffect *noiseEffect = [[AKNoiseImageEffect alloc] init];
+	[noiseEffect setAlpha:0.05f];
 	[noiseEffect setNoiseType:AKNoiseTypeBlackAndWhite];
+	
+	// Gradient Effect
+	AKGradientImageEffect *gradientEffect = [[AKGradientImageEffect alloc] init];
+	[gradientEffect setBlendMode:kCGBlendModeMultiply];
+	
+	UIColor *beginColor = [UIColor colorWithRed:144.0f / 255.0f
+										  green:144.0f / 255.0f
+										   blue:144.0f / 255.0f
+										  alpha:1.0f];
+	
+	UIColor *endColor = [UIColor colorWithRed:103.0f / 255.0f
+										green:103.0f / 255.0f
+										 blue:103.0f / 255.0f
+										alpha:1.0f];
+	
+	[gradientEffect setColors:[NSArray arrayWithObjects:beginColor, endColor, nil]];
 	
 	[renderer setImageEffects:[NSArray arrayWithObjects:
 							   noiseEffect,
+							   gradientEffect,
 							   nil]];
 	
 	UIImage *image = [renderer imageWithSize:[imageView frame].size
