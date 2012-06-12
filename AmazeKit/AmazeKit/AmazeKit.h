@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 Detroit Labs. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
-@interface AmazeKit : NSObject
+// Image Effects
+#import "AKImageEffect.h"
+#import "AKNoiseImageEffect.h"
 
-@end
+// Image Renderer
+#import "AKImageRenderer.h"
