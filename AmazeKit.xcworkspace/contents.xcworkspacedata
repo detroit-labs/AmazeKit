@@ -4,7 +4,4 @@
    <FileRef
       location = "container:AmazeKit/AmazeKit.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:SmapleApp/SmapleApp.xcodeproj">
-   </FileRef>
 </Workspace>

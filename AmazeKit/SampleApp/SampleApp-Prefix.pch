@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'SmapleApp' target in the 'SmapleApp' project
+// Prefix header for all source files of the 'SampleApp' target in the 'SampleApp' project
 //
 
 #import <Availability.h>

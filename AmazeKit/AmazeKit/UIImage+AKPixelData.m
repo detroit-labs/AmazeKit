@@ -12,7 +12,7 @@
 
 @implementation UIImage (AKPixelData)
 
-- (NSData *)AK_rawARGB8888Data
+- (NSData *)AK_rawRGBA8888Data
 {
 	// First get the image into your data buffer
     CGImageRef imageRef = [self CGImage];
@@ -48,3 +48,22 @@
 }
 
 @end
+
+AKPixelData AKGetPixelDataFromRGBA8888Data(uint8_t *rawData, NSUInteger width, NSUInteger height,
+										   NSUInteger x, NSUInteger y)
+{
+	int bytesPerPixel = 4; // ARGB8888
+	int bytesPerRow = bytesPerPixel * width;
+	
+	int byteIndex = (bytesPerRow * y) + x * bytesPerPixel;
+	
+	AKPixelData pixelData;
+	
+	pixelData.red   = ((CGFloat)rawData[byteIndex] / 255.0f);
+	pixelData.green = ((CGFloat)rawData[byteIndex + 1] / 255.0f);
+	pixelData.blue  = ((CGFloat)rawData[byteIndex + 2] / 255.0f);
+	pixelData.alpha = ((CGFloat)rawData[byteIndex + 3] / 255.0f);
+	
+	return pixelData;
+}
+

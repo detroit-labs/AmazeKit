@@ -9,7 +9,9 @@
 
 // Image Effects
 #import "AKImageEffect.h"
+#import "AKBevelImageEffect.h"
 #import "AKColorImageEffect.h"
+#import "AKCornerRadiusImageEffect.h"
 #import "AKGradientImageEffect.h"
 #import "AKNoiseImageEffect.h"
 

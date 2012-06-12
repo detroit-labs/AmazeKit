@@ -52,12 +52,17 @@
 										   blue:255.0f / 255.0f
 										  alpha:1.0f]];
 	
+	// Corner Radius Effect
+	AKCornerRadiusImageEffect *cornerRadiusEffect = [[AKCornerRadiusImageEffect alloc] init];
+	[cornerRadiusEffect setCornerRadii:AKCornerRadiiMake(50.0f, 10.0f, 10.0f, 5.0f)];
+	
 	[gradientEffect setColors:[NSArray arrayWithObjects:beginColor, endColor, nil]];
 	
 	[renderer setImageEffects:[NSArray arrayWithObjects:
 							   noiseEffect,
 							   gradientEffect,
 							   colorEffect,
+							   cornerRadiusEffect,
 							   nil]];
 	
 	UIImage *image = [renderer imageWithSize:[imageView frame].size

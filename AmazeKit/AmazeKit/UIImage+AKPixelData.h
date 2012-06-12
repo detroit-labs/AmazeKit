@@ -10,8 +10,21 @@
 #import <UIKit/UIKit.h>
 
 
+// Helper C functions
+typedef struct {
+	CGFloat red;
+	CGFloat blue;
+	CGFloat green;
+	CGFloat alpha;
+} AKPixelData;
+
+
+AKPixelData AKGetPixelDataFromRGBA8888Data(uint8_t *rawData, NSUInteger width, NSUInteger height,
+										   NSUInteger x, NSUInteger y);
+
+
 @interface UIImage (AKPixelData)
 
-- (NSData *)AK_rawARGB8888Data;
+- (NSData *)AK_rawRGBA8888Data;
 
 @end
