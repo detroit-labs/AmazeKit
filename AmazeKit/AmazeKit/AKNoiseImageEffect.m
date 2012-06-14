@@ -30,13 +30,12 @@
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	// Create the noise layer.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
+	NSUInteger width = [sourceImage size].width * [sourceImage scale];
+	NSUInteger height = [sourceImage size].height * [sourceImage scale];
+	
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 1.0f);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 		
-	NSUInteger width = [sourceImage size].width;
-	NSUInteger height = [sourceImage size].height;
-	
-	// TODO: Fix for Retina
 	for (NSUInteger x = 0; x < width; x++) {
 		for (NSUInteger y = 0; y < height; y++) {
 			UIColor *color = [UIColor blackColor];
@@ -72,6 +71,9 @@
 	
 	// Render the noise layer on top of the source image.
 	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
+	width = [sourceImage size].width;
+	height = [sourceImage size].height;
+	
 	context = UIGraphicsGetCurrentContext();
 	
 	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [sourceImage CGImage]);
