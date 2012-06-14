@@ -182,7 +182,7 @@
 													 maskColorSpace,
 													 kCGImageAlphaPremultipliedLast);
 	
-	CGImageRef bevelImageRef = CGBitmapContextCreateImage(maskContext)	
+	CGImageRef bevelImageRef = CGBitmapContextCreateImage(maskContext);
 		
 	CGContextRelease(maskContext);
 	CGColorSpaceRelease(maskColorSpace);
