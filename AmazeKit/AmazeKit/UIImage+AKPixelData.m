@@ -36,7 +36,8 @@
 												  kCGBitmapByteOrder32Big));
     CGColorSpaceRelease(colorSpace);
 	
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+	CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+	
     CGContextRelease(context);
 	
 	NSData *data = [[NSData alloc] initWithBytes:(const void *)rawData
@@ -55,14 +56,14 @@ AKPixelData AKGetPixelDataFromRGBA8888Data(uint8_t *rawData, NSUInteger width, N
 	int bytesPerPixel = 4; // ARGB8888
 	int bytesPerRow = bytesPerPixel * width;
 	
-	int byteIndex = (bytesPerRow * y) + x * bytesPerPixel;
+	int byteIndex = (bytesPerRow * y) + (x * bytesPerPixel);
 	
 	AKPixelData pixelData;
 	
-	pixelData.red   = ((CGFloat)rawData[byteIndex] / 255.0f);
-	pixelData.green = ((CGFloat)rawData[byteIndex + 1] / 255.0f);
-	pixelData.blue  = ((CGFloat)rawData[byteIndex + 2] / 255.0f);
-	pixelData.alpha = ((CGFloat)rawData[byteIndex + 3] / 255.0f);
+	pixelData.red   = rawData[byteIndex];
+	pixelData.green = rawData[byteIndex + 1];
+	pixelData.blue  = rawData[byteIndex + 2];
+	pixelData.alpha = rawData[byteIndex + 3];
 	
 	return pixelData;
 }

@@ -25,8 +25,8 @@
 		1FDCA5941587A0BA0010B272 /* AKGradientImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */; };
 		1FDCA5AF1587A8FF0010B272 /* AKColorImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */; };
 		1FDCA5B01587A8FF0010B272 /* AKColorImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */; };
-		1FDCA5B31587AC5F0010B272 /* AKBevelImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5B11587AC5F0010B272 /* AKBevelImageEffect.h */; };
-		1FDCA5B41587AC5F0010B272 /* AKBevelImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5B21587AC5F0010B272 /* AKBevelImageEffect.m */; };
+		1FDCA5B31587AC5F0010B272 /* AKButtonBevelImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5B11587AC5F0010B272 /* AKButtonBevelImageEffect.h */; };
+		1FDCA5B41587AC5F0010B272 /* AKButtonBevelImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5B21587AC5F0010B272 /* AKButtonBevelImageEffect.m */; };
 		1FDCA5D91587DAC90010B272 /* AKCornerRadiusImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */; };
 		1FDCA5DA1587DAC90010B272 /* AKCornerRadiusImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */; };
 		1FDCA6301587E0040010B272 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641A11586D12E00350AC6 /* UIKit.framework */; };
@@ -81,8 +81,8 @@
 		1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKGradientImageEffect.m; sourceTree = "<group>"; };
 		1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKColorImageEffect.h; sourceTree = "<group>"; };
 		1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKColorImageEffect.m; sourceTree = "<group>"; };
-		1FDCA5B11587AC5F0010B272 /* AKBevelImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKBevelImageEffect.h; sourceTree = "<group>"; };
-		1FDCA5B21587AC5F0010B272 /* AKBevelImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKBevelImageEffect.m; sourceTree = "<group>"; };
+		1FDCA5B11587AC5F0010B272 /* AKButtonBevelImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKButtonBevelImageEffect.h; sourceTree = "<group>"; };
+		1FDCA5B21587AC5F0010B272 /* AKButtonBevelImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKButtonBevelImageEffect.m; sourceTree = "<group>"; };
 		1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKCornerRadiusImageEffect.h; sourceTree = "<group>"; };
 		1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKCornerRadiusImageEffect.m; sourceTree = "<group>"; };
 		1FDCA5F21587DE110010B272 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -202,8 +202,8 @@
 			children = (
 				1FA641BD1586D38000350AC6 /* AKImageEffect.h */,
 				1FA641BE1586D38000350AC6 /* AKImageEffect.m */,
-				1FDCA5B11587AC5F0010B272 /* AKBevelImageEffect.h */,
-				1FDCA5B21587AC5F0010B272 /* AKBevelImageEffect.m */,
+				1FDCA5B11587AC5F0010B272 /* AKButtonBevelImageEffect.h */,
+				1FDCA5B21587AC5F0010B272 /* AKButtonBevelImageEffect.m */,
 				1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */,
 				1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */,
 				1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */,
@@ -272,7 +272,7 @@
 				1FFDAC2D1587828A00837D3A /* UIImage+AKPixelData.h in Headers */,
 				1FDCA5931587A0BA0010B272 /* AKGradientImageEffect.h in Headers */,
 				1FDCA5AF1587A8FF0010B272 /* AKColorImageEffect.h in Headers */,
-				1FDCA5B31587AC5F0010B272 /* AKBevelImageEffect.h in Headers */,
+				1FDCA5B31587AC5F0010B272 /* AKButtonBevelImageEffect.h in Headers */,
 				1FDCA5D91587DAC90010B272 /* AKCornerRadiusImageEffect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +409,7 @@
 				1FFDAC2E1587828A00837D3A /* UIImage+AKPixelData.m in Sources */,
 				1FDCA5941587A0BA0010B272 /* AKGradientImageEffect.m in Sources */,
 				1FDCA5B01587A8FF0010B272 /* AKColorImageEffect.m in Sources */,
-				1FDCA5B41587AC5F0010B272 /* AKBevelImageEffect.m in Sources */,
+				1FDCA5B41587AC5F0010B272 /* AKButtonBevelImageEffect.m in Sources */,
 				1FDCA5DA1587DAC90010B272 /* AKCornerRadiusImageEffect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +582,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleApp/SampleApp-Prefix.pch";
 				INFOPLIST_FILE = "SampleApp/SampleApp-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -599,6 +600,7 @@
 				GCC_PREFIX_HEADER = "SampleApp/SampleApp-Prefix.pch";
 				INFOPLIST_FILE = "SampleApp/SampleApp-Info.plist";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -641,6 +643,7 @@
 				1FDCA6461587E0040010B272 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

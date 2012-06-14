@@ -86,6 +86,8 @@
 	
 	UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
 	
+	CGColorSpaceRelease(colorSpace);
+	CGGradientRelease(gradient);
 	UIGraphicsEndImageContext();
 	context = NULL;
 	

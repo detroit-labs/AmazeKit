@@ -48,6 +48,7 @@
 	
 	CGImageRef mask = CGBitmapContextCreateImage(context);
 	
+	CGColorSpaceRelease(colorSpace);
 	CGContextRelease(context);
 	context = NULL;
 	
@@ -65,6 +66,9 @@
 	
 	UIGraphicsEndImageContext();
 	context = NULL;
+	
+	CGImageRelease(mask);
+	CGImageRelease(maskedOriginalImage);
 	
 	return renderedImage;
 }
