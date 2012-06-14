@@ -32,8 +32,8 @@
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	CGSize sourceImageSize = [sourceImage size];
-	_width = sourceImageSize.width;
-	NSUInteger height = sourceImageSize.height;
+	_width = sourceImageSize.width * [sourceImage scale];
+	NSUInteger height = sourceImageSize.height * [sourceImage scale];
 	
 	// Create an array of CGFloats, which will correspond to the alpha to use for that pixel.
 	unsigned long count = _width * height;
@@ -93,32 +93,32 @@
 			}
 			
 			CGFloat currentWhiteLevel = [self whiteBevelValueAtPoint:point];
-			
-			if (currentWhiteLevel > 0.05f) {
+			for (NSUInteger i = 1; currentWhiteLevel > 0.05f; i++) {
 				AKPixelData underneathPixelData = AKGetPixelDataFromRGBA8888Data(rawData,
 																				 _width,
 																				 height,
 																				 x,
-																				 y + 1);
+																				 y + i);
 				
 				if (underneathPixelData.alpha > 0) {
-					[self setWhiteBevelValue:(currentWhiteLevel / 4.0f)
-									 atPoint:CGPointMake(x, y + 1)];
+					currentWhiteLevel = (currentWhiteLevel / (4.0f / [sourceImage scale]));
+					[self setWhiteBevelValue:currentWhiteLevel
+									 atPoint:CGPointMake(x, y + i)];
 				}
 			}
 			
 			CGFloat currentBlackLevel = [self blackBevelValueAtPoint:point];
-			
-			if (currentBlackLevel > 0.05f) {
-				AKPixelData abovePixelData = AKGetPixelDataFromRGBA8888Data(rawData,
-																			_width,
-																			height,
-																			x,
-																			y - 1);
+			for (NSUInteger i = 1; currentBlackLevel > 0.05f; i++) {
+				AKPixelData underneathPixelData = AKGetPixelDataFromRGBA8888Data(rawData,
+																				 _width,
+																				 height,
+																				 x,
+																				 y - i);
 				
-				if (abovePixelData.alpha > 0) {
-					[self setBlackBevelValue:(currentBlackLevel / 4.0f)
-									 atPoint:CGPointMake(x, y - 1)];
+				if (underneathPixelData.alpha > 0) {
+					currentBlackLevel = (currentBlackLevel / (4.0f / [sourceImage scale]));
+					[self setBlackBevelValue:currentBlackLevel
+									 atPoint:CGPointMake(x, y - i)];
 				}
 			}
 		}
@@ -182,7 +182,7 @@
 													 maskColorSpace,
 													 kCGImageAlphaPremultipliedLast);
 	
-	CGImageRef bevelImageRef = CGBitmapContextCreateImage(maskContext);
+	CGImageRef bevelImageRef = CGBitmapContextCreateImage(maskContext)	
 		
 	CGContextRelease(maskContext);
 	CGColorSpaceRelease(maskColorSpace);
@@ -192,13 +192,13 @@
 	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	CGContextTranslateCTM(context, 0.0f, (CGFloat)height);
+	CGContextTranslateCTM(context, 0.0f, [sourceImage size].height);
 	CGContextScaleCTM(context, 1.0f, -1.0f);
 	
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, _width, height), [sourceImage CGImage]);
+	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, sourceImageSize.width, sourceImageSize.height), [sourceImage CGImage]);
 	
 	[self applyAppearanceProperties];
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, _width, height), bevelImageRef);
+	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, sourceImageSize.width, sourceImageSize.height), bevelImageRef);
 	CGImageRelease(bevelImageRef);
 	
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
