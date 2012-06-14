@@ -16,8 +16,8 @@
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
-	CGFloat width = [sourceImage size].width;
-	CGFloat height = [sourceImage size].height;
+	CGFloat width = [sourceImage size].width * [sourceImage scale];
+	CGFloat height = [sourceImage size].height * [sourceImage scale];
 	
 	// Create the mask image.
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
@@ -57,10 +57,10 @@
 	context = UIGraphicsGetCurrentContext();
 	
 	CGContextScaleCTM(context, 1.0f, -1.0f);
-	CGContextTranslateCTM(context, 0.0f, -height);
+	CGContextTranslateCTM(context, 0.0f, -[sourceImage size].height);
 	
 	CGImageRef maskedOriginalImage = CGImageCreateWithMask([sourceImage CGImage], mask);
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), maskedOriginalImage);
+	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, [sourceImage size].width, [sourceImage size].height), maskedOriginalImage);
 	
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
 	
