@@ -7,6 +7,9 @@
 //
 
 
+// File Manager
+#import "AKFileManager.h"
+
 // Image Effects
 #import "AKImageEffect.h"
 #import "AKButtonBevelImageEffect.h"

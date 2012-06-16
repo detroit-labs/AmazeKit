@@ -9,7 +9,18 @@
 
 #import "AKNoiseImageEffect.h"
 
+#import "AKFileManager+AKNoiseImageEffectSeeding.h"
 #import "UIImage+AKPixelData.h"
+
+
+static const CGSize kNoiseSeedSize = { 100.0f, 100.0f };
+
+
+@interface AKNoiseImageEffect()
+
+- (CGImageRef)noiseSeedImageRef;
+
+@end
 
 
 @implementation AKNoiseImageEffect
@@ -35,41 +46,10 @@
 	
 	UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, 1.0f);
 	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	CGImageRef noiseTileImageRef = [self noiseSeedImageRef];
 		
-	for (NSUInteger x = 0; x < width; x++) {
-		for (NSUInteger y = 0; y < height; y++) {
-			UIColor *color = [UIColor blackColor];
-			
-			if ([self noiseType] == AKNoiseTypeBlackAndWhite) {
-				int32_t white = arc4random_uniform(255);
-				int32_t alpha = arc4random_uniform(255);
-				
-				color = [UIColor colorWithWhite:(CGFloat)white / 255.0f
-										  alpha:(CGFloat)alpha / 255.0f];
-			}
-			else if ([self noiseType] == AKNoiseTypeColor) {
-				int32_t red   = arc4random_uniform(255);
-				int32_t green = arc4random_uniform(255);
-				int32_t blue  = arc4random_uniform(255);
-				int32_t alpha = arc4random_uniform(255);
-				
-				color = [UIColor colorWithRed:(CGFloat)red / 255.0f
-										green:(CGFloat)green / 255.0f
-										 blue:(CGFloat)blue / 255.0f
-										alpha:(CGFloat)alpha / 255.0f];
-			}
-			
-			CGContextSetFillColorWithColor(context, [color CGColor]);
-			CGContextFillRect(context, CGRectMake((CGFloat)x, (CGFloat)y, 1.0f, 1.0f));
-		}
-	}
-	
-	UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
-	
-	UIGraphicsEndImageContext();
-	context = NULL;
-	
-	// Render the noise layer on top of the source image.
+	// Render the noise tile on top of the source image.
 	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
 	width = [sourceImage size].width;
 	height = [sourceImage size].height;
@@ -79,7 +59,11 @@
 	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [sourceImage CGImage]);
 	
 	[self applyAppearanceProperties];
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [layerImage CGImage]);
+	CGContextDrawTiledImage(context, CGRectMake(0.0f,
+												0.0f,
+												kNoiseSeedSize.width / [sourceImage scale],
+												kNoiseSeedSize.height / [sourceImage scale]),
+							noiseTileImageRef);
 	
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
 	
@@ -87,6 +71,76 @@
 	context = NULL;
 	
 	return renderedImage;
+}
+
+- (CGImageRef)noiseSeedImageRef
+{
+	BOOL hasColor = ([self noiseType] == AKNoiseTypeColor);
+	UIImage *seedImage = [[AKFileManager defaultManager] AK_noiseImageEffectSeedWithColor:hasColor];
+	
+	if (seedImage == nil) {
+		// Generate the image.
+		NSUInteger width = (NSUInteger)kNoiseSeedSize.width;
+		NSUInteger height = (NSUInteger)kNoiseSeedSize.height;
+		
+		// Create a buffer to draw noise into
+		// Create an image context to draw into.
+		CGColorSpaceRef noiseColorSpace = CGColorSpaceCreateDeviceRGB();
+		size_t numberOfComponents = 3;
+		
+		int bitsPerComponent = 8;
+		int bytesPerPixel = ((numberOfComponents + 1) * bitsPerComponent) / 8;
+		int bytesPerRow = bytesPerPixel * width;
+		
+		// Create the data buffer for the image.
+		uint8_t *imageData = calloc(width * height, bytesPerPixel);
+		
+		for (NSUInteger x = 0; x < width; x++) {
+			for (NSUInteger y = 0; y < height; y++) {
+				int offset = (bytesPerRow * y) + (bytesPerPixel * x);
+				
+				if ([self noiseType] == AKNoiseTypeBlackAndWhite) {
+					uint8_t white = arc4random_uniform(UINT8_MAX);
+					uint8_t alpha = arc4random_uniform(UINT8_MAX);
+
+					imageData[offset]     = white;
+					imageData[offset + 1] = white;
+					imageData[offset + 2] = white;
+					imageData[offset + 3] = alpha;
+				}
+				else if ([self noiseType] == AKNoiseTypeColor) {
+					uint8_t red   = arc4random_uniform(UINT8_MAX);
+					uint8_t green = arc4random_uniform(UINT8_MAX);
+					uint8_t blue  = arc4random_uniform(UINT8_MAX);
+					uint8_t alpha = arc4random_uniform(UINT8_MAX);
+					
+					imageData[offset]     = red;
+					imageData[offset + 1] = blue;
+					imageData[offset + 2] = green;
+					imageData[offset + 3] = alpha;
+				}
+			}
+		}
+		
+		CGContextRef noiseContext = CGBitmapContextCreate((void *)imageData,
+														 width,
+														 height,
+														 bitsPerComponent,
+														 bytesPerRow,
+														 noiseColorSpace,
+														 kCGImageAlphaPremultipliedLast);
+		
+		CGImageRef noiseImageRef = CGBitmapContextCreateImage(noiseContext);
+		seedImage = [[UIImage alloc] initWithCGImage:noiseImageRef];
+		
+		CGContextRelease(noiseContext);
+		CGColorSpaceRelease(noiseColorSpace);
+		free(imageData);
+		
+		[[AKFileManager defaultManager] AK_setNoiseImageEffectSeed:seedImage withColor:hasColor];
+	}
+	
+	return [seedImage CGImage];
 }
 
 @end
