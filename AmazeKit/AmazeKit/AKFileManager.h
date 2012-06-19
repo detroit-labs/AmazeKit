@@ -14,6 +14,6 @@
 
 // Object Lifecycle
 + (id)defaultManager;
-+ (NSString *)amazeKitCachePath;
++ (NSURL *)amazeKitCacheURL;
 
 @end
