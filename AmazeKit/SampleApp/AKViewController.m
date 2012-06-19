@@ -21,13 +21,16 @@
 	AKColorImageEffect       	*colorEffect;
 	AKCornerRadiusImageEffect	*cornerRadiusEffect;
 	AKButtonBevelImageEffect 	*bevelEffect;
+	AKButtonImageCoordinator	*buttonImageCoordinator;
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIButton *button;
 @property (strong, nonatomic) IBOutlet UISlider *hueSlider;
 @property (strong, nonatomic) IBOutlet UISlider *saturationSlider;
 @property (strong, nonatomic) IBOutlet UISlider *brightnessSlider;
 
+- (void)renderImage;
 - (IBAction)sliderChanged:(id)sender;
 
 @end
@@ -36,11 +39,12 @@
 @implementation AKViewController
 
 @synthesize imageView;
+@synthesize button;
 @synthesize hueSlider;
 @synthesize saturationSlider;
 @synthesize brightnessSlider;
 
-- (void)renderButton
+- (void)renderImage
 {
 	if (buttonRenderer == nil) {
 		buttonRenderer = [[AKImageRenderer alloc] init];
@@ -70,10 +74,6 @@
 		colorEffect = [[AKColorImageEffect alloc] init];
 		[colorEffect setBlendMode:kCGBlendModeColor];
 		
-		// Corner Radius Effect
-		cornerRadiusEffect = [[AKCornerRadiusImageEffect alloc] init];
-		[cornerRadiusEffect setCornerRadii:AKCornerRadiiMake(20.0f, 20.0f, 20.0f, 20.0f)];
-		
 		// Bevel Effect
 		bevelEffect = [[AKButtonBevelImageEffect alloc] init];
 		
@@ -81,7 +81,6 @@
 										 noiseEffect,
 										 gradientEffect,
 										 colorEffect,
-										 cornerRadiusEffect,
 										 bevelEffect,
 										 nil]];
 	}
@@ -91,17 +90,29 @@
 									 brightness:[[self brightnessSlider] value]
 										  alpha:1.0f]];
 
+	NSDate *beginTime = [NSDate date];
+	
 	UIImage *image = [buttonRenderer imageWithSize:[imageView frame].size
 										   options:nil];
 	
-	[[self imageView] setImage:image];	
+	NSDate *endTime = [NSDate date];
+	
+	NSLog(@"Rendered in %f seconds.", [endTime timeIntervalSinceDate:beginTime]);
+	
+	[[self imageView] setImage:image];
 }
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	
-	[self renderButton];
+	[self renderImage];
+	
+	if (buttonImageCoordinator == nil) {
+		buttonImageCoordinator = [[AKButtonImageCoordinator alloc] init];
+	}
+	
+	[buttonImageCoordinator addButton:[self button]];
 }
 
 - (void)viewDidUnload
@@ -111,6 +122,7 @@
 	[self setSaturationSlider:nil];
 	[self setBrightnessSlider:nil];
 	
+	[self setButton:nil];
     [super viewDidUnload];
 }
 
@@ -121,6 +133,6 @@
 
 - (IBAction)sliderChanged:(id)sender
 {
-	[self renderButton];
+	[self renderImage];
 }
 @end

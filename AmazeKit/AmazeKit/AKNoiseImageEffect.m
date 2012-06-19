@@ -71,8 +71,8 @@ static const CGSize kNoiseSeedSize = { 100.0f, 100.0f };
 		
 	// Render the noise tile on top of the source image.
 	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
-	width = [sourceImage size].width;
-	height = [sourceImage size].height;
+//	width = [sourceImage size].width;
+//	height = [sourceImage size].height;
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	

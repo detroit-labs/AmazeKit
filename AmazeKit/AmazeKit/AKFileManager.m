@@ -52,7 +52,7 @@
 																		  error:&directoryCreationError];
 			
 			if (success == NO) {
-				NSLog(@"Could not create directory at URL %@, error:", amazeKitCacheURL, directoryCreationError);
+				NSLog(@"Could not create directory at URL %@, error: %@", amazeKitCacheURL, directoryCreationError);
 			}
 		}
 	}
