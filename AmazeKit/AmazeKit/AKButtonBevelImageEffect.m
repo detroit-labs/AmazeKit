@@ -13,21 +13,34 @@
 
 
 @interface AKButtonBevelImageEffect() {
-	CGFloat	*_whiteBevelData;
-	CGFloat *_blackBevelData;
+	CGFloat	*_upperBevelData;
+	CGFloat *_lowerBevelData;
 	NSUInteger _width;
 }
 
-- (void)setBlackBevelValue:(CGFloat)value
+- (CGFloat)lowerBevelValueAtPoint:(CGPoint)point;
+- (void)setLowerBevelValue:(CGFloat)value
 				   atPoint:(CGPoint)point;
-- (void)setWhiteBevelValue:(CGFloat)value
+- (void)setUpperBevelValue:(CGFloat)value
 				   atPoint:(CGPoint)point;
-- (CGFloat)blackBevelValueAtPoint:(CGPoint)point;
-- (CGFloat)whiteBevelValueAtPoint:(CGPoint)point;
+- (CGFloat)upperBevelValueAtPoint:(CGPoint)point;
 
 @end
 
 @implementation AKButtonBevelImageEffect
+
+@synthesize bevelDirection = _bevelDirection;
+
+- (id)init
+{
+	self = [super init];
+	
+	if (self) {
+		_bevelDirection = AKButtonBevelDirectionUp;
+	}
+	
+	return self;
+}
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
@@ -38,8 +51,8 @@
 	// Create an array of CGFloats, which will correspond to the alpha to use for that pixel.
 	unsigned long count = _width * height;
 	unsigned long size = sizeof(CGFloat);
-	_whiteBevelData = calloc(count, size);
-	_blackBevelData = calloc(count, size);
+	_upperBevelData = calloc(count, size);
+	_lowerBevelData = calloc(count, size);
 	
 	// Get the pixel data of the original image.
 	NSData *pixelData = [sourceImage AK_rawRGBA8888Data];
@@ -48,8 +61,8 @@
 	CGPoint point = CGPointZero;
 
 	for (NSUInteger y = 0; y < height; y++) {
-		CGFloat whiteAlpha = (((CGFloat)height - (CGFloat)y) / (CGFloat)height) / 2.0f;
-		CGFloat blackAlpha = ((CGFloat)y / (CGFloat)height) / 3.0f;
+		CGFloat upperAlpha = (((CGFloat)height - (CGFloat)y) / (CGFloat)height) / 2.0f;
+		CGFloat lowerAlpha = ((CGFloat)y / (CGFloat)height) / 3.0f;
 		point.y = y;
 		
 		for (NSUInteger x = 0; x < _width; x++) {
@@ -70,15 +83,15 @@
 																					 y + 1);
 					
 					if (underneathPixelData.alpha > 0) {
-						[self setWhiteBevelValue:whiteAlpha atPoint:CGPointMake(x, y + 1)];
+						[self setUpperBevelValue:upperAlpha atPoint:CGPointMake(x, y + 1)];
 					}
 				}
 			}
 			else if (y == 0) {
-				[self setWhiteBevelValue:whiteAlpha atPoint:point];
+				[self setUpperBevelValue:upperAlpha atPoint:point];
 			}
 			else if (y + 1 == height) {
-				[self setBlackBevelValue:blackAlpha atPoint:point];
+				[self setLowerBevelValue:lowerAlpha atPoint:point];
 			}
 			else {
 				AKPixelData underneathPixelData = AKGetPixelDataFromRGBA8888Data(rawData,
@@ -88,12 +101,12 @@
 																				 y + 1);
 				
 				if (underneathPixelData.alpha == 0) {
-					[self setBlackBevelValue:blackAlpha atPoint:point];
+					[self setLowerBevelValue:lowerAlpha atPoint:point];
 				}
 			}
 			
-			CGFloat currentWhiteLevel = [self whiteBevelValueAtPoint:point];
-			for (NSUInteger i = 1; currentWhiteLevel > 0.05f; i++) {
+			CGFloat currentUpperLevel = [self upperBevelValueAtPoint:point];
+			for (NSUInteger i = 1; currentUpperLevel > 0.05f; i++) {
 				AKPixelData underneathPixelData = AKGetPixelDataFromRGBA8888Data(rawData,
 																				 _width,
 																				 height,
@@ -101,13 +114,13 @@
 																				 y + i);
 				
 				if (underneathPixelData.alpha > 0) {
-					currentWhiteLevel = (currentWhiteLevel / (4.0f / [sourceImage scale]));
-					[self setWhiteBevelValue:currentWhiteLevel
+					currentUpperLevel = (currentUpperLevel / (4.0f / [sourceImage scale]));
+					[self setUpperBevelValue:currentUpperLevel
 									 atPoint:CGPointMake(x, y + i)];
 				}
 			}
 			
-			CGFloat currentBlackLevel = [self blackBevelValueAtPoint:point];
+			CGFloat currentBlackLevel = [self lowerBevelValueAtPoint:point];
 			for (NSUInteger i = 1; currentBlackLevel > 0.05f; i++) {
 				AKPixelData underneathPixelData = AKGetPixelDataFromRGBA8888Data(rawData,
 																				 _width,
@@ -117,7 +130,7 @@
 				
 				if (underneathPixelData.alpha > 0) {
 					currentBlackLevel = (currentBlackLevel / (4.0f / [sourceImage scale]));
-					[self setBlackBevelValue:currentBlackLevel
+					[self setLowerBevelValue:currentBlackLevel
 									 atPoint:CGPointMake(x, y - i)];
 				}
 			}
@@ -147,8 +160,17 @@
 																   x,
 																   y);
 			
-			CGFloat whiteAlpha = [self whiteBevelValueAtPoint:point] * (CGFloat)((CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX);
-			CGFloat blackAlpha = [self blackBevelValueAtPoint:point];
+			CGFloat whiteAlpha = 0.0f;
+			CGFloat blackAlpha = 0.0f;
+			
+			if ([self bevelDirection] == AKButtonBevelDirectionUp) {
+				whiteAlpha = [self upperBevelValueAtPoint:point] * (CGFloat)((CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX);
+				blackAlpha = [self lowerBevelValueAtPoint:point];
+			}
+			else {
+				whiteAlpha = [self lowerBevelValueAtPoint:point] * (CGFloat)((CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX);
+				blackAlpha = [self upperBevelValueAtPoint:point];
+			}
 			
 			int offset = (bytesPerRow * y) + (bytesPerPixel * x);
 
@@ -206,32 +228,32 @@
 	UIGraphicsEndImageContext();
 	context = NULL;
 	
-	free(_whiteBevelData), _whiteBevelData = NULL;
-	free(_blackBevelData), _blackBevelData = NULL;
+	free(_upperBevelData), _upperBevelData = NULL;
+	free(_lowerBevelData), _lowerBevelData = NULL;
 	
 	return renderedImage;
 }
 
-- (void)setBlackBevelValue:(CGFloat)value
+- (CGFloat)lowerBevelValueAtPoint:(CGPoint)point
+{
+	return _lowerBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x];
+}
+
+- (void)setLowerBevelValue:(CGFloat)value
 				   atPoint:(CGPoint)point
 {
-	_blackBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x] = value;
+	_lowerBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x] = value;
 }
 
-- (void)setWhiteBevelValue:(CGFloat)value
+- (void)setUpperBevelValue:(CGFloat)value
 				   atPoint:(CGPoint)point
 {
-	_whiteBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x] = value;
+	_upperBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x] = value;
 }
 
-- (CGFloat)blackBevelValueAtPoint:(CGPoint)point
+- (CGFloat)upperBevelValueAtPoint:(CGPoint)point
 {
-	return _blackBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x];
-}
-
-- (CGFloat)whiteBevelValueAtPoint:(CGPoint)point
-{
-	return _whiteBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x];
+	return _upperBevelData[((NSUInteger)point.y * _width) + (NSUInteger)point.x];
 }
 
 @end

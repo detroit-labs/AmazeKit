@@ -10,6 +10,15 @@
 #import "AKImageEffect.h"
 
 
+typedef enum {
+	AKButtonBevelDirectionUp,
+	AKButtonBevelDirectionDown
+} AKButtonBevelDirection;
+
+
 @interface AKButtonBevelImageEffect : AKImageEffect
+
+// “Up,” the default, has a shine on top and a shadow on bottom. “Down” is the reverse.
+@property AKButtonBevelDirection	bevelDirection;
 
 @end
