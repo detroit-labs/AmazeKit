@@ -39,10 +39,10 @@
     CGContextSetGrayFillColor(context, 1.0, 1.0);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0.0f, height / 2.0f);
-    CGContextAddArcToPoint(context, 0.0f, 0.0f, width / 2.0f, 0.0f, [self cornerRadii].bottomLeft);
-    CGContextAddArcToPoint(context, width, 0.0f, width, height / 2.0f, [self cornerRadii].bottomRight);
-    CGContextAddArcToPoint(context, width, height, width / 2.0f, height, [self cornerRadii].topRight);
-    CGContextAddArcToPoint(context, 0.0f, height, 0.0f, height / 2.0f, [self cornerRadii].topLeft);
+    CGContextAddArcToPoint(context, 0.0f, 0.0f, width / 2.0f, 0.0f, [self cornerRadii].bottomLeft * [sourceImage scale]);
+    CGContextAddArcToPoint(context, width, 0.0f, width, height / 2.0f, [self cornerRadii].bottomRight * [sourceImage scale]);
+    CGContextAddArcToPoint(context, width, height, width / 2.0f, height, [self cornerRadii].topRight * [sourceImage scale]);
+    CGContextAddArcToPoint(context, 0.0f, height, 0.0f, height / 2.0f, [self cornerRadii].topLeft * [sourceImage scale]);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFill);
 	
