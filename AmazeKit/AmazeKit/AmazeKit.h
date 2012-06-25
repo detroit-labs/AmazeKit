@@ -19,6 +19,7 @@
 #import "AKColorImageEffect.h"
 #import "AKCornerRadiusImageEffect.h"
 #import "AKGradientImageEffect.h"
+#import "AKInnerGlowImageEffect.h"
 #import "AKNoiseImageEffect.h"
 
 // Image Renderer

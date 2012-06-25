@@ -10,6 +10,9 @@
 #import "UIImage+AKPixelData.h"
 
 
+const AKPixelData AKPixelDataZero = {0, 0, 0, 0};
+
+
 @implementation UIImage (AKPixelData)
 
 - (NSData *)AK_rawRGBA8888Data

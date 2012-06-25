@@ -18,6 +18,8 @@ typedef struct {
 	uint8_t alpha;
 } AKPixelData;
 
+extern const AKPixelData AKPixelDataZero;
+
 
 AKPixelData AKGetPixelDataFromRGBA8888Data(uint8_t *rawData, NSUInteger width, NSUInteger height,
 										   NSUInteger x, NSUInteger y);

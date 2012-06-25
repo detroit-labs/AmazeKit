@@ -27,6 +27,10 @@
 		1FA641C31586D5FB00350AC6 /* AmazeKit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */; };
 		1FA641C61586D6FA00350AC6 /* AKNoiseImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */; };
 		1FA641C71586D6FA00350AC6 /* AKNoiseImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */; };
+		1FB27E551598B3CF00347D3D /* AKInnerGlowImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */; };
+		1FB27E561598B3CF00347D3D /* AKInnerGlowImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */; };
+		1FB27E681598F45700347D3D /* AKDrawingUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB27E661598F45700347D3D /* AKDrawingUtilities.h */; };
+		1FB27E691598F45700347D3D /* AKDrawingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB27E671598F45700347D3D /* AKDrawingUtilities.m */; };
 		1FDCA5931587A0BA0010B272 /* AKGradientImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */; };
 		1FDCA5941587A0BA0010B272 /* AKGradientImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */; };
 		1FDCA5AF1587A8FF0010B272 /* AKColorImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */; };
@@ -89,6 +93,10 @@
 		1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AmazeKit-Prefix.pch"; sourceTree = "<group>"; };
 		1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKNoiseImageEffect.h; sourceTree = "<group>"; };
 		1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKNoiseImageEffect.m; sourceTree = "<group>"; };
+		1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKInnerGlowImageEffect.h; sourceTree = "<group>"; };
+		1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKInnerGlowImageEffect.m; sourceTree = "<group>"; };
+		1FB27E661598F45700347D3D /* AKDrawingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKDrawingUtilities.h; sourceTree = "<group>"; };
+		1FB27E671598F45700347D3D /* AKDrawingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKDrawingUtilities.m; sourceTree = "<group>"; };
 		1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKGradientImageEffect.h; sourceTree = "<group>"; };
 		1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKGradientImageEffect.m; sourceTree = "<group>"; };
 		1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKColorImageEffect.h; sourceTree = "<group>"; };
@@ -202,6 +210,7 @@
 				1FFDAC291587825400837D3A /* Categories */,
 				1F735BE41590BF8E00EABF1B /* Coordinators */,
 				1F7D4701158CC47300ABF10D /* File Manager */,
+				1FB27E6A1598F46C00347D3D /* Helpers */,
 				1FA641BC1586D27800350AC6 /* Image Effects */,
 				1FA641C11586D3B900350AC6 /* Image Renderer */,
 				1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */,
@@ -242,6 +251,8 @@
 				1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */,
 				1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */,
 				1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */,
+				1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */,
+				1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */,
 				1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */,
 				1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */,
 			);
@@ -255,6 +266,15 @@
 				1FA641B91586D16700350AC6 /* AKImageRenderer.m */,
 			);
 			name = "Image Renderer";
+			sourceTree = "<group>";
+		};
+		1FB27E6A1598F46C00347D3D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1FB27E661598F45700347D3D /* AKDrawingUtilities.h */,
+				1FB27E671598F45700347D3D /* AKDrawingUtilities.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		1FDCA6331587E0040010B272 /* SampleApp */ = {
@@ -311,6 +331,8 @@
 				1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */,
 				1F7D4709158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.h in Headers */,
 				1F735BE81590BF9D00EABF1B /* AKButtonImageCoordinator.h in Headers */,
+				1FB27E551598B3CF00347D3D /* AKInnerGlowImageEffect.h in Headers */,
+				1FB27E681598F45700347D3D /* AKDrawingUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +473,8 @@
 				1F7D4706158CC48A00ABF10D /* AKFileManager.m in Sources */,
 				1F7D470A158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.m in Sources */,
 				1F735BE91590BF9D00EABF1B /* AKButtonImageCoordinator.m in Sources */,
+				1FB27E561598B3CF00347D3D /* AKInnerGlowImageEffect.m in Sources */,
+				1FB27E691598F45700347D3D /* AKDrawingUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

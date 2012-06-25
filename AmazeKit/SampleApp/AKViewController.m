@@ -122,9 +122,9 @@
 		AKGradientImageEffect *onGradientEffect = [[AKGradientImageEffect alloc] init];
 		[onGradientEffect setBlendMode:kCGBlendModeMultiply];
 		
-		UIColor *onBeginColor = [UIColor colorWithRed:144.0f / 255.0f
-												green:144.0f / 255.0f
-												 blue:144.0f / 255.0f
+		UIColor *onBeginColor = [UIColor colorWithRed:103.0f / 255.0f
+												green:103.0f / 255.0f
+												 blue:103.0f / 255.0f
 												alpha:1.0f];
 		
 		UIColor *onEndColor = [UIColor colorWithRed:103.0f / 255.0f
@@ -145,7 +145,12 @@
 		
 		// Bevel Effect
 		AKButtonBevelImageEffect *onBevelEffect = [[AKButtonBevelImageEffect alloc] init];
-		[onBevelEffect setBevelDirection:AKButtonBevelDirectionDown];
+		
+		// Glow Effect
+		AKInnerGlowImageEffect *innerGlowEffect = [[AKInnerGlowImageEffect alloc] init];
+		[innerGlowEffect setRadius:5.0f];
+		[innerGlowEffect setAlpha:0.5f];
+		[innerGlowEffect setBlendMode:kCGBlendModeOverlay];
 		
 		[onButtonRenderer setImageEffects:[NSArray arrayWithObjects:
 										   onNoiseEffect,
@@ -153,6 +158,7 @@
 										   onColorEffect,
 										   buttonCornerRadiusEffect,
 										   onBevelEffect,
+										   innerGlowEffect,
 										   nil]];
 		
 		AKImageRenderer *offButtonRenderer = [[AKImageRenderer alloc] init];
