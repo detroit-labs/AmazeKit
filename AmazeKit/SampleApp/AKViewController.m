@@ -89,7 +89,7 @@
 									 saturation:[[self saturationSlider] value]
 									 brightness:[[self brightnessSlider] value]
 										  alpha:1.0f]];
-
+	
 	NSDate *beginTime = [NSDate date];
 	
 	UIImage *image = [buttonRenderer imageWithSize:[imageView frame].size
@@ -110,6 +110,92 @@
 	
 	if (buttonImageCoordinator == nil) {
 		buttonImageCoordinator = [[AKButtonImageCoordinator alloc] init];
+		
+		AKImageRenderer *onButtonRenderer = [[AKImageRenderer alloc] init];
+		
+		// Noise Effect
+		AKNoiseImageEffect *onNoiseEffect = [[AKNoiseImageEffect alloc] init];
+		[onNoiseEffect setAlpha:0.05f];
+		[onNoiseEffect setNoiseType:AKNoiseTypeBlackAndWhite];
+		
+		// Gradient Effect
+		AKGradientImageEffect *onGradientEffect = [[AKGradientImageEffect alloc] init];
+		[onGradientEffect setBlendMode:kCGBlendModeMultiply];
+		
+		UIColor *onBeginColor = [UIColor colorWithRed:144.0f / 255.0f
+												green:144.0f / 255.0f
+												 blue:144.0f / 255.0f
+												alpha:1.0f];
+		
+		UIColor *onEndColor = [UIColor colorWithRed:103.0f / 255.0f
+											  green:103.0f / 255.0f
+											   blue:103.0f / 255.0f
+											  alpha:1.0f];
+		
+		[onGradientEffect setColors:[NSArray arrayWithObjects:onBeginColor, onEndColor, nil]];
+		
+		// Color Effect
+		AKColorImageEffect *onColorEffect = [[AKColorImageEffect alloc] init];
+		[onColorEffect setBlendMode:kCGBlendModeColor];
+		[onColorEffect setColor:[UIColor blueColor]];
+		
+		// Corner Radius Effect
+		AKCornerRadiusImageEffect *buttonCornerRadiusEffect = [[AKCornerRadiusImageEffect alloc] init];
+		[buttonCornerRadiusEffect setCornerRadii:AKCornerRadiiMake(20.0f, 20.0f, 20.0f, 20.0f)];
+		
+		// Bevel Effect
+		AKButtonBevelImageEffect *onBevelEffect = [[AKButtonBevelImageEffect alloc] init];
+		[onBevelEffect setBevelDirection:AKButtonBevelDirectionDown];
+		
+		[onButtonRenderer setImageEffects:[NSArray arrayWithObjects:
+										   onNoiseEffect,
+										   onGradientEffect,
+										   onColorEffect,
+										   buttonCornerRadiusEffect,
+										   onBevelEffect,
+										   nil]];
+		
+		AKImageRenderer *offButtonRenderer = [[AKImageRenderer alloc] init];
+		
+		// Noise Effect
+		AKNoiseImageEffect *offNoiseEffect = [[AKNoiseImageEffect alloc] init];
+		[offNoiseEffect setAlpha:0.05f];
+		[offNoiseEffect setNoiseType:AKNoiseTypeBlackAndWhite];
+		
+		// Gradient Effect
+		AKGradientImageEffect *offGradientEffect = [[AKGradientImageEffect alloc] init];
+		[offGradientEffect setBlendMode:kCGBlendModeMultiply];
+		
+		UIColor *offBeginColor = [UIColor colorWithRed:144.0f / 255.0f
+												 green:144.0f / 255.0f
+												  blue:144.0f / 255.0f
+												 alpha:1.0f];
+		
+		UIColor *offEndColor = [UIColor colorWithRed:103.0f / 255.0f
+											   green:103.0f / 255.0f
+												blue:103.0f / 255.0f
+											   alpha:1.0f];
+		
+		[offGradientEffect setColors:[NSArray arrayWithObjects:offBeginColor, offEndColor, nil]];
+		
+		// Color Effect
+		AKColorImageEffect *offColorEffect = [[AKColorImageEffect alloc] init];
+		[offColorEffect setBlendMode:kCGBlendModeColor];
+		[offColorEffect setColor:[UIColor redColor]];
+		
+		// Bevel Effect
+		AKButtonBevelImageEffect *offBevelEffect = [[AKButtonBevelImageEffect alloc] init];
+		
+		[offButtonRenderer setImageEffects:[NSArray arrayWithObjects:
+											offNoiseEffect,
+											offGradientEffect,
+											offColorEffect,
+											buttonCornerRadiusEffect,
+											offBevelEffect,
+											nil]];
+		
+		[buttonImageCoordinator setOnImageRenderer:onButtonRenderer];
+		[buttonImageCoordinator setOffImageRenderer:offButtonRenderer];
 	}
 	
 	[buttonImageCoordinator addButton:[self button]];
