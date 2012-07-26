@@ -88,6 +88,11 @@
 	
 	CGColorSpaceRelease(colorSpace);
 	CGGradientRelease(gradient);
+
+	if (locations != NULL) {
+		free(locations);
+	}
+
 	UIGraphicsEndImageContext();
 	context = NULL;
 	
