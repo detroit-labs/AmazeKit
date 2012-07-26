@@ -21,6 +21,7 @@
 #import "AKGradientImageEffect.h"
 #import "AKInnerGlowImageEffect.h"
 #import "AKNoiseImageEffect.h"
+#import "AKPatternImageEffect.h"
 
 // Image Renderer
 #import "AKImageRenderer.h"
