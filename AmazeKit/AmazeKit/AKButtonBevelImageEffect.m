@@ -45,8 +45,13 @@
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	CGSize sourceImageSize = [sourceImage size];
+	
 	_width = sourceImageSize.width * [sourceImage scale];
 	NSUInteger height = sourceImageSize.height * [sourceImage scale];
+	
+	if (_width == 0 || height == 0) {
+		return nil;
+	}
 	
 	// Create an array of CGFloats, which will correspond to the alpha to use for that pixel.
 	unsigned long count = _width * height;
@@ -142,56 +147,62 @@
 	size_t numberOfComponents = CGColorSpaceGetNumberOfComponents(maskColorSpace);
 	
 	int bitsPerComponent = 8;
-	int bytesPerPixel = ((numberOfComponents + 1) * bitsPerComponent) / 8;
+	size_t bytesPerPixel = ((numberOfComponents + 1) * bitsPerComponent) / 8;
 	int bytesPerRow = bytesPerPixel * _width;
 
 	// Create the data buffer for the image.
-	uint8_t *imageData = calloc(_width * height, bytesPerPixel);
+	size_t numberOfPixels = _width * height;
 	
-	for (NSUInteger x = 0; x < _width; x++) {
-		point.x = x;
+	uint8_t *imageData = NULL;
+	
+	if (numberOfPixels > 0 && bytesPerPixel > 0) {
+		imageData = calloc(numberOfPixels, bytesPerPixel);
 		
-		for (NSUInteger y = 0; y < height; y++) {
-			point.y = y;
+		for (NSUInteger x = 0; x < _width; x++) {
+			point.x = x;
 			
-			AKPixelData pixelData = AKGetPixelDataFromRGBA8888Data(rawData,
-																   _width,
-																   height,
-																   x,
-																   y);
-			
-			CGFloat whiteAlpha = 0.0f;
-			CGFloat blackAlpha = 0.0f;
-			
-			if ([self bevelDirection] == AKButtonBevelDirectionUp) {
-				whiteAlpha = [self upperBevelValueAtPoint:point] * (CGFloat)((CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX);
-				blackAlpha = [self lowerBevelValueAtPoint:point];
-			}
-			else {
-				whiteAlpha = [self lowerBevelValueAtPoint:point] * (CGFloat)((CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX);
-				blackAlpha = [self upperBevelValueAtPoint:point];
-			}
-			
-			int offset = (bytesPerRow * y) + (bytesPerPixel * x);
-
-			if (whiteAlpha > 0.05f) {
-				int i;
+			for (NSUInteger y = 0; y < height; y++) {
+				point.y = y;
 				
-				for (i = 0; i < numberOfComponents; i++) {
+				AKPixelData pixelData = AKGetPixelDataFromRGBA8888Data(rawData,
+																	   _width,
+																	   height,
+																	   x,
+																	   y);
+				
+				CGFloat whiteAlpha = 0.0f;
+				CGFloat blackAlpha = 0.0f;
+				
+				if ([self bevelDirection] == AKButtonBevelDirectionUp) {
+					whiteAlpha = [self upperBevelValueAtPoint:point] * (CGFloat)((CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX);
+					blackAlpha = [self lowerBevelValueAtPoint:point];
+				}
+				else {
+					whiteAlpha = [self lowerBevelValueAtPoint:point] * (CGFloat)((CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX);
+					blackAlpha = [self upperBevelValueAtPoint:point];
+				}
+				
+				int offset = (bytesPerRow * y) + (bytesPerPixel * x);
+				
+				if (whiteAlpha > 0.05f) {
+					int i;
+					
+					for (i = 0; i < numberOfComponents; i++) {
+						imageData[offset + i] = (uint8_t)((CGFloat)UINT8_MAX * whiteAlpha);
+					}
+					
 					imageData[offset + i] = (uint8_t)((CGFloat)UINT8_MAX * whiteAlpha);
 				}
 				
-				imageData[offset + i] = (uint8_t)((CGFloat)UINT8_MAX * whiteAlpha);
-			}
-			
-			if (blackAlpha > 0.0f) {
-				int i;
-				
-				for (i = 0; i < numberOfComponents; i++) {
-					imageData[offset + i] = 0;
+				if (blackAlpha > 0.0f) {
+					int i;
+					
+					for (i = 0; i < numberOfComponents; i++) {
+						imageData[offset + i] = 0;
+					}
+					
+					imageData[offset + i] = (uint8_t)((CGFloat)UINT8_MAX * blackAlpha);
 				}
-				
-				imageData[offset + i] = (uint8_t)((CGFloat)UINT8_MAX * blackAlpha);
 			}
 		}
 	}
