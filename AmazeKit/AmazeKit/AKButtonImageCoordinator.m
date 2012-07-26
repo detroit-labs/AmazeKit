@@ -62,13 +62,13 @@ static NSString * const kFrameKeyPath = @"frame";
 		if ([frameValue isKindOfClass:[NSValue class]]) {
 			CGRect frame = [frameValue CGRectValue];
 			
-			[button setImage:[[self offImageRenderer] imageWithSize:frame.size
-															options:nil]
-					forState:UIControlStateNormal];
-
-			[button setImage:[[self onImageRenderer] imageWithSize:frame.size
-															options:nil]
-					forState:UIControlStateHighlighted];		
+			[button setBackgroundImage:[[self offImageRenderer] imageWithSize:frame.size
+																	  options:nil]
+							  forState:UIControlStateNormal];
+			
+			[button setBackgroundImage:[[self onImageRenderer] imageWithSize:frame.size
+																	 options:nil]
+							  forState:UIControlStateHighlighted];
 		}
 	}
 }
