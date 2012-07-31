@@ -30,6 +30,12 @@ static const CGSize kNoiseSeedSize = { 100.0f, 100.0f };
 
 @synthesize noiseType = _noiseType;
 
++ (BOOL)canCacheIndividually
+{
+	// The caching implementation of the noise caches the tile.
+	return NO;
+}
+
 - (id)init
 {
 	self = [super init];

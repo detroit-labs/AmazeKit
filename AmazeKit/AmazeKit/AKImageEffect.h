@@ -20,4 +20,14 @@
 // Subclasses should override this method.
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage;
 
+// Used in image caching.
+- (NSDictionary *)representativeDictionary;
+- (NSString *)representativeHash;
++ (id)effectWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
+- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
+
+// Set to NO if the image effect needs to work with the image(s) under it and can’t be cached
+// separately
++ (BOOL)canCacheIndividually;
+
 @end

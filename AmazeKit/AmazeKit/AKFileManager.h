@@ -14,6 +14,16 @@
 
 // Object Lifecycle
 + (id)defaultManager;
++ (NSString *)amazeKitCachePath;
 + (NSURL *)amazeKitCacheURL;
+
+- (BOOL)cachedImageExistsForHash:(NSString *)descriptionHash
+						  atSize:(CGSize)size;
+
+- (void)cacheImage:(UIImage *)image
+		   forHash:(NSString *)descriptionHash;
+
+- (UIImage *)cachedImageForHash:(NSString *)descriptionHash
+						 atSize:(CGSize)size;
 
 @end

@@ -31,6 +31,11 @@
 
 @synthesize bevelDirection = _bevelDirection;
 
++ (BOOL)canCacheIndividually
+{
+	return NO;
+}
+
 - (id)init
 {
 	self = [super init];

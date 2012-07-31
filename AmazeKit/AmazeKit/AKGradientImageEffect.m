@@ -9,6 +9,13 @@
 
 #import "AKGradientImageEffect.h"
 
+#import "UIColor+AKColorStrings.h"
+
+
+static NSString * const kColorsKey = @"colors";
+static NSString * const kDirectionKey = @"direction";
+static NSString * const kLocationsKey = @"locations";
+
 
 @implementation AKGradientImageEffect
 
@@ -111,6 +118,46 @@
 	context = NULL;
 	
 	return renderedImage;
+}
+
+- (NSDictionary *)representativeDictionary
+{
+	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
+	
+	NSMutableArray *colors = [[NSMutableArray alloc] initWithCapacity:[[self colors] count]];
+	
+	for (UIColor *color in [self colors]) {
+		[colors addObject:[color AK_hexString]];
+	}
+	
+	[dictionary setObject:colors forKey:kColorsKey];	
+	[dictionary setObject:@((int)[self direction]) forKey:kDirectionKey];
+	
+	if ([self locations] != nil) {
+		[dictionary setObject:[self locations] forKey:kLocationsKey];
+	}
+	
+	return [NSDictionary dictionaryWithDictionary:dictionary];
+}
+
+- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary
+{
+	self = [super initWithRepresentativeDictionary:representativeDictionary];
+	
+	if (self) {
+		NSArray *colors = [representativeDictionary objectForKey:kColorsKey];
+		NSMutableArray *parsedColors = [[NSMutableArray alloc] initWithCapacity:[colors count]];
+		
+		for (NSString *hexString in colors) {
+			[parsedColors addObject:[UIColor AK_colorWithHexString:hexString]];
+		}
+		
+		[self setColors:[NSArray arrayWithArray:parsedColors]];
+		[self setDirection:[[representativeDictionary objectForKey:kDirectionKey] intValue]];
+		[self setLocations:[representativeDictionary objectForKey:kLocationsKey]];
+	}
+	
+	return self;
 }
 
 @end

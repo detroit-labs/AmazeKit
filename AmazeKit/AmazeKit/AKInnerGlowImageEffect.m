@@ -19,6 +19,11 @@
 @synthesize color = _color;
 @synthesize radius = _radius;
 
++ (BOOL)canCacheIndividually
+{
+	return NO;
+}
+
 - (id)init
 {
 	self = [super init];

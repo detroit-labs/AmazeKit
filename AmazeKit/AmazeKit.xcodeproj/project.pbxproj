@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F26394C15C81DE800DF1244 /* UIColor+AKColorStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */; };
+		1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */; };
+		1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */; };
+		1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */; };
 		1F735BE81590BF9D00EABF1B /* AKButtonImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */; };
 		1F735BE91590BF9D00EABF1B /* AKButtonImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */; };
 		1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4703158CC48A00ABF10D /* AKFileManager.h */; };
@@ -72,6 +76,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AKColorStrings.h"; sourceTree = "<group>"; };
+		1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AKColorStrings.m"; sourceTree = "<group>"; };
+		1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AKCryptography.h"; sourceTree = "<group>"; };
+		1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AKCryptography.m"; sourceTree = "<group>"; };
 		1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKButtonImageCoordinator.h; sourceTree = "<group>"; };
 		1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKButtonImageCoordinator.m; sourceTree = "<group>"; };
 		1F7D4703158CC48A00ABF10D /* AKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKFileManager.h; sourceTree = "<group>"; };
@@ -312,6 +320,10 @@
 			children = (
 				1F7D4707158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.h */,
 				1F7D4708158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.m */,
+				1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */,
+				1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */,
+				1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */,
+				1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */,
 				1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */,
 				1FFDAC2C1587828A00837D3A /* UIImage+AKPixelData.m */,
 			);
@@ -340,6 +352,8 @@
 				1FB27E551598B3CF00347D3D /* AKInnerGlowImageEffect.h in Headers */,
 				1FB27E681598F45700347D3D /* AKDrawingUtilities.h in Headers */,
 				1FEC1AC315C1C33E00C5C0D1 /* AKPatternImageEffect.h in Headers */,
+				1F26394C15C81DE800DF1244 /* UIColor+AKColorStrings.h in Headers */,
+				1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +497,8 @@
 				1FB27E561598B3CF00347D3D /* AKInnerGlowImageEffect.m in Sources */,
 				1FB27E691598F45700347D3D /* AKDrawingUtilities.m in Sources */,
 				1FEC1AC415C1C33E00C5C0D1 /* AKPatternImageEffect.m in Sources */,
+				1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */,
+				1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

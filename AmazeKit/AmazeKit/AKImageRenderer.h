@@ -15,4 +15,8 @@
 - (UIImage *)imageWithSize:(CGSize)size
 				   options:(NSDictionary *)options;
 
+- (NSDictionary *)representativeDictionary;
+- (NSString *)representativeHash;
+- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
+
 @end

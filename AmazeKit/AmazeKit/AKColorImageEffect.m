@@ -9,6 +9,11 @@
 
 #import "AKColorImageEffect.h"
 
+#import "UIColor+AKColorStrings.h"
+
+
+static NSString * const kColorKey = @"color";
+
 
 @implementation AKColorImageEffect
 
@@ -58,6 +63,26 @@
 	context = NULL;
 	
 	return renderedImage;
+}
+
+- (NSDictionary *)representativeDictionary
+{
+	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
+	
+	[dictionary setObject:[[self color] AK_hexString] forKey:kColorKey];
+	
+	return [NSDictionary dictionaryWithDictionary:dictionary];
+}
+
+- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary
+{
+	self = [super initWithRepresentativeDictionary:representativeDictionary];
+	
+	if (self) {
+		[self setColor:[UIColor AK_colorWithHexString:[representativeDictionary objectForKey:kColorKey]]];
+	}
+	
+	return self;
 }
 
 @end

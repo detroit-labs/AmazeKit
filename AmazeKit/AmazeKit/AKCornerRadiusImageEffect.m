@@ -10,6 +10,11 @@
 #import "AKCornerRadiusImageEffect.h"
 
 
+const AKCornerRadii AKCornerRadiiZero = {0.0f, 0.0f, 0.0f, 0.0f};
+
+static NSString * const kCornerRadiiKey = @"cornerRadii";
+
+
 @implementation AKCornerRadiusImageEffect
 
 @synthesize cornerRadii = _cornerRadii;
@@ -73,4 +78,47 @@
 	return renderedImage;
 }
 
+- (NSDictionary *)representativeDictionary
+{
+	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
+	
+	[dictionary setObject:NSStringFromAKCornerRadii([self cornerRadii]) forKey:kCornerRadiiKey];
+	
+	return [NSDictionary dictionaryWithDictionary:dictionary];
+}
+
+- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary
+{
+	self = [super initWithRepresentativeDictionary:representativeDictionary];
+	
+	if (self) {
+		[self setCornerRadii:AKCornerRadiiFromNSString([representativeDictionary objectForKey:kCornerRadiiKey])];
+	}
+	
+	return self;
+}
+
 @end
+
+NSString *NSStringFromAKCornerRadii(AKCornerRadii radii)
+{
+	return [NSString stringWithFormat:@"{%f,%f,%f,%f}", radii.topLeft, radii.topRight, radii.bottomLeft, radii.bottomRight];
+}
+
+AKCornerRadii AKCornerRadiiFromNSString(NSString *string)
+{
+	AKCornerRadii radii = AKCornerRadiiZero;
+	
+	NSString *substring = [string substringWithRange:NSMakeRange(1, [string length] - 2)];
+	
+	NSArray *components = [substring componentsSeparatedByString:@","];
+	
+	if ([components count] == 4) {
+		radii.topLeft = [[components objectAtIndex:0] floatValue];
+		radii.topRight = [[components objectAtIndex:1] floatValue];
+		radii.bottomLeft = [[components objectAtIndex:2] floatValue];
+		radii.bottomRight = [[components objectAtIndex:3] floatValue];
+	}
+	
+	return radii;
+}

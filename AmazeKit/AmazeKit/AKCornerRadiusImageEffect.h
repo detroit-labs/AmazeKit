@@ -30,6 +30,11 @@ AKCornerRadiiMake(CGFloat topLeft, CGFloat topRight, CGFloat bottomLeft, CGFloat
 	return radii;
 }
 
+NSString *NSStringFromAKCornerRadii(AKCornerRadii radii);
+AKCornerRadii AKCornerRadiiFromNSString(NSString *string);
+
+extern const AKCornerRadii AKCornerRadiiZero;
+
 @interface AKCornerRadiusImageEffect : AKImageEffect
 
 // The corner radii can be set independently.

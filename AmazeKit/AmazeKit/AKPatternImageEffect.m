@@ -14,6 +14,12 @@
 
 @synthesize patternImage = _patternImage;
 
++ (BOOL)canCacheIndividually
+{
+	// The caching implementation of the pattern caches the tile.
+	return NO;
+}
+
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	// Create the noise layer.
