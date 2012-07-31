@@ -68,7 +68,7 @@
 											 blue:103.0f / 255.0f
 											alpha:1.0f];
 		
-		[gradientEffect setColors:[NSArray arrayWithObjects:beginColor, endColor, nil]];
+		[gradientEffect setColors:@[beginColor, endColor]];
 		
 		// Color Effect
 		colorEffect = [[AKColorImageEffect alloc] init];
@@ -77,12 +77,10 @@
 		// Bevel Effect
 		bevelEffect = [[AKButtonBevelImageEffect alloc] init];
 		
-		[buttonRenderer setImageEffects:[NSArray arrayWithObjects:
-										 noiseEffect,
+		[buttonRenderer setImageEffects:@[noiseEffect,
 										 gradientEffect,
 										 colorEffect,
-										 bevelEffect,
-										 nil]];
+										 bevelEffect]];
 	}
 	
 	[colorEffect setColor:[UIColor colorWithHue:[[self hueSlider] value]
@@ -132,7 +130,7 @@
 											   blue:103.0f / 255.0f
 											  alpha:1.0f];
 		
-		[onGradientEffect setColors:[NSArray arrayWithObjects:onBeginColor, onEndColor, nil]];
+		[onGradientEffect setColors:@[onBeginColor, onEndColor]];
 		
 		// Color Effect
 		AKColorImageEffect *onColorEffect = [[AKColorImageEffect alloc] init];
@@ -152,14 +150,12 @@
 		[innerGlowEffect setAlpha:0.5f];
 		[innerGlowEffect setBlendMode:kCGBlendModeOverlay];
 		
-		[onButtonRenderer setImageEffects:[NSArray arrayWithObjects:
-										   onNoiseEffect,
+		[onButtonRenderer setImageEffects:@[onNoiseEffect,
 										   onGradientEffect,
 										   onColorEffect,
 										   buttonCornerRadiusEffect,
 										   onBevelEffect,
-										   innerGlowEffect,
-										   nil]];
+										   innerGlowEffect]];
 		
 		AKImageRenderer *offButtonRenderer = [[AKImageRenderer alloc] init];
 		
@@ -182,7 +178,7 @@
 												blue:103.0f / 255.0f
 											   alpha:1.0f];
 		
-		[offGradientEffect setColors:[NSArray arrayWithObjects:offBeginColor, offEndColor, nil]];
+		[offGradientEffect setColors:@[offBeginColor, offEndColor]];
 		
 		// Color Effect
 		AKColorImageEffect *offColorEffect = [[AKColorImageEffect alloc] init];
@@ -192,13 +188,11 @@
 		// Bevel Effect
 		AKButtonBevelImageEffect *offBevelEffect = [[AKButtonBevelImageEffect alloc] init];
 		
-		[offButtonRenderer setImageEffects:[NSArray arrayWithObjects:
-											offNoiseEffect,
+		[offButtonRenderer setImageEffects:@[offNoiseEffect,
 											offGradientEffect,
 											offColorEffect,
 											buttonCornerRadiusEffect,
-											offBevelEffect,
-											nil]];
+											offBevelEffect]];
 		
 		[buttonImageCoordinator setOnImageRenderer:onButtonRenderer];
 		[buttonImageCoordinator setOffImageRenderer:offButtonRenderer];

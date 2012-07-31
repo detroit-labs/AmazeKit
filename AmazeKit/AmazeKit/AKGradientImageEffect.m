@@ -37,7 +37,7 @@
 	CGFloat height = [sourceImage size].height;
 	
 	// Decode the Objective-C objects to their CoreFoundation counterparts.
-	__block NSArray *colors = [NSArray array];
+	__block NSArray *colors = @[];
 	
 	[[self colors] enumerateObjectsWithOptions:0
 									usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
