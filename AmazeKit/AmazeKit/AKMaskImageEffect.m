@@ -19,22 +19,43 @@
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
-	// Render the noise layer on top of the source image.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	CGContextScaleCTM(context, 1.0f, -1.0f);
-	CGContextTranslateCTM(context, 0.0f, -[sourceImage size].height);
-	
 	CGImageRef maskImageRef = [[self maskImage] CGImage];
 	
-	CGImageRef maskedOriginalImage = CGImageCreateWithMask([sourceImage CGImage], maskImageRef);
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, [sourceImage size].width, [sourceImage size].height), maskedOriginalImage);
+	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+
+	CGContextRef context = CGBitmapContextCreate(NULL,
+												 CGImageGetWidth(maskImageRef),
+												 CGImageGetHeight(maskImageRef),
+												 8,
+												 CGImageGetWidth(maskImageRef),
+												 colorSpace,
+												 kCGImageAlphaNone);
 	
-	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+	CGContextDrawImage(context,
+					   CGRectMake(0.0f,
+								  0.0f,
+								  CGImageGetWidth(maskImageRef),
+								  CGImageGetHeight(maskImageRef)),
+					   maskImageRef);
 	
-	UIGraphicsEndImageContext();
-	context = NULL;
+	CGImageRef maskImage = CGBitmapContextCreateImage(context);
+	
+	CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskImage),
+										CGImageGetHeight(maskImage),
+										CGImageGetBitsPerComponent(maskImage),
+										CGImageGetBitsPerPixel(maskImage),
+										CGImageGetBytesPerRow(maskImage),
+										CGImageGetDataProvider(maskImage),
+										NULL,
+										YES);
+	
+	CGImageRef maskedOriginalImage = CGImageCreateWithMask([sourceImage CGImage], mask);
+	
+	UIImage *renderedImage = [[UIImage alloc] initWithCGImage:maskedOriginalImage];
+	CGImageRelease(mask);
+	CGImageRelease(maskImage);
+	CGContextRelease(context);
+	CGColorSpaceRelease(colorSpace);
 	
 	return renderedImage;
 }
