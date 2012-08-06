@@ -131,7 +131,7 @@
 			}
 			
 			CGFloat currentBlackLevel = [self lowerBevelValueAtPoint:point];
-			for (NSUInteger i = 1; currentBlackLevel > 0.05f; i++) {
+			for (NSUInteger i = 1; i <= y && currentBlackLevel > 0.05f; i++) {
 				AKPixelData underneathPixelData = AKGetPixelDataFromRGBA8888Data(rawData,
 																				 _width,
 																				 height,
