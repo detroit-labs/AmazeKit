@@ -17,6 +17,8 @@
 		1F7D4706158CC48A00ABF10D /* AKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D4704158CC48A00ABF10D /* AKFileManager.m */; };
 		1F7D4709158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4707158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.h */; };
 		1F7D470A158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D4708158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.m */; };
+		1F83BA9C15D0191C00254D53 /* AKMaskImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */; };
+		1F83BA9D15D0191C00254D53 /* AKMaskImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */; };
 		1FA641921586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */; };
 		1FA641A21586D12E00350AC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641A11586D12E00350AC6 /* UIKit.framework */; };
@@ -86,6 +88,8 @@
 		1F7D4704158CC48A00ABF10D /* AKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKFileManager.m; sourceTree = "<group>"; };
 		1F7D4707158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AKFileManager+AKNoiseImageEffectSeeding.h"; sourceTree = "<group>"; };
 		1F7D4708158CC4E500ABF10D /* AKFileManager+AKNoiseImageEffectSeeding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AKFileManager+AKNoiseImageEffectSeeding.m"; sourceTree = "<group>"; };
+		1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKMaskImageEffect.h; sourceTree = "<group>"; };
+		1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKMaskImageEffect.m; sourceTree = "<group>"; };
 		1FA6418E1586D12E00350AC6 /* libAmazeKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAmazeKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA641911586D12E00350AC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1FA641961586D12E00350AC6 /* AmazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazeKit.h; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */,
 				1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */,
 				1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */,
+				1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */,
+				1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */,
 				1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */,
 				1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */,
 				1FEC1AC115C1C33E00C5C0D1 /* AKPatternImageEffect.h */,
@@ -354,6 +360,7 @@
 				1FEC1AC315C1C33E00C5C0D1 /* AKPatternImageEffect.h in Headers */,
 				1F26394C15C81DE800DF1244 /* UIColor+AKColorStrings.h in Headers */,
 				1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */,
+				1F83BA9C15D0191C00254D53 /* AKMaskImageEffect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +506,7 @@
 				1FEC1AC415C1C33E00C5C0D1 /* AKPatternImageEffect.m in Sources */,
 				1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */,
 				1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */,
+				1F83BA9D15D0191C00254D53 /* AKMaskImageEffect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

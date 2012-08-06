@@ -20,6 +20,7 @@
 #import "AKCornerRadiusImageEffect.h"
 #import "AKGradientImageEffect.h"
 #import "AKInnerGlowImageEffect.h"
+#import "AKMaskImageEffect.h"
 #import "AKNoiseImageEffect.h"
 #import "AKPatternImageEffect.h"
 
