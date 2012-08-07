@@ -116,7 +116,7 @@
 			}
 			
 			CGFloat currentUpperLevel = [self upperBevelValueAtPoint:point];
-			for (NSUInteger i = 1; currentUpperLevel > 0.05f; i++) {
+			for (NSUInteger i = 1; y + i < height && currentUpperLevel > 0.05f; i++) {
 				AKPixelData underneathPixelData = AKGetPixelDataFromRGBA8888Data(rawData,
 																				 _width,
 																				 height,
