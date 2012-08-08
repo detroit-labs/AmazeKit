@@ -7,6 +7,10 @@
 //
 
 
+// Options Dictionary Keys
+extern NSString * const AKImageRendererOptionKeyInitialBackgroundColor;
+
+
 @interface AKImageRenderer : NSObject
 
 // An array of AKImageEffect objects, applied in order.
@@ -17,6 +21,7 @@
 
 - (NSDictionary *)representativeDictionary;
 - (NSString *)representativeHash;
+- (NSString *)representativeHashWithOptions:(NSDictionary *)options;
 - (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
 
 @end

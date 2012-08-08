@@ -10,12 +10,18 @@
 #import "AKImageRenderer.h"
 
 #import "NSString+AKCryptography.h"
+#import "UIColor+AKColorStrings.h"
 
 #import "AKFileManager.h"
 #import "AKImageEffect.h"
 
 
+// Options Dictionary Keys
+NSString * const AKImageRendererOptionKeyInitialBackgroundColor = @"AKImageRendererInitialBackgroundColor";
+
+// Constants
 static NSString * const kImageEffectsKey = @"imageEffects";
+static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 
 
 @interface AKImageRenderer()
@@ -36,18 +42,46 @@ static NSString * const kImageEffectsKey = @"imageEffects";
 
 @synthesize imageEffects = _imageEffects;
 
+- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary
+{
+	self = [self init];
+	
+	if (self) {
+		NSArray *imageEffects = [representativeDictionary objectForKey:kImageEffectsKey];
+		
+		if (imageEffects != nil) {
+			_imageEffects = [[NSArray alloc] init];
+			
+			NSUInteger count = [imageEffects count];
+			
+			for (NSUInteger i = 0; i < count; i++) {
+				AKImageEffect *imageEffect = [[AKImageEffect alloc] initWithRepresentativeDictionary:[imageEffects objectAtIndex:i]];
+				_imageEffects = [_imageEffects arrayByAddingObject:imageEffect];
+			}
+		}
+	}
+	
+	return self;
+}
+
 - (UIImage *)imageWithSize:(CGSize)size
 				   options:(NSDictionary *)options
 {
 	__block UIImage *image = [self previouslyRenderedImageForSize:size options:options];
 	
 	if (image == nil) {
-		// TODO: Determine starting background color, source image, etc.
+		UIColor *startingBackgroundColor = [UIColor whiteColor];
+		
+		NSString *backgroundColorHex = [options objectForKey:AKImageRendererOptionKeyInitialBackgroundColor];
+		if (backgroundColorHex != nil) {
+			startingBackgroundColor = [UIColor AK_colorWithHexString:backgroundColorHex];
+		}
+		
 		UIGraphicsBeginImageContextWithOptions(size, YES, 0.0f);
 		
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		
-		CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+		CGContextSetFillColorWithColor(context, [startingBackgroundColor CGColor]);
 		
 		CGContextFillRect(context, CGRectMake(0.0f, 0.0f, size.width, size.height));
 		
@@ -87,9 +121,19 @@ static NSString * const kImageEffectsKey = @"imageEffects";
 
 - (NSString *)representativeHash
 {
+	return [self representativeHashWithOptions:nil];
+}
+
+- (NSString *)representativeHashWithOptions:(NSDictionary *)options
+{
 	NSString *hash = nil;
 	
-	NSDictionary *representativeDictionary = [self representativeDictionary];
+	NSMutableDictionary *representativeDictionary = [[self representativeDictionary] mutableCopy];
+	
+	if (options != nil) {
+		[representativeDictionary setObject:options
+									 forKey:kRepresentativeDictionaryOptionsKey];
+	}
 	
 	if (representativeDictionary != nil) {
 		NSData *jsonRepresentation = [NSJSONSerialization dataWithJSONObject:representativeDictionary
@@ -110,7 +154,7 @@ static NSString * const kImageEffectsKey = @"imageEffects";
 - (BOOL)renderedImageExistsForSize:(CGSize)size
 						   options:(NSDictionary *)options
 {
-	return [[AKFileManager defaultManager] cachedImageExistsForHash:[self representativeHash]
+	return [[AKFileManager defaultManager] cachedImageExistsForHash:[self representativeHashWithOptions:options]
 															 atSize:size];
 }
 
@@ -118,7 +162,7 @@ static NSString * const kImageEffectsKey = @"imageEffects";
 									options:(NSDictionary *)options
 {
 	// TODO: options
-	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHash]
+	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHashWithOptions:options]
 													   atSize:size];
 }
 
@@ -126,7 +170,7 @@ static NSString * const kImageEffectsKey = @"imageEffects";
 		  options:(NSDictionary *)options
 {
 	// TODO: options
-	[[AKFileManager defaultManager] cacheImage:image forHash:[self representativeHash]];
+	[[AKFileManager defaultManager] cacheImage:image forHash:[self representativeHashWithOptions:options]];
 }
 
 @end
