@@ -77,7 +77,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 			startingBackgroundColor = [UIColor AK_colorWithHexString:backgroundColorHex];
 		}
 		
-		UIGraphicsBeginImageContextWithOptions(size, YES, 0.0f);
+		UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
 		
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		
