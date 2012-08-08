@@ -52,6 +52,7 @@
 	CGImageRef maskedOriginalImage = CGImageCreateWithMask([sourceImage CGImage], mask);
 	
 	UIImage *renderedImage = [[UIImage alloc] initWithCGImage:maskedOriginalImage];
+	CGImageRelease(maskedOriginalImage);
 	CGImageRelease(mask);
 	CGImageRelease(maskImage);
 	CGContextRelease(context);
