@@ -11,7 +11,7 @@
 
 
 typedef enum {
-	AKButtonBevelDirectionUp,
+	AKButtonBevelDirectionUp = 0,
 	AKButtonBevelDirectionDown
 } AKButtonBevelDirection;
 
@@ -19,6 +19,10 @@ typedef enum {
 @interface AKButtonBevelImageEffect : AKImageEffect
 
 // “Up,” the default, has a shine on top and a shadow on bottom. “Down” is the reverse.
-@property AKButtonBevelDirection	bevelDirection;
+@property (assign, readonly) AKButtonBevelDirection	bevelDirection;
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+	 bevelDirection:(AKButtonBevelDirection)bevelDirection;
 
 @end

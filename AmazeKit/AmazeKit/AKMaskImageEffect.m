@@ -17,6 +17,19 @@
 	return NO;
 }
 
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+		  maskImage:(UIImage *)maskImage
+{
+	self = [self initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		_maskImage = maskImage;
+	}
+	
+	return self;
+}
+
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	CGImageRef maskImageRef = [[self maskImage] CGImage];

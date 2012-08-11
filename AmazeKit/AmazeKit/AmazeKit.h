@@ -17,6 +17,7 @@
 #import "AKImageEffect.h"
 #import "AKButtonBevelImageEffect.h"
 #import "AKColorImageEffect.h"
+#import "AKMutableColorImageEffect.h"
 #import "AKCornerRadiusImageEffect.h"
 #import "AKGradientImageEffect.h"
 #import "AKInnerGlowImageEffect.h"

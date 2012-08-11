@@ -13,9 +13,14 @@
 @interface AKInnerGlowImageEffect : AKImageEffect
 
 // The color of the glow. Defaults to white.
-@property (strong) UIColor	*color;
+@property (strong, readonly) UIColor	*color;
 
-// The radius of the glow, in points. Defaults to 10 points.
-@property CGFloat	radius;
+// The radius of the glow, in points.
+@property (assign, readonly) CGFloat	radius;
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+			  color:(UIColor *)color
+			 radius:(CGFloat)radius;
 
 @end

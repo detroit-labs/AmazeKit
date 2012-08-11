@@ -36,12 +36,14 @@
 	return NO;
 }
 
-- (id)init
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+	 bevelDirection:(AKButtonBevelDirection)bevelDirection
 {
-	self = [super init];
+	self = [self initWithAlpha:alpha blendMode:blendMode];
 	
 	if (self) {
-		_bevelDirection = AKButtonBevelDirectionUp;
+		_bevelDirection = bevelDirection;
 	}
 	
 	return self;

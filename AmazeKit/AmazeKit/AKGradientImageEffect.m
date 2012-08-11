@@ -23,12 +23,18 @@ static NSString * const kLocationsKey = @"locations";
 @synthesize direction = _direction;
 @synthesize locations = _locations;
 
-- (id)init
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+			 colors:(NSArray *)colors
+		  direction:(AKGradientDirection)direction
+		  locations:(NSArray *)locations
 {
-	self = [super init];
+	self = [self initWithAlpha:alpha blendMode:blendMode];
 	
 	if (self) {
-		_direction = AKGradientDirectionVertical;
+		_colors = [colors copy];
+		_direction = direction;
+		_locations = [locations copy];
 	}
 	
 	return self;
@@ -152,9 +158,9 @@ static NSString * const kLocationsKey = @"locations";
 			[parsedColors addObject:[UIColor AK_colorWithHexString:hexString]];
 		}
 		
-		[self setColors:[NSArray arrayWithArray:parsedColors]];
-		[self setDirection:[[representativeDictionary objectForKey:kDirectionKey] intValue]];
-		[self setLocations:[representativeDictionary objectForKey:kLocationsKey]];
+		_colors = [NSArray arrayWithArray:parsedColors];
+		_direction = [[representativeDictionary objectForKey:kDirectionKey] intValue];
+		_locations = [representativeDictionary objectForKey:kLocationsKey];
 	}
 	
 	return self;

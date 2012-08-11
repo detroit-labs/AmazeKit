@@ -12,6 +12,10 @@
 
 @interface AKMaskImageEffect : AKImageEffect
 
-@property (strong) UIImage	*maskImage;
+@property (strong, readonly) UIImage	*maskImage;
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+		  maskImage:(UIImage *)maskImage;
 
 @end

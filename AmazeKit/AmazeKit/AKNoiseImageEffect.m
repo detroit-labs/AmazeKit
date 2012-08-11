@@ -41,12 +41,37 @@ static const CGSize kNoiseSeedSize = { 100.0f, 100.0f };
 	self = [super init];
 	
 	if (self) {
-		_noiseType = AKNoiseTypeBlackAndWhite;
-		
 		[[NSNotificationCenter defaultCenter] addObserver:self
 												 selector:@selector(didReceiveMemoryWarning)
 													 name:UIApplicationDidReceiveMemoryWarningNotification
 												   object:nil];
+	}
+	
+	return self;
+}
+
+- (id)initWithAlpha:(CGFloat)alpha blendMode:(CGBlendMode)blendMode
+{
+	self = [super initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(didReceiveMemoryWarning)
+													 name:UIApplicationDidReceiveMemoryWarningNotification
+												   object:nil];
+	}
+	
+	return self;
+}
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+		  noiseType:(AKNoiseType)noiseType
+{
+	self = [self initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		_noiseType = noiseType;
 	}
 	
 	return self;

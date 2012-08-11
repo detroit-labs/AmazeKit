@@ -30,6 +30,31 @@ static NSString * const kColorKey = @"color";
 	return self;
 }
 
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+{
+	self = [super initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		_color = [UIColor blackColor];
+	}
+	
+	return self;
+}
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+			  color:(UIColor *)color
+{
+	self = [self initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		_color = color;
+	}
+	
+	return self;
+}
+
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	// Create the color layer.
@@ -79,7 +104,7 @@ static NSString * const kColorKey = @"color";
 	self = [super initWithRepresentativeDictionary:representativeDictionary];
 	
 	if (self) {
-		[self setColor:[UIColor AK_colorWithHexString:[representativeDictionary objectForKey:kColorKey]]];
+		_color = [UIColor AK_colorWithHexString:[representativeDictionary objectForKey:kColorKey]];
 	}
 	
 	return self;

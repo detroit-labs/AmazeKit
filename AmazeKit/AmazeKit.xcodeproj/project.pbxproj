@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0775FE15D6ED610063F923 /* AKMutableColorImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F0775FC15D6ED610063F923 /* AKMutableColorImageEffect.h */; };
+		1F0775FF15D6ED610063F923 /* AKMutableColorImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0775FD15D6ED610063F923 /* AKMutableColorImageEffect.m */; };
 		1F26394C15C81DE800DF1244 /* UIColor+AKColorStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */; };
 		1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */; };
 		1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */; };
@@ -78,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F0775FC15D6ED610063F923 /* AKMutableColorImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKMutableColorImageEffect.h; sourceTree = "<group>"; };
+		1F0775FD15D6ED610063F923 /* AKMutableColorImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKMutableColorImageEffect.m; sourceTree = "<group>"; };
 		1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AKColorStrings.h"; sourceTree = "<group>"; };
 		1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AKColorStrings.m"; sourceTree = "<group>"; };
 		1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AKCryptography.h"; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				1FDCA5B21587AC5F0010B272 /* AKButtonBevelImageEffect.m */,
 				1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */,
 				1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */,
+				1F0775FC15D6ED610063F923 /* AKMutableColorImageEffect.h */,
+				1F0775FD15D6ED610063F923 /* AKMutableColorImageEffect.m */,
 				1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */,
 				1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */,
 				1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */,
@@ -361,6 +367,7 @@
 				1F26394C15C81DE800DF1244 /* UIColor+AKColorStrings.h in Headers */,
 				1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */,
 				1F83BA9C15D0191C00254D53 /* AKMaskImageEffect.h in Headers */,
+				1F0775FE15D6ED610063F923 /* AKMutableColorImageEffect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +514,7 @@
 				1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */,
 				1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */,
 				1F83BA9D15D0191C00254D53 /* AKMaskImageEffect.m in Sources */,
+				1F0775FF15D6ED610063F923 /* AKMutableColorImageEffect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

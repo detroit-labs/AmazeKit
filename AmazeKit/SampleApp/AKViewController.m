@@ -18,7 +18,7 @@
 	AKImageRenderer          	*buttonRenderer;
 	AKNoiseImageEffect       	*noiseEffect;
 	AKGradientImageEffect    	*gradientEffect;
-	AKColorImageEffect       	*colorEffect;
+	AKMutableColorImageEffect   *colorEffect;
 	AKCornerRadiusImageEffect	*cornerRadiusEffect;
 	AKButtonBevelImageEffect 	*bevelEffect;
 	AKButtonImageCoordinator	*buttonImageCoordinator;
@@ -50,14 +50,9 @@
 		buttonRenderer = [[AKImageRenderer alloc] init];
 		
 		// Noise Effect
-		noiseEffect = [[AKNoiseImageEffect alloc] init];
-		[noiseEffect setAlpha:0.05f];
-		[noiseEffect setNoiseType:AKNoiseTypeBlackAndWhite];
+		noiseEffect = [[AKNoiseImageEffect alloc] initWithAlpha:0.05f blendMode:AKNoiseTypeBlackAndWhite];
 		
 		// Gradient Effect
-		gradientEffect = [[AKGradientImageEffect alloc] init];
-		[gradientEffect setBlendMode:kCGBlendModeMultiply];
-		
 		UIColor *beginColor = [UIColor colorWithRed:144.0f / 255.0f
 											  green:144.0f / 255.0f
 											   blue:144.0f / 255.0f
@@ -68,11 +63,14 @@
 											 blue:103.0f / 255.0f
 											alpha:1.0f];
 		
-		[gradientEffect setColors:@[beginColor, endColor]];
-		
+		gradientEffect = [[AKGradientImageEffect alloc] initWithAlpha:1.0f
+															blendMode:kCGBlendModeMultiply
+															   colors:@[beginColor, endColor]
+															direction:AKGradientDirectionVertical
+															locations:nil];
+
 		// Color Effect
-		colorEffect = [[AKColorImageEffect alloc] init];
-		[colorEffect setBlendMode:kCGBlendModeColor];
+		colorEffect = [[AKMutableColorImageEffect alloc] initWithAlpha:1.0f blendMode:kCGBlendModeColor];
 		
 		// Bevel Effect
 		bevelEffect = [[AKButtonBevelImageEffect alloc] init];
@@ -110,16 +108,8 @@
 		buttonImageCoordinator = [[AKButtonImageCoordinator alloc] init];
 		
 		AKImageRenderer *onButtonRenderer = [[AKImageRenderer alloc] init];
-		
-		// Noise Effect
-		AKNoiseImageEffect *onNoiseEffect = [[AKNoiseImageEffect alloc] init];
-		[onNoiseEffect setAlpha:0.05f];
-		[onNoiseEffect setNoiseType:AKNoiseTypeBlackAndWhite];
-		
+				
 		// Gradient Effect
-		AKGradientImageEffect *onGradientEffect = [[AKGradientImageEffect alloc] init];
-		[onGradientEffect setBlendMode:kCGBlendModeMultiply];
-		
 		UIColor *onBeginColor = [UIColor colorWithRed:103.0f / 255.0f
 												green:103.0f / 255.0f
 												 blue:103.0f / 255.0f
@@ -130,44 +120,38 @@
 											   blue:103.0f / 255.0f
 											  alpha:1.0f];
 		
-		[onGradientEffect setColors:@[onBeginColor, onEndColor]];
+		AKGradientImageEffect *onGradientEffect = [[AKGradientImageEffect alloc] initWithAlpha:1.0f
+																					 blendMode:kCGBlendModeMultiply
+																						colors:@[onBeginColor, onEndColor]
+																					 direction:AKGradientDirectionVertical
+																					 locations:nil];
 		
 		// Color Effect
-		AKColorImageEffect *onColorEffect = [[AKColorImageEffect alloc] init];
-		[onColorEffect setBlendMode:kCGBlendModeColor];
-		[onColorEffect setColor:[UIColor blueColor]];
+		AKColorImageEffect *onColorEffect = [[AKColorImageEffect alloc] initWithAlpha:1.0f
+																			blendMode:kCGBlendModeColor
+																				color:[UIColor blueColor]];
 		
 		// Corner Radius Effect
-		AKCornerRadiusImageEffect *buttonCornerRadiusEffect = [[AKCornerRadiusImageEffect alloc] init];
-		[buttonCornerRadiusEffect setCornerRadii:AKCornerRadiiMake(20.0f, 20.0f, 20.0f, 20.0f)];
-		
-		// Bevel Effect
-		AKButtonBevelImageEffect *onBevelEffect = [[AKButtonBevelImageEffect alloc] init];
+		AKCornerRadiusImageEffect *buttonCornerRadiusEffect = [[AKCornerRadiusImageEffect alloc] initWithAlpha:1.0f
+																									 blendMode:kCGBlendModeNormal
+																								   cornerRadii:AKCornerRadiiMake(20.0f, 20.0f, 20.0f, 20.0f)];
 		
 		// Glow Effect
-		AKInnerGlowImageEffect *innerGlowEffect = [[AKInnerGlowImageEffect alloc] init];
-		[innerGlowEffect setRadius:5.0f];
-		[innerGlowEffect setAlpha:0.5f];
-		[innerGlowEffect setBlendMode:kCGBlendModeOverlay];
+		AKInnerGlowImageEffect *innerGlowEffect = [[AKInnerGlowImageEffect alloc] initWithAlpha:0.5f
+																					  blendMode:kCGBlendModeOverlay
+																						  color:[UIColor blackColor]
+																						 radius:5.0f];
 		
-		[onButtonRenderer setImageEffects:@[onNoiseEffect,
+		[onButtonRenderer setImageEffects:@[noiseEffect,
 										   onGradientEffect,
 										   onColorEffect,
 										   buttonCornerRadiusEffect,
-										   onBevelEffect,
+										   bevelEffect,
 										   innerGlowEffect]];
 		
 		AKImageRenderer *offButtonRenderer = [[AKImageRenderer alloc] init];
 		
-		// Noise Effect
-		AKNoiseImageEffect *offNoiseEffect = [[AKNoiseImageEffect alloc] init];
-		[offNoiseEffect setAlpha:0.05f];
-		[offNoiseEffect setNoiseType:AKNoiseTypeBlackAndWhite];
-		
 		// Gradient Effect
-		AKGradientImageEffect *offGradientEffect = [[AKGradientImageEffect alloc] init];
-		[offGradientEffect setBlendMode:kCGBlendModeMultiply];
-		
 		UIColor *offBeginColor = [UIColor colorWithRed:144.0f / 255.0f
 												 green:144.0f / 255.0f
 												  blue:144.0f / 255.0f
@@ -178,21 +162,22 @@
 												blue:103.0f / 255.0f
 											   alpha:1.0f];
 		
-		[offGradientEffect setColors:@[offBeginColor, offEndColor]];
+		AKGradientImageEffect *offGradientEffect = [[AKGradientImageEffect alloc] initWithAlpha:1.0f
+																					  blendMode:kCGBlendModeMultiply
+																						 colors:@[offBeginColor, offEndColor]
+																					  direction:AKGradientDirectionVertical
+																					  locations:nil];
 		
 		// Color Effect
-		AKColorImageEffect *offColorEffect = [[AKColorImageEffect alloc] init];
-		[offColorEffect setBlendMode:kCGBlendModeColor];
-		[offColorEffect setColor:[UIColor redColor]];
+		AKColorImageEffect *offColorEffect = [[AKColorImageEffect alloc] initWithAlpha:1.0f
+																			 blendMode:kCGBlendModeColor
+																				 color:[UIColor redColor]];
 		
-		// Bevel Effect
-		AKButtonBevelImageEffect *offBevelEffect = [[AKButtonBevelImageEffect alloc] init];
-		
-		[offButtonRenderer setImageEffects:@[offNoiseEffect,
+		[offButtonRenderer setImageEffects:@[noiseEffect,
 											offGradientEffect,
 											offColorEffect,
 											buttonCornerRadiusEffect,
-											offBevelEffect]];
+											bevelEffect]];
 		
 		[buttonImageCoordinator setOnImageRenderer:onButtonRenderer];
 		[buttonImageCoordinator setOffImageRenderer:offButtonRenderer];

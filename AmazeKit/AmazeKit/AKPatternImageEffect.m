@@ -20,6 +20,19 @@
 	return NO;
 }
 
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+	   patternImage:(UIImage *)patternImage
+{
+	self = [self initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		_patternImage = patternImage;
+	}
+	
+	return self;
+}
+
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	// Create the noise layer.

@@ -16,12 +16,19 @@ static NSString * const kClassKey = @"class";
 static NSString * const kAlphaKey = @"alpha";
 static NSString * const kBlendModeKey = @"blendMode";
 
-@implementation AKImageEffect
+@implementation AKImageEffect {
+	NSString *_cachedHash;
+}
 
 @synthesize alpha = _alpha;
 @synthesize blendMode = _blendMode;
 
 + (BOOL)canCacheIndividually
+{
+	return YES;
+}
+
++ (BOOL)isImmutable
 {
 	return YES;
 }
@@ -33,6 +40,19 @@ static NSString * const kBlendModeKey = @"blendMode";
 	if (self) {
 		_alpha = 1.0f;
 		_blendMode = kCGBlendModeNormal;
+	}
+	
+	return self;
+}
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+{
+	self = [super init];
+	
+	if (self) {
+		_alpha = alpha;
+		_blendMode = blendMode;
 	}
 	
 	return self;
@@ -71,18 +91,25 @@ static NSString * const kBlendModeKey = @"blendMode";
 {
 	NSString *hash = nil;
 	
-	NSDictionary *representativeDictionary = [self representativeDictionary];
+	if ([[self class] isImmutable]) {
+		hash = _cachedHash;
+	}
 	
-	if (representativeDictionary != nil) {
-		NSData *jsonRepresentation = [NSJSONSerialization dataWithJSONObject:representativeDictionary
-																	 options:0
-																	   error:NULL];
+	if (hash == nil) {
+		NSDictionary *representativeDictionary = [self representativeDictionary];
 		
-		if (jsonRepresentation != nil) {
-			NSString *jsonString = [[NSString alloc] initWithData:jsonRepresentation
-														 encoding:NSUTF8StringEncoding];
+		if (representativeDictionary != nil) {
+			NSData *jsonRepresentation = [NSJSONSerialization dataWithJSONObject:representativeDictionary
+																		 options:0
+																		   error:NULL];
 			
-			hash = [jsonString AK_sha1Hash];
+			if (jsonRepresentation != nil) {
+				NSString *jsonString = [[NSString alloc] initWithData:jsonRepresentation
+															 encoding:NSUTF8StringEncoding];
+				
+				hash = [jsonString AK_sha1Hash];
+				_cachedHash = hash;
+			}
 		}
 	}
 	
@@ -104,12 +131,8 @@ static NSString * const kBlendModeKey = @"blendMode";
 
 - (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary
 {
-	self = [super init];
-	
-	if (self) {
-		[self setAlpha:[[representativeDictionary objectForKey:kAlphaKey] floatValue]];
-		[self setBlendMode:[[representativeDictionary objectForKey:kBlendModeKey] intValue]];
-	}
+	self = [self initWithAlpha:[[representativeDictionary objectForKey:kAlphaKey] floatValue]
+					 blendMode:[[representativeDictionary objectForKey:kBlendModeKey] intValue]];
 	
 	return self;
 }

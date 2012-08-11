@@ -19,6 +19,19 @@ static NSString * const kCornerRadiiKey = @"cornerRadii";
 
 @synthesize cornerRadii = _cornerRadii;
 
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+		cornerRadii:(AKCornerRadii)cornerRadii
+{
+	self = [self initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		_cornerRadii = cornerRadii;
+	}
+	
+	return self;
+}
+
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
 	CGFloat width = [sourceImage size].width * [sourceImage scale];
@@ -92,7 +105,7 @@ static NSString * const kCornerRadiiKey = @"cornerRadii";
 	self = [super initWithRepresentativeDictionary:representativeDictionary];
 	
 	if (self) {
-		[self setCornerRadii:AKCornerRadiiFromNSString([representativeDictionary objectForKey:kCornerRadiiKey])];
+		_cornerRadii = AKCornerRadiiFromNSString([representativeDictionary objectForKey:kCornerRadiiKey]);
 	}
 	
 	return self;

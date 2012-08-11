@@ -24,13 +24,27 @@
 	return NO;
 }
 
-- (id)init
+- (id)initWithAlpha:(CGFloat)alpha blendMode:(CGBlendMode)blendMode
 {
-	self = [super init];
+	self = [super initWithAlpha:alpha blendMode:blendMode];
 	
 	if (self) {
 		_color = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
-		_radius = 10.0f;
+	}
+	
+	return self;
+}
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+			  color:(UIColor *)color
+			 radius:(CGFloat)radius
+{
+	self = [self initWithAlpha:alpha blendMode:blendMode];
+	
+	if (self) {
+		_color = color;
+		_radius = radius;
 	}
 	
 	return self;

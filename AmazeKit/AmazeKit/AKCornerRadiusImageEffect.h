@@ -38,6 +38,10 @@ extern const AKCornerRadii AKCornerRadiiZero;
 @interface AKCornerRadiusImageEffect : AKImageEffect
 
 // The corner radii can be set independently.
-@property (assign) AKCornerRadii	cornerRadii;
+@property (assign, readonly) AKCornerRadii	cornerRadii;
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+		cornerRadii:(AKCornerRadii)cornerRadii;
 
 @end

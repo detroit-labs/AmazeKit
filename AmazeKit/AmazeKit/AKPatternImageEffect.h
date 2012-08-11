@@ -12,6 +12,10 @@
 
 @interface AKPatternImageEffect : AKImageEffect
 
-@property (strong) UIImage	*patternImage;
+@property (strong, readonly) UIImage	*patternImage;
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+	   patternImage:(UIImage *)patternImage;
 
 @end

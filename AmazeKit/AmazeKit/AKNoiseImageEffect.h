@@ -11,13 +11,17 @@
 
 
 typedef enum {
-	AKNoiseTypeColor,
-	AKNoiseTypeBlackAndWhite
+	AKNoiseTypeBlackAndWhite = 0,
+	AKNoiseTypeColor
 } AKNoiseType;
 
 
 @interface AKNoiseImageEffect : AKImageEffect
 
-@property (assign) AKNoiseType	noiseType;
+@property (assign, readonly) AKNoiseType	noiseType;
+
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode
+		  noiseType:(AKNoiseType)noiseType;
 
 @end

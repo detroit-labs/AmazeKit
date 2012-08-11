@@ -10,8 +10,12 @@
 @interface AKImageEffect : NSObject
 
 // Appearance Properties
-@property (assign) CGFloat    	alpha;
-@property (assign) CGBlendMode	blendMode;
+@property (assign, readonly) CGFloat    	alpha;
+@property (assign, readonly) CGBlendMode	blendMode;
+
+// Image Effects are immutable, so use the designated initializer.
+- (id)initWithAlpha:(CGFloat)alpha
+		  blendMode:(CGBlendMode)blendMode;
 
 // In your implementation of -renderImageFromSourceImage:withSize:, you should call this method to
 // apply appearance properties. It expects you to have set up a graphics context.
@@ -29,5 +33,8 @@
 // Set to NO if the image effect needs to work with the image(s) under it and can’t be cached
 // separately
 + (BOOL)canCacheIndividually;
+
+// Set to NO if the class is mutable.
++ (BOOL)isImmutable;
 
 @end
