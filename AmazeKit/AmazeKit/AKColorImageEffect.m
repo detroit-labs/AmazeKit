@@ -68,21 +68,21 @@ static NSString * const kColorKey = @"color";
 	CGSize size = [sourceImage size];
 	CGFloat scale = [sourceImage scale];
 	CGImageRef sourceCGImage = [sourceImage CGImage];
-	size_t width = CGImageGetWidth(sourceCGImage);
-	size_t height = CGImageGetHeight(sourceCGImage);
 	
 	UIGraphicsBeginImageContextWithOptions(size, NO, scale);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	CGContextTranslateCTM(context, 0.0f, height);
+	CGContextTranslateCTM(context, 0.0f, size.height);
 	CGContextScaleCTM(context, 1.0f, -1.0f);
 	
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), sourceCGImage);
+	CGRect imageRect = CGContextGetClipBoundingBox(context);
+	
+	CGContextDrawImage(context, imageRect, sourceCGImage);
 	
 	[self applyAppearanceProperties];
 	
 	CGContextSetFillColorWithColor(context, [[self color] CGColor]);
-	CGContextFillRect(context, CGRectMake(0.0f, 0.0f, width, height));
+	CGContextFillRect(context, imageRect);
 
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
 	
