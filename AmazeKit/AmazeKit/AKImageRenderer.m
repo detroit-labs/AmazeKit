@@ -13,6 +13,7 @@
 #import "UIColor+AKColorStrings.h"
 
 #import "AKFileManager.h"
+#import "AKDrawingUtilities.h"
 #import "AKImageEffect.h"
 
 
@@ -68,7 +69,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 					 scale:(CGFloat)scale
 				   options:(NSDictionary *)options
 {
-	__block UIImage *image = [self previouslyRenderedImageForSize:size options:options];
+	__block UIImage *image = [self previouslyRenderedImageForSize:AKCGSizeMakeWithScale(size, scale) options:options];
 	
 	if (image == nil) {
 		UIColor *startingBackgroundColor = [UIColor whiteColor];
