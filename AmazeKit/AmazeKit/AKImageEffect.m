@@ -11,6 +11,9 @@
 
 #import "NSString+AKCryptography.h"
 
+#import "AKDrawingUtilities.h"
+#import "AKFileManager.h"
+
 
 static NSString * const kClassKey = @"class";
 static NSString * const kAlphaKey = @"alpha";
@@ -23,10 +26,27 @@ static NSString * const kBlendModeKey = @"blendMode";
 @synthesize alpha = _alpha;
 @synthesize blendMode = _blendMode;
 
-+ (BOOL)canCacheIndividually
+#pragma mark - Image Caching
+
++ (BOOL)canRenderIndividually
 {
 	return YES;
 }
+
+- (void)cacheRenderedImage:(UIImage *)image
+{
+	[[AKFileManager defaultManager] cacheImage:image
+									   forHash:[self representativeHash]];
+}
+
+- (UIImage *)previouslyRenderedImageForSize:(CGSize)size
+									atScale:(CGFloat)scale
+{
+	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHash]
+													   atSize:AKCGSizeMakeWithScale(size, scale)];
+}
+
+#pragma mark -
 
 + (BOOL)isImmutable
 {
@@ -70,8 +90,48 @@ static NSString * const kBlendModeKey = @"blendMode";
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
-	// The default operation is a no-op.
-	return sourceImage;
+	CGSize size = [sourceImage size];
+	CGFloat scale = [sourceImage scale];
+	
+	UIImage *finalImage = sourceImage;
+	UIImage *renderedImage = nil;
+	
+	if ([[self class] canRenderIndividually] == YES) {
+		renderedImage = [self previouslyRenderedImageForSize:size
+													 atScale:scale];
+	}
+	
+	if (renderedImage == nil && [[self class] canRenderIndividually]) {
+		renderedImage = [self renderedImageForSize:size
+										   atScale:scale];
+		
+		[self cacheRenderedImage:renderedImage];
+	}
+	
+	if (renderedImage != nil) {
+		UIGraphicsBeginImageContextWithOptions(size, NO, scale);
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		
+		CGRect imageRect = CGContextGetClipBoundingBox(context);
+		[sourceImage drawInRect:imageRect];
+
+		[renderedImage drawInRect:imageRect
+						blendMode:[self blendMode]
+							alpha:[self alpha]];
+		
+		finalImage = UIGraphicsGetImageFromCurrentImageContext();
+		
+		UIGraphicsEndImageContext();
+		context = NULL;
+	}
+	
+	return finalImage;
+}
+
+- (UIImage *)renderedImageForSize:(CGSize)size atScale:(CGFloat)scale
+{
+	// The default implementation is a no-op.
+	return nil;
 }
 
 - (NSDictionary *)representativeDictionary

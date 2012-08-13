@@ -20,3 +20,5 @@ CGFloat DistanceToNearestEmptyPixel(uint8_t *rawRGBA8888Data,
 									CGFloat maxRadius,
 									CGFloat *angle);
 
+// Multiplies a CGSize by a scale factor;
+CGSize AKCGSizeMakeWithScale(CGSize size, CGFloat scale);

@@ -9,16 +9,12 @@
 
 #import "AKPatternImageEffect.h"
 
+#import "AKDrawingUtilities.h"
+
 
 @implementation AKPatternImageEffect
 
 @synthesize patternImage = _patternImage;
-
-+ (BOOL)canCacheIndividually
-{
-	// The caching implementation of the pattern caches the tile.
-	return NO;
-}
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
@@ -33,27 +29,20 @@
 	return self;
 }
 
-- (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
+- (UIImage *)renderedImageForSize:(CGSize)size
+						  atScale:(CGFloat)scale
 {
-	// Create the noise layer.
-	NSUInteger width = [sourceImage size].width * [sourceImage scale];
-	NSUInteger height = [sourceImage size].height * [sourceImage scale];
-	
 	CGImageRef patternTileImageRef = [[self patternImage] CGImage];
+	CGSize patternImageSize = AKCGSizeMakeWithScale([[self patternImage] size],
+													[[self patternImage] scale]);
 	
-	// Render the pattern tile on top of the source image.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
-	
+	UIGraphicsBeginImageContextWithOptions(size, NO, scale);
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [sourceImage CGImage]);
-	
-	[self applyAppearanceProperties];
 	
 	CGContextDrawTiledImage(context, CGRectMake(0.0f,
 												0.0f,
-												[[self patternImage] size].width * [[self patternImage] scale],
-												[[self patternImage] size].height * [[self patternImage] scale]),
+												patternImageSize.width / scale,
+												patternImageSize.height / scale),
 							patternTileImageRef);
 	
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();

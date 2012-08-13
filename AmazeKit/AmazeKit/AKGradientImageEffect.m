@@ -40,14 +40,15 @@ static NSString * const kLocationsKey = @"locations";
 	return self;
 }
 
-- (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
+- (UIImage *)renderedImageForSize:(CGSize)size
+						  atScale:(CGFloat)scale
 {
 	// Create the gradient layer.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
+	UIGraphicsBeginImageContextWithOptions(size, NO, scale);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	CGFloat width = [sourceImage size].width;
-	CGFloat height = [sourceImage size].height;
+	CGFloat width = size.width;
+	CGFloat height = size.height;
 	
 	// Decode the Objective-C objects to their CoreFoundation counterparts.
 	__block NSArray *colors = @[];
@@ -97,32 +98,8 @@ static NSString * const kLocationsKey = @"locations";
 								endPoint,
 								0);
 	
-	UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
-	
-	CGColorSpaceRelease(colorSpace);
-	CGGradientRelease(gradient);
-
-	if (locations != NULL) {
-		free(locations);
-	}
-
-	UIGraphicsEndImageContext();
-	context = NULL;
-	
-	// Render the noise layer on top of the source image.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
-	context = UIGraphicsGetCurrentContext();
-	
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [sourceImage CGImage]);
-	
-	[self applyAppearanceProperties];
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [layerImage CGImage]);
-	
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
-	
-	UIGraphicsEndImageContext();
-	context = NULL;
-	
+		
 	return renderedImage;
 }
 

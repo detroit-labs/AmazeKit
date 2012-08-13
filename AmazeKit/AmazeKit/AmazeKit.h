@@ -7,6 +7,10 @@
 //
 
 
+// Categories
+#import "UIColor+AKColorStrings.h"
+#import "UIView+AKScaleInfo.h"
+
 // Coordinators
 #import "AKButtonImageCoordinator.h"
 

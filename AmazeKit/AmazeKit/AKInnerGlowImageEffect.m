@@ -19,7 +19,7 @@
 @synthesize color = _color;
 @synthesize radius = _radius;
 
-+ (BOOL)canCacheIndividually
++ (BOOL)canRenderIndividually
 {
 	return NO;
 }
@@ -66,13 +66,12 @@
 	uint8_t *rawData = (uint8_t *)[pixelData bytes];
 	
 	// Walk the image, finding empty pixels and going off accordingly.
-	__block CGPoint point;
-	
-	dispatch_apply(width, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^(size_t x) {
-		point.x = x;
+	dispatch_apply(height, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^(size_t y) {
+		CGPoint point;
+		point.y = y;
 		
-		dispatch_apply(height, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^(size_t y) {
-			point.y = y;
+		for (CGFloat x = 0; x < width; x++) {
+			point.x = x;
 			
 			CGFloat distance = DistanceToNearestEmptyPixel(rawData, width, height, x, y, radius, NULL);
 			
@@ -87,7 +86,7 @@
 					buffer[offset] = strength;
 				}
 			}
-		});
+		}
 	});
 	
 	// Create an image context to draw into.
@@ -103,6 +102,7 @@
 	// Create the data buffer for the image.
 	uint8_t *imageData = calloc(width * height, bytesPerPixel);
 	
+	CGPoint point;
 	for (NSUInteger y = 0; y < height; y++) {
 		point.y = y;
 		
@@ -140,7 +140,7 @@
 	free(imageData);
 	
 	// Render the glow layer on top of the source image.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
+	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, [sourceImage scale]);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	CGContextTranslateCTM(context, 0.0f, [sourceImage size].height);

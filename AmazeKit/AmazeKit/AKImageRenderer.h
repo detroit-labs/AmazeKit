@@ -17,6 +17,7 @@ extern NSString * const AKImageRendererOptionKeyInitialBackgroundColor;
 @property (strong) NSArray	*imageEffects;
 
 - (UIImage *)imageWithSize:(CGSize)size
+					 scale:(CGFloat)scale
 				   options:(NSDictionary *)options;
 
 - (NSDictionary *)representativeDictionary;

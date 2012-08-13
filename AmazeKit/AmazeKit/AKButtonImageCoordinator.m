@@ -9,7 +9,11 @@
 
 #import "AKButtonImageCoordinator.h"
 
+#import "UIView+AKScaleInfo.h"
+
 #import "AKImageRenderer.h"
+
+#import "AKDrawingUtilities.h"
 
 
 static NSString * const kFrameKeyPath = @"frame";
@@ -61,12 +65,15 @@ static NSString * const kFrameKeyPath = @"frame";
 		
 		if ([frameValue isKindOfClass:[NSValue class]]) {
 			CGRect frame = [frameValue CGRectValue];
+			CGFloat scale = [button AK_scale];
 			
 			[button setBackgroundImage:[[self offImageRenderer] imageWithSize:frame.size
+																		scale:scale
 																	  options:nil]
 							  forState:UIControlStateNormal];
 			
 			[button setBackgroundImage:[[self onImageRenderer] imageWithSize:frame.size
+																	   scale:scale
 																	 options:nil]
 							  forState:UIControlStateHighlighted];
 		}

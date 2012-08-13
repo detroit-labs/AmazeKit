@@ -21,8 +21,12 @@
 // apply appearance properties. It expects you to have set up a graphics context.
 - (void)applyAppearanceProperties;
 
-// Subclasses should override this method.
+// Subclasses that need to access other layers’ image data sohuld override this method.
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage;
+
+// Subclasses that render independently should override this method.
+- (UIImage *)renderedImageForSize:(CGSize)size
+						  atScale:(CGFloat)scale;
 
 // Used in image caching.
 - (NSDictionary *)representativeDictionary;
@@ -30,9 +34,13 @@
 + (id)effectWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
 - (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
 
-// Set to NO if the image effect needs to work with the image(s) under it and can’t be cached
+// Set to NO if the image effect needs to render with the image data under it and can’t be cached
 // separately
-+ (BOOL)canCacheIndividually;
++ (BOOL)canRenderIndividually;
+
+- (void)cacheRenderedImage:(UIImage *)image;
+- (UIImage *)previouslyRenderedImageForSize:(CGSize)size
+									atScale:(CGFloat)scale;
 
 // Set to NO if the class is mutable.
 + (BOOL)isImmutable;

@@ -9,6 +9,7 @@
 
 #import "AKFileManager.h"
 
+#import "AKDrawingUtilities.h"
 
 @interface AKFileManager()
 
@@ -89,7 +90,7 @@
 	NSData *imageData = UIImagePNGRepresentation(image);
 	
 	if (imageData != nil) {
-		CGSize imageSize = [image size];
+		CGSize imageSize = AKCGSizeMakeWithScale([image size], [image scale]);
 		NSString *path = [self pathForHash:descriptionHash atSize:imageSize];
 		
 		NSError *error = nil;
@@ -98,7 +99,7 @@
 										error:&error];
 		
 		if (success == NO) {
-			NSLog(@"Could not cache image to path: %@ error: %@", path, [error localizedDescription]);
+			NSLog(@"Could not cache image with size %@ to path: %@ error: %@", NSStringFromCGSize(imageSize), path, [error localizedDescription]);
 		}
 	}
 }

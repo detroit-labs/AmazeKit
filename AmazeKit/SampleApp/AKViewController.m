@@ -11,7 +11,11 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "UIView+AKScaleInfo.h"
+
 #import "AmazeKit.h"
+
+#import "AKDrawingUtilities.h"
 
 
 @interface AKViewController () {
@@ -50,7 +54,9 @@
 		buttonRenderer = [[AKImageRenderer alloc] init];
 		
 		// Noise Effect
-		noiseEffect = [[AKNoiseImageEffect alloc] initWithAlpha:0.05f blendMode:AKNoiseTypeBlackAndWhite];
+		noiseEffect = [[AKNoiseImageEffect alloc] initWithAlpha:0.05f
+													  blendMode:kCGBlendModeNormal
+													  noiseType:AKNoiseTypeBlackAndWhite];
 		
 		// Gradient Effect
 		UIColor *beginColor = [UIColor colorWithRed:144.0f / 255.0f
@@ -89,6 +95,7 @@
 	NSDate *beginTime = [NSDate date];
 	
 	UIImage *image = [buttonRenderer imageWithSize:[imageView frame].size
+											 scale:[imageView AK_scale]
 										   options:nil];
 	
 	NSDate *endTime = [NSDate date];
@@ -139,7 +146,10 @@
 		// Glow Effect
 		AKInnerGlowImageEffect *innerGlowEffect = [[AKInnerGlowImageEffect alloc] initWithAlpha:0.5f
 																					  blendMode:kCGBlendModeOverlay
-																						  color:[UIColor blackColor]
+																						  color:[UIColor colorWithRed:0.0f
+																												green:0.0f
+																												 blue:0.0f
+																												alpha:1.0f]
 																						 radius:5.0f];
 		
 		[onButtonRenderer setImageEffects:@[noiseEffect,

@@ -31,7 +31,7 @@
 
 @synthesize bevelDirection = _bevelDirection;
 
-+ (BOOL)canCacheIndividually
++ (BOOL)canRenderIndividually
 {
 	return NO;
 }
@@ -229,7 +229,7 @@
 	free(imageData);
 	
 	// Render the bevel layer on top of the source image.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
+	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, [sourceImage scale]);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	CGContextTranslateCTM(context, 0.0f, [sourceImage size].height);

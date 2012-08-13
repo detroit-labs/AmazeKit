@@ -73,3 +73,9 @@ CGFloat DistanceToNearestEmptyPixel(uint8_t *rawRGBA8888Data,
 
 	return distance;
 }
+
+CGSize AKCGSizeMakeWithScale(CGSize size, CGFloat scale)
+{
+	return CGSizeMake(size.width * scale,
+					  size.height * scale);
+}

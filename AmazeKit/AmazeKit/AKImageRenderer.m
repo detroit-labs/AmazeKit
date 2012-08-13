@@ -65,6 +65,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 }
 
 - (UIImage *)imageWithSize:(CGSize)size
+					 scale:(CGFloat)scale
 				   options:(NSDictionary *)options
 {
 	__block UIImage *image = [self previouslyRenderedImageForSize:size options:options];
@@ -77,7 +78,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 			startingBackgroundColor = [UIColor AK_colorWithHexString:backgroundColorHex];
 		}
 		
-		UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+		UIGraphicsBeginImageContextWithOptions(size, NO, scale);
 		
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		

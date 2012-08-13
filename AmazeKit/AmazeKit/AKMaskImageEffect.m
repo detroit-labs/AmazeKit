@@ -12,7 +12,7 @@
 
 @implementation AKMaskImageEffect
 
-+ (BOOL)canCacheIndividually
++ (BOOL)canRenderIndividually
 {
 	return NO;
 }
@@ -64,7 +64,9 @@
 	
 	CGImageRef maskedOriginalImage = CGImageCreateWithMask([sourceImage CGImage], mask);
 	
-	UIImage *renderedImage = [[UIImage alloc] initWithCGImage:maskedOriginalImage];
+	UIImage *renderedImage = [[UIImage alloc] initWithCGImage:maskedOriginalImage
+														scale:[sourceImage scale]
+												  orientation:[sourceImage imageOrientation]];
 	CGImageRelease(maskedOriginalImage);
 	CGImageRelease(mask);
 	CGImageRelease(maskImage);

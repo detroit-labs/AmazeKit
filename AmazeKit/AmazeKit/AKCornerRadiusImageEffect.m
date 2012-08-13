@@ -19,6 +19,11 @@ static NSString * const kCornerRadiiKey = @"cornerRadii";
 
 @synthesize cornerRadii = _cornerRadii;
 
++ (BOOL)canRenderIndividually
+{
+	return NO;
+}
+
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 		cornerRadii:(AKCornerRadii)cornerRadii
@@ -70,8 +75,8 @@ static NSString * const kCornerRadiiKey = @"cornerRadii";
 	CGContextRelease(context);
 	context = NULL;
 	
-	// Render the noise layer on top of the source image.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
+	// Mask the original image
+	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, [sourceImage scale]);
 	context = UIGraphicsGetCurrentContext();
 	
 	CGContextScaleCTM(context, 1.0f, -1.0f);

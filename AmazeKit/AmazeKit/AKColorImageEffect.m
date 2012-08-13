@@ -19,6 +19,14 @@ static NSString * const kColorKey = @"color";
 
 @synthesize color = _color;
 
++ (BOOL)canRenderIndividually
+{
+	// A color effect *could* render individually, but rendering the color should be more efficient
+	// than loading and rendering an image of the color. Also, it’ll cut down on files cached on the
+	// device if colors change.
+	return NO;
+}
+
 - (id)init
 {
 	self = [super init];
@@ -57,31 +65,25 @@ static NSString * const kColorKey = @"color";
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
-	// Create the color layer.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
+	CGSize size = [sourceImage size];
+	CGFloat scale = [sourceImage scale];
+	CGImageRef sourceCGImage = [sourceImage CGImage];
+	size_t width = CGImageGetWidth(sourceCGImage);
+	size_t height = CGImageGetHeight(sourceCGImage);
+	
+	UIGraphicsBeginImageContextWithOptions(size, NO, scale);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	CGFloat width = [sourceImage size].width;
-	CGFloat height = [sourceImage size].height;
+	CGContextTranslateCTM(context, 0.0f, height);
+	CGContextScaleCTM(context, 1.0f, -1.0f);
 	
-	CGContextSetFillColorWithColor(context, [[self color] CGColor]);
-	
-	CGContextFillRect(context, CGRectMake(0.0f, 0.0f, width, height));
-	
-	UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
-	
-	UIGraphicsEndImageContext();
-	context = NULL;
-	
-	// Render the noise layer on top of the source image.
-	UIGraphicsBeginImageContextWithOptions([sourceImage size], NO, 0.0f);
-	context = UIGraphicsGetCurrentContext();
-	
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [sourceImage CGImage]);
+	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), sourceCGImage);
 	
 	[self applyAppearanceProperties];
-	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), [layerImage CGImage]);
 	
+	CGContextSetFillColorWithColor(context, [[self color] CGColor]);
+	CGContextFillRect(context, CGRectMake(0.0f, 0.0f, width, height));
+
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
 	
 	UIGraphicsEndImageContext();
