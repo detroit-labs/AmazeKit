@@ -15,7 +15,7 @@
 
 
 // Constants
-NSString * const kMaskImageHashKey = @"patternImageHash";
+NSString * const kPatternImageHashKey = @"patternImageHash";
 
 
 @implementation AKPatternImageEffect {
