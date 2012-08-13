@@ -92,15 +92,9 @@
 									 brightness:[[self brightnessSlider] value]
 										  alpha:1.0f]];
 	
-	NSDate *beginTime = [NSDate date];
-	
 	UIImage *image = [buttonRenderer imageWithSize:[imageView frame].size
 											 scale:[imageView AK_scale]
 										   options:nil];
-	
-	NSDate *endTime = [NSDate date];
-	
-	NSLog(@"Rendered in %f seconds.", [endTime timeIntervalSinceDate:beginTime]);
 	
 	[[self imageView] setImage:image];
 }
