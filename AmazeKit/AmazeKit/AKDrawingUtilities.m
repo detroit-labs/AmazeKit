@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Detroit Labs. All rights reserved.
 //
 
+#import "AKDrawingUtilities.h"
+
 #import "UIImage+AKPixelData.h"
 
 CGFloat AngleBetweenTwoPoints(CGPoint innerPoint, CGPoint outerPoint)
