@@ -10,6 +10,10 @@
 #import "AKImageEffect.h"
 
 
+// Constants
+extern NSString * const kMaskImageHashKey;
+
+
 @interface AKMaskImageEffect : AKImageEffect
 
 @property (strong, readonly) UIImage	*maskImage;

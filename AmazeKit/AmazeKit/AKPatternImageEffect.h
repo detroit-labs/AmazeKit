@@ -10,6 +10,10 @@
 #import "AKImageEffect.h"
 
 
+// Constants
+extern NSString * const kPatternImageHashKey;
+
+
 @interface AKPatternImageEffect : AKImageEffect
 
 @property (strong, readonly) UIImage	*patternImage;

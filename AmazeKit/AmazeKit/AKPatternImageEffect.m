@@ -9,10 +9,18 @@
 
 #import "AKPatternImageEffect.h"
 
+#import "UIImage+AKCryptography.h"
+
 #import "AKDrawingUtilities.h"
 
 
-@implementation AKPatternImageEffect
+// Constants
+NSString * const kMaskImageHashKey = @"patternImageHash";
+
+
+@implementation AKPatternImageEffect {
+	NSString	*_patternImageHash;
+}
 
 @synthesize patternImage = _patternImage;
 
@@ -24,6 +32,7 @@
 	
 	if (self) {
 		_patternImage = patternImage;
+		_patternImageHash = [patternImage AK_sha1Hash];
 	}
 	
 	return self;
@@ -51,6 +60,15 @@
 	context = NULL;
 	
 	return renderedImage;
+}
+
+- (NSDictionary *)representativeDictionary
+{
+	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
+	
+	[dictionary setObject:_patternImageHash forKey:kPatternImageHashKey];
+	
+	return [NSDictionary dictionaryWithDictionary:dictionary];
 }
 
 @end

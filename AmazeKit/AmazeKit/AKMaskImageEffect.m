@@ -9,8 +9,16 @@
 
 #import "AKMaskImageEffect.h"
 
+#import "UIImage+AKCryptography.h"
 
-@implementation AKMaskImageEffect
+
+// Constants
+NSString * const kMaskImageHashKey = @"maskImageHash";
+
+
+@implementation AKMaskImageEffect {
+	NSString	*_maskImageHash;
+}
 
 + (BOOL)canRenderIndividually
 {
@@ -25,6 +33,7 @@
 	
 	if (self) {
 		_maskImage = maskImage;
+		_maskImageHash = [maskImage AK_sha1Hash];
 	}
 	
 	return self;
@@ -74,6 +83,15 @@
 	CGColorSpaceRelease(colorSpace);
 	
 	return renderedImage;
+}
+
+- (NSDictionary *)representativeDictionary
+{
+	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
+	
+	[dictionary setObject:_maskImageHash forKey:kMaskImageHashKey];
+	
+	return [NSDictionary dictionaryWithDictionary:dictionary];
 }
 
 @end
