@@ -99,6 +99,11 @@ static NSString * const kLocationsKey = @"locations";
 								0);
 	
 	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+	CGGradientRelease(gradient);
+	CGColorSpaceRelease(colorSpace);
+	if (locations != NULL) {
+		free(locations);
+	}
 		
 	return renderedImage;
 }

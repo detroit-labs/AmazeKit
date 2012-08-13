@@ -86,6 +86,7 @@
 														scale:scale
 												  orientation:UIImageOrientationUp];
 	
+	CGImageRelease(renderedImageRef);
 	CGContextRelease(noiseContext);
 	CGColorSpaceRelease(noiseColorSpace);
 	free(imageData);
