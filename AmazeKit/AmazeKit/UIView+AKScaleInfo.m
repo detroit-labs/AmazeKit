@@ -14,7 +14,13 @@
 
 - (CGFloat)AK_scale
 {
-	return [[[self window] screen] scale];
+	CGFloat scale = [[UIScreen mainScreen] scale];
+	
+	if ([self window] != nil) {
+		scale = [[[self window] screen] scale];
+	}
+	
+	return scale;
 }
 
 @end
