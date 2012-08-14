@@ -18,12 +18,14 @@
 + (NSURL *)amazeKitCacheURL;
 
 - (BOOL)cachedImageExistsForHash:(NSString *)descriptionHash
-						  atSize:(CGSize)size;
+						  atSize:(CGSize)size
+					   withScale:(CGFloat)scale;
 
 - (void)cacheImage:(UIImage *)image
 		   forHash:(NSString *)descriptionHash;
 
 - (UIImage *)cachedImageForHash:(NSString *)descriptionHash
-						 atSize:(CGSize)size;
+						 atSize:(CGSize)size
+					  withScale:(CGFloat)scale;
 
 @end

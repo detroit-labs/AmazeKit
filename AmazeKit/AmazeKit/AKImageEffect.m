@@ -43,7 +43,8 @@ static NSString * const kBlendModeKey = @"blendMode";
 									atScale:(CGFloat)scale
 {
 	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHash]
-													   atSize:AKCGSizeMakeWithScale(size, scale)];
+													   atSize:size
+													withScale:scale];
 }
 
 #pragma mark -

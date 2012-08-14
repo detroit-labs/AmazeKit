@@ -28,9 +28,11 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 @interface AKImageRenderer()
 
 - (BOOL)renderedImageExistsForSize:(CGSize)size
+						 withScale:(CGFloat)scale
 						   options:(NSDictionary *)options;
 
 - (UIImage *)previouslyRenderedImageForSize:(CGSize)size
+								  withScale:(CGFloat)scale
 									options:(NSDictionary *)options;
 
 - (void)saveImage:(UIImage *)image
@@ -69,7 +71,9 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 					 scale:(CGFloat)scale
 				   options:(NSDictionary *)options
 {
-	__block UIImage *image = [self previouslyRenderedImageForSize:AKCGSizeMakeWithScale(size, scale) options:options];
+	__block UIImage *image = [self previouslyRenderedImageForSize:size
+														withScale:scale
+														  options:options];
 	
 	if (image == nil) {
 		UIColor *startingBackgroundColor = [UIColor whiteColor];
@@ -154,25 +158,29 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 }
 
 - (BOOL)renderedImageExistsForSize:(CGSize)size
+						 withScale:(CGFloat)scale
 						   options:(NSDictionary *)options
 {
 	return [[AKFileManager defaultManager] cachedImageExistsForHash:[self representativeHashWithOptions:options]
-															 atSize:size];
+															 atSize:size
+														  withScale:scale];
 }
 
 - (UIImage *)previouslyRenderedImageForSize:(CGSize)size
+								  withScale:(CGFloat)scale
 									options:(NSDictionary *)options
 {
 	// TODO: options
 	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHashWithOptions:options]
-													   atSize:size];
+													   atSize:size
+													withScale:scale];
 }
 
 - (void)saveImage:(UIImage *)image
 		  options:(NSDictionary *)options
 {
-	// TODO: options
-	[[AKFileManager defaultManager] cacheImage:image forHash:[self representativeHashWithOptions:options]];
+	[[AKFileManager defaultManager] cacheImage:image
+									   forHash:[self representativeHashWithOptions:options]];
 }
 
 @end
