@@ -7,5 +7,3 @@
 	#import <QuartzCore/QuartzCore.h>
 	#import <UIKit/UIKit.h>
 #endif
-
-#define ARC4RANDOM_MAX      0x100000000

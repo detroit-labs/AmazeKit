@@ -20,6 +20,8 @@ NSString * const kMaskImageHashKey = @"maskImageHash";
 	NSString	*_maskImageHash;
 }
 
+@synthesize maskImage = _maskImage;
+
 + (BOOL)canRenderIndividually
 {
 	return NO;

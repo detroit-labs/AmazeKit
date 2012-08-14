@@ -16,7 +16,7 @@ extern NSString * const kPatternImageHashKey;
 
 @interface AKPatternImageEffect : AKImageEffect
 
-@property (strong, readonly) UIImage	*patternImage;
+@property (readonly) UIImage	*patternImage;
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode

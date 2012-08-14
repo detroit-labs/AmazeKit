@@ -19,14 +19,14 @@ typedef enum {
 @interface AKGradientImageEffect : AKImageEffect
 
 // An array of UIColor objects for the gradient. Must be at least two.
-@property (copy, readonly) NSArray	*colors;
+@property (readonly) NSArray	*colors;
 
 // The direction to draw the gradient in. Defaults to vertical.
-@property (assign, readonly) AKGradientDirection	direction;
+@property (readonly) AKGradientDirection	direction;
 
 // An array of NSNumber objects with values between 0 and 1. Represents the location along the
 // gradient for the color at the corresponding index. If nil, the colors are spaced evenly.
-@property (copy, readonly) NSArray	*locations;
+@property (readonly) NSArray	*locations;
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode

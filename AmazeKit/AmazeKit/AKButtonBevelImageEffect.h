@@ -19,7 +19,7 @@ typedef enum {
 @interface AKButtonBevelImageEffect : AKImageEffect
 
 // “Up,” the default, has a shine on top and a shadow on bottom. “Down” is the reverse.
-@property (assign, readonly) AKButtonBevelDirection	bevelDirection;
+@property (readonly) AKButtonBevelDirection	bevelDirection;
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode

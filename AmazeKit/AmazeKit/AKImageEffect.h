@@ -10,8 +10,8 @@
 @interface AKImageEffect : NSObject
 
 // Appearance Properties
-@property (assign, readonly) CGFloat    	alpha;
-@property (assign, readonly) CGBlendMode	blendMode;
+@property (readonly) CGFloat    	alpha;
+@property (readonly) CGBlendMode	blendMode;
 
 // Image Effects are immutable, so use the designated initializer.
 - (id)initWithAlpha:(CGFloat)alpha

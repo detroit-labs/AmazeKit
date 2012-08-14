@@ -35,7 +35,7 @@ CGFloat DistanceToNearestEmptyPixel(uint8_t *rawRGBA8888Data,
 	CGFloat _angle = 0.0f;
 	NSUInteger offset = 1;
 	
-	while (distance == maxRadius && offset <= maxRadius) {
+	while (distance <= maxRadius && offset <= maxRadius) {
 		for (NSInteger searchY = y - offset; searchY < (NSInteger)(y + offset); searchY++) {
 			for (NSInteger searchX = x - offset; searchX < (NSInteger)(x + offset); searchX++) {
 				AKPixelData pixelData = AKPixelDataZero;

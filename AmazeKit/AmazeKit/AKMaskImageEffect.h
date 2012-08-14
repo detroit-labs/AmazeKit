@@ -16,7 +16,7 @@ extern NSString * const kMaskImageHashKey;
 
 @interface AKMaskImageEffect : AKImageEffect
 
-@property (strong, readonly) UIImage	*maskImage;
+@property (readonly) UIImage	*maskImage;
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode

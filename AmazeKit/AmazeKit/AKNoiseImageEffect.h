@@ -18,7 +18,7 @@ typedef enum {
 
 @interface AKNoiseImageEffect : AKImageEffect
 
-@property (assign, readonly) AKNoiseType	noiseType;
+@property (readonly) AKNoiseType	noiseType;
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
