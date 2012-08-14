@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name     = 'AmazeKit'
-  s.version  = '0.1.1'
+  s.version  = '0.7.5'
   s.authors  = {'Jeff Kelley' => 'SlaunchaMan@gmail.com'}
   s.license  = 'Proprietary'
   s.homepage = 'https://github.com/detroit-labs/AmazeKit'
   s.summary  = 'AmazeKit is a library for rendering beautiful images in your iOS app'
-  s.source   = { :git => 'git@github.com:detroit-labs/AmazeKit.git', :tag => '0.1.1' }
+  s.source   = { :git => 'git@github.com:detroit-labs/AmazeKit.git', :tag => '0.7.5' }
   s.platform = :ios
   s.requires_arc = true
   s.source_files = 'AmazeKit/AmazeKit/*.{h,m}'
