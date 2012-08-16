@@ -144,7 +144,8 @@
 																												green:0.0f
 																												 blue:0.0f
 																												alpha:1.0f]
-																						 radius:5.0f];
+																						 radius:5.0f
+																				maxEdgeDistance:5.0f];
 		
 		[onButtonRenderer setImageEffects:@[noiseEffect,
 										   onGradientEffect,
