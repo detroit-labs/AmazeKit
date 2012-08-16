@@ -20,7 +20,8 @@ static NSString * const kAlphaKey = @"alpha";
 static NSString * const kBlendModeKey = @"blendMode";
 
 @implementation AKImageEffect {
-	NSString *_cachedHash;
+	NSString	*_cachedHash;
+	NSLock  	*_renderLock;
 }
 
 @synthesize alpha = _alpha;
@@ -196,6 +197,23 @@ static NSString * const kBlendModeKey = @"blendMode";
 					 blendMode:[[representativeDictionary objectForKey:kBlendModeKey] intValue]];
 	
 	return self;
+}
+
+- (void)obtainLock
+{
+	if (_renderLock == nil) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			_renderLock = [[NSLock alloc] init];
+		});
+	}
+	
+	[_renderLock lock];
+}
+
+- (void)releaseLock
+{
+	[_renderLock unlock];
 }
 
 @end

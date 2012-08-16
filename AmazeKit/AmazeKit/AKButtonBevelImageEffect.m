@@ -51,6 +51,8 @@
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
+	[self obtainLock];
+	
 	CGSize sourceImageSize = [sourceImage size];
 	
 	_width = sourceImageSize.width * [sourceImage scale];
@@ -248,6 +250,8 @@
 	
 	free(_upperBevelData), _upperBevelData = NULL;
 	free(_lowerBevelData), _lowerBevelData = NULL;
+	
+	[self releaseLock];
 	
 	return renderedImage;
 }

@@ -45,4 +45,8 @@
 // Set to NO if the class is mutable.
 + (BOOL)isImmutable;
 
+// For image effects that maintain state, use a lock.
+- (void)obtainLock;
+- (void)releaseLock;
+
 @end
