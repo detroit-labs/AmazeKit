@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Detroit Labs. All rights reserved.
 //
 
+
+#import "UIImage+AKPixelData.h"
+
+
 CGFloat AngleBetweenTwoPoints(CGPoint innerPoint, CGPoint outerPoint);
 
 CGFloat DistanceBetweenTwoPoints(CGPoint point1, CGPoint point2);

@@ -194,7 +194,7 @@
 				int offset = (bytesPerRow * y) + (bytesPerPixel * x);
 				
 				if (whiteAlpha > 0.05f) {
-					int i;
+					size_t i;
 					
 					for (i = 0; i < numberOfComponents; i++) {
 						imageData[offset + i] = (uint8_t)((CGFloat)UINT8_MAX * whiteAlpha);
@@ -204,7 +204,7 @@
 				}
 				
 				if (blackAlpha > 0.0f) {
-					int i;
+					size_t i;
 					
 					for (i = 0; i < numberOfComponents; i++) {
 						imageData[offset + i] = 0;

@@ -36,20 +36,20 @@ CGFloat DistanceToNearestEmptyPixel(uint8_t *rawRGBA8888Data,
 	NSUInteger offset = 1;
 	
 	while (distance <= maxRadius && offset <= maxRadius) {
-		for (NSInteger searchY = y - offset; searchY < (NSInteger)(y + offset); searchY++) {
-			for (NSInteger searchX = x - offset; searchX < (NSInteger)(x + offset); searchX++) {
+		for (NSInteger searchX = x - offset; searchX < (NSInteger)(x + offset); searchX++) {
+			for (NSInteger searchY = y - offset; searchY < (NSInteger)(y + offset); searchY++) {
 				AKPixelData pixelData = AKPixelDataZero;
 				
-				if (searchX >= 0 && searchY >= 0 && searchX < width && searchY < height) {
+				if (searchX >= 0 && searchY >= 0 && (NSUInteger)searchX < width && (NSUInteger)searchY < height) {
 					pixelData = AKGetPixelDataFromRGBA8888Data(rawRGBA8888Data, width, height, searchX, searchY);
 				}
 				
-				if (searchX != x &&
-					searchY != y &&
+				if ((NSUInteger)searchX != x &&
+					(NSUInteger)searchY != y &&
 					(searchX < 0 ||
 					 searchY < 0 ||
-					 searchX >= width ||
-					 searchY >= height ||
+					 (NSUInteger)searchX >= width ||
+					 (NSUInteger)searchY >= height ||
 					 pixelData.alpha == 0)) {
 					CGFloat searchDistance = DistanceBetweenTwoPoints(CGPointMake(x, y),
 																	  CGPointMake(searchX, searchY));

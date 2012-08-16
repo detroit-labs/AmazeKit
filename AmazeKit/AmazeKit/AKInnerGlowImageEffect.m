@@ -66,7 +66,7 @@
 	uint8_t *rawData = (uint8_t *)[pixelData bytes];
 	
 	// Walk the image, finding empty pixels and going off accordingly.
-	dispatch_apply(height, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^(size_t y) {
+	dispatch_apply(height, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t y) {
 		CGPoint point;
 		point.y = y;
 		
@@ -114,7 +114,7 @@
 			CGFloat alpha = buffer[(width * y) + x];
 			
 			if (alpha != 0.0f) {
-				for (int i = 0; i < numberOfComponents; i++) {
+				for (size_t i = 0; i < numberOfComponents; i++) {
 					CGFloat colorComponent = colorComponents[i];
 					CGFloat premultipliedColor = colorComponent * alpha;
 					
