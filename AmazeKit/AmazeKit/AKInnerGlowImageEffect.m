@@ -17,6 +17,7 @@
 @implementation AKInnerGlowImageEffect
 
 @synthesize color = _color;
+@synthesize maxEdgeDistance = _maxEdgeDistance;
 @synthesize radius = _radius;
 
 + (BOOL)canRenderIndividually
@@ -81,23 +82,27 @@
 	// Walk the image, finding empty pixels and going off accordingly.
 	for (NSUInteger y = 0; y < height; y++) {
 		for (CGFloat x = 0; x < width; x++) {
-			CGPoint point;
-			point.y = y;
-			point.x = x;
-			
-			CGFloat distance = DistanceToNearestEmptyPixel(pixelDataBuffer, width, height, x, y, radius, NULL);
-			
-			if (distance <= radius) {
-				NSUInteger offset = (width * y) + x;
-
-				AKPixelData pixelData = pixelDataBuffer[offset];
-				CGFloat existingAlpha = (CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX;
-				CGFloat strength = (1.0 - (sqrtf(distance) / sqrtf(radius))) * existingAlpha;
-				
-				if (pixelData.alpha != 0 && buffer[offset] < strength) {
-					buffer[offset] = strength;
+			if (_maxEdgeDistance == 0.0f ||
+				((y <= _maxEdgeDistance || height - y <= _maxEdgeDistance) &&
+				 (x <= _maxEdgeDistance || width - x <= _maxEdgeDistance))) {
+					CGPoint point;
+					point.y = y;
+					point.x = x;
+					
+					CGFloat distance = DistanceToNearestEmptyPixel(pixelDataBuffer, width, height, x, y, radius, NULL);
+					
+					if (distance <= radius) {
+						NSUInteger offset = (width * y) + x;
+						
+						AKPixelData pixelData = pixelDataBuffer[offset];
+						CGFloat existingAlpha = (CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX;
+						CGFloat strength = (1.0 - (sqrtf(distance) / sqrtf(radius))) * existingAlpha;
+						
+						if (pixelData.alpha != 0 && buffer[offset] < strength) {
+							buffer[offset] = strength;
+						}
+					}
 				}
-			}
 		}
 	}
 	

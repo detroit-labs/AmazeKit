@@ -18,6 +18,9 @@
 // The radius of the glow, in points.
 @property (readonly) CGFloat	radius;
 
+// If you know the middle is opaque, set this for performance benefits.
+@property (readwrite, nonatomic, assign) CGFloat	maxEdgeDistance;
+
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 			  color:(UIColor *)color
