@@ -65,29 +65,44 @@
 	NSData *pixelData = [sourceImage AK_rawRGBA8888Data];
 	uint8_t *rawData = (uint8_t *)[pixelData bytes];
 	
+	// Make a buffer of pixel data structs
+	AKPixelData *pixelDataBuffer = calloc(width * height, sizeof(AKPixelData));
+	
+	for (NSUInteger y = 0; y < height; y++) {
+		for (NSUInteger x = 0; x < width; x++) {
+			pixelDataBuffer[(y * width) + x] = AKGetPixelDataFromRGBA8888Data(rawData,
+																			  width,
+																			  height,
+																			  x,
+																			  y);
+		}
+	}
+	
 	// Walk the image, finding empty pixels and going off accordingly.
-	dispatch_apply(height, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t y) {
-		CGPoint point;
-		point.y = y;
-		
+	for (NSUInteger y = 0; y < height; y++) {
 		for (CGFloat x = 0; x < width; x++) {
+			CGPoint point;
+			point.y = y;
 			point.x = x;
 			
-			CGFloat distance = DistanceToNearestEmptyPixel(rawData, width, height, x, y, radius, NULL);
+			CGFloat distance = DistanceToNearestEmptyPixel(pixelDataBuffer, width, height, x, y, radius, NULL);
 			
 			if (distance <= radius) {
-				AKPixelData pixelData = AKGetPixelDataFromRGBA8888Data(rawData, width, height, x, y);
+				NSUInteger offset = (width * y) + x;
+
+				AKPixelData pixelData = pixelDataBuffer[offset];
 				CGFloat existingAlpha = (CGFloat)pixelData.alpha / (CGFloat)UINT8_MAX;
 				CGFloat strength = (1.0 - (sqrtf(distance) / sqrtf(radius))) * existingAlpha;
-				
-				NSUInteger offset = (width * y) + x;
 				
 				if (pixelData.alpha != 0 && buffer[offset] < strength) {
 					buffer[offset] = strength;
 				}
 			}
 		}
-	});
+	}
+	
+	free(pixelDataBuffer);
+	pixelDataBuffer = NULL;
 	
 	// Create an image context to draw into.
 	CGColorRef colorRef = [[self color] CGColor];

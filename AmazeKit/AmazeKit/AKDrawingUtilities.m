@@ -23,7 +23,7 @@ CGFloat DistanceBetweenTwoPoints(CGPoint point1, CGPoint point2)
 	return sqrtf((dx * dx) + (dy * dy));
 }
 
-CGFloat DistanceToNearestEmptyPixel(uint8_t *rawRGBA8888Data,
+CGFloat DistanceToNearestEmptyPixel(AKPixelData *pixelDataBuffer,
 									NSUInteger width,
 									NSUInteger height,
 									NSUInteger x,
@@ -41,7 +41,7 @@ CGFloat DistanceToNearestEmptyPixel(uint8_t *rawRGBA8888Data,
 				AKPixelData pixelData = AKPixelDataZero;
 				
 				if (searchX >= 0 && searchY >= 0 && (NSUInteger)searchX < width && (NSUInteger)searchY < height) {
-					pixelData = AKGetPixelDataFromRGBA8888Data(rawRGBA8888Data, width, height, searchX, searchY);
+					pixelData = pixelDataBuffer[(y * width) + x];
 				}
 				
 				if ((NSUInteger)searchX != x &&
