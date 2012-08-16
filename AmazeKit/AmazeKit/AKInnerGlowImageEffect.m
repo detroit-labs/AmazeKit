@@ -40,12 +40,14 @@
 		  blendMode:(CGBlendMode)blendMode
 			  color:(UIColor *)color
 			 radius:(CGFloat)radius
+	maxEdgeDistance:(CGFloat)maxEdgeDistance
 {
 	self = [self initWithAlpha:alpha blendMode:blendMode];
 	
 	if (self) {
 		_color = color;
 		_radius = radius;
+		_maxEdgeDistance = maxEdgeDistance;
 	}
 	
 	return self;

@@ -19,11 +19,12 @@
 @property (readonly) CGFloat	radius;
 
 // If you know the middle is opaque, set this for performance benefits.
-@property (readwrite, nonatomic, assign) CGFloat	maxEdgeDistance;
+@property (readonly) CGFloat	maxEdgeDistance;
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 			  color:(UIColor *)color
-			 radius:(CGFloat)radius;
+			 radius:(CGFloat)radius
+	maxEdgeDistance:(CGFloat)maxEdgeDistance;
 
 @end
