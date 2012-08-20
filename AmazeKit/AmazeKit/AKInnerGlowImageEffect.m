@@ -59,7 +59,12 @@
 	NSUInteger width = sourceImageSize.width * [sourceImage scale];
 	NSUInteger height = sourceImageSize.height * [sourceImage scale];
 	
+	if (width == 0 || height == 0) {
+		return nil;
+	}
+
 	CGFloat radius = [self radius] * [sourceImage scale];
+	CGFloat maxEdgeDistance = [self maxEdgeDistance] * [sourceImage scale];
 	
 	// Create a buffer to fill in with alpha data
 	CGFloat *buffer = calloc(width * height, sizeof(CGFloat));
@@ -84,9 +89,9 @@
 	// Walk the image, finding empty pixels and going off accordingly.
 	for (NSUInteger y = 0; y < height; y++) {
 		for (CGFloat x = 0; x < width; x++) {
-			if (_maxEdgeDistance == 0.0f ||
-				((y <= _maxEdgeDistance || height - y <= _maxEdgeDistance) &&
-				 (x <= _maxEdgeDistance || width - x <= _maxEdgeDistance))) {
+			if (maxEdgeDistance == 0.0f ||
+				((y <= maxEdgeDistance || height - y <= maxEdgeDistance) &&
+				 (x <= maxEdgeDistance || width - x <= maxEdgeDistance))) {
 					CGPoint point;
 					point.y = y;
 					point.x = x;
