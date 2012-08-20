@@ -25,4 +25,9 @@ extern NSString * const AKImageRendererOptionKeyInitialBackgroundColor;
 - (NSString *)representativeHashWithOptions:(NSDictionary *)options;
 - (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
 
+// A dictionary representing previously-rendered images, useful for generating pre-rendered images
+// at app startup. The keys are the size turned into a string, and the values are a set containing
+// the options dictionaries passed for that size or an NSNull object to represent nil options.
+- (NSDictionary *)renderedImages;
+
 @end

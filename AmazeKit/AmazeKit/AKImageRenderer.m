@@ -25,7 +25,9 @@ static NSString * const kImageEffectsKey = @"imageEffects";
 static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 
 
-@interface AKImageRenderer()
+@interface AKImageRenderer() {
+	NSMutableDictionary	*_renderedImages;
+}
 
 - (BOOL)renderedImageExistsForSize:(CGSize)size
 						 withScale:(CGFloat)scale
@@ -111,6 +113,20 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 		});
 	}
 	
+	// Save the image options.
+	if (_renderedImages == nil) {
+		_renderedImages = [[NSMutableDictionary alloc] init];
+	}
+	
+	NSSet *savedImages = [_renderedImages objectForKey:NSStringFromCGSize(size)];
+	if (savedImages == nil) {
+		savedImages = [NSSet set];
+	}
+	
+	savedImages = [savedImages setByAddingObject:(options == nil ? [NSNull null] : options)];
+	
+	[_renderedImages setObject:savedImages forKey:NSStringFromCGSize(size)];
+	
 	return image;
 }
 
@@ -181,6 +197,11 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 {
 	[[AKFileManager defaultManager] cacheImage:image
 									   forHash:[self representativeHashWithOptions:options]];
+}
+
+- (NSDictionary *)renderedImages
+{
+	return [NSDictionary dictionaryWithDictionary:_renderedImages];
 }
 
 @end
