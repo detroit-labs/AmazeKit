@@ -118,14 +118,16 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 		_renderedImages = [[NSMutableDictionary alloc] init];
 	}
 	
-	NSSet *savedImages = [_renderedImages objectForKey:NSStringFromCGSize(size)];
-	if (savedImages == nil) {
-		savedImages = [NSSet set];
+	@synchronized(_renderedImages) {
+		NSSet *savedImages = [_renderedImages objectForKey:NSStringFromCGSize(size)];
+		if (savedImages == nil) {
+			savedImages = [NSSet set];
+		}
+		
+		savedImages = [savedImages setByAddingObject:(options == nil ? [NSNull null] : options)];
+		
+		[_renderedImages setObject:savedImages forKey:NSStringFromCGSize(size)];
 	}
-	
-	savedImages = [savedImages setByAddingObject:(options == nil ? [NSNull null] : options)];
-	
-	[_renderedImages setObject:savedImages forKey:NSStringFromCGSize(size)];
 	
 	return image;
 }
