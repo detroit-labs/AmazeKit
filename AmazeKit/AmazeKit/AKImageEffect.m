@@ -86,8 +86,6 @@ static NSString * const kBlendModeKey = @"blendMode";
 	
 	CGContextSetAlpha(context, [self alpha]);
 	CGContextSetBlendMode(context, [self blendMode]);
-	
-	// TODO: Add more appearance properties.
 }
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage

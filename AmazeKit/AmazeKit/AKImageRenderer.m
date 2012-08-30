@@ -106,11 +106,8 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 												  }
 											  }];
 		
-		// TODO: Create a framework-wide serial queue for I/O access
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0ul), ^{
-			[self saveImage:image
-					options:options];
-		});
+		[self saveImage:image
+				options:options];
 	}
 	
 	// Save the image options.
@@ -188,7 +185,6 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 								  withScale:(CGFloat)scale
 									options:(NSDictionary *)options
 {
-	// TODO: options
 	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHashWithOptions:options]
 													   atSize:size
 													withScale:scale];

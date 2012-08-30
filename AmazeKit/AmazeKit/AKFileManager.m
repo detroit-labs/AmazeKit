@@ -11,7 +11,11 @@
 
 #import "AKDrawingUtilities.h"
 
-@interface AKFileManager()
+@interface AKFileManager() {
+	NSOperationQueue	*_imageIOQueue;
+}
+
+- (NSOperationQueue *)imageIOQueue;
 
 - (NSString *)pathForHash:(NSString *)hash
 				   atSize:(CGSize)size
@@ -87,9 +91,20 @@
 						  atSize:(CGSize)size
 					   withScale:(CGFloat)scale
 {
-	return [[NSFileManager defaultManager] fileExistsAtPath:[self pathForHash:descriptionHash
-																	   atSize:size
-																	withScale:scale]];
+	__block BOOL imageExists = NO;
+	
+	NSString *path = [self pathForHash:descriptionHash
+								atSize:size
+							 withScale:scale];
+	
+	NSBlockOperation *imageExistsOperation = [NSBlockOperation blockOperationWithBlock:^{
+		imageExists = [[NSFileManager defaultManager] fileExistsAtPath:path];
+	}];
+	
+	[[self imageIOQueue] addOperation:imageExistsOperation];
+	[imageExistsOperation waitUntilFinished];
+	
+	return imageExists;
 }
 
 - (void)cacheImage:(UIImage *)image forHash:(NSString *)descriptionHash
@@ -101,19 +116,42 @@
 									atSize:[image size]
 								 withScale:[image scale]];
 		
-		NSError *error = nil;
-		BOOL success = [imageData writeToFile:path
-									  options:NSDataWritingAtomic
-										error:&error];
+		__block NSError *error = nil;
+		__block BOOL success = NO;
 		
-		if (success == NO) {
-			NSLog(@"Could not cache image with size %@ and scale %.0f to path: %@ error: %@",
-				  NSStringFromCGSize([image size]),
-				  [image scale],
-				  path,
-				  [error localizedDescription]);
-		}
+		NSBlockOperation *imageWritingOperation = [NSBlockOperation blockOperationWithBlock:^{
+			success = [imageData writeToFile:path
+									 options:NSDataWritingAtomic
+									   error:&error];
+			
+			if (success == NO) {
+				NSLog(@"Could not cache image with size %@ and scale %.0f to path: %@ error: %@",
+					  NSStringFromCGSize([image size]),
+					  [image scale],
+					  path,
+					  [error localizedDescription]);
+			}
+		}];
+		
+		// We want writing operations to have a higher priority to minimize the chance that multiple
+		// threads would try to render the same image.
+		[imageWritingOperation setQueuePriority:NSOperationQueuePriorityHigh];
+		
+		[[self imageIOQueue] addOperation:imageWritingOperation];
 	}
+}
+
+- (NSOperationQueue *)imageIOQueue
+{
+	if (_imageIOQueue == nil) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			_imageIOQueue = [[NSOperationQueue alloc] init];
+			[_imageIOQueue setName:@"AmazeKit Image I/O Queue"];
+		});
+	}
+	
+	return _imageIOQueue;
 }
 
 - (NSString *)pathForHash:(NSString *)hash
@@ -123,11 +161,26 @@
 	NSString *cachePath = [[self class] amazeKitCachePath];
 	NSString *baseHashPath = [[cachePath stringByAppendingPathComponent:@"__RenderedImageCache__"] stringByAppendingPathComponent:hash];
 	
-	BOOL isDirectory;
-	BOOL directoryExists = [[NSFileManager defaultManager] fileExistsAtPath:baseHashPath isDirectory:&isDirectory];
+	__block BOOL isDirectory;
+	__block BOOL directoryExists = NO;
+	
+	NSBlockOperation *directoryExistsOperation = [NSBlockOperation blockOperationWithBlock:^{
+		directoryExists = [[NSFileManager defaultManager] fileExistsAtPath:baseHashPath
+															   isDirectory:&isDirectory];
+	}];
+	
+	[[self imageIOQueue] addOperation:directoryExistsOperation];
+	[directoryExistsOperation waitUntilFinished];
 	
 	if (directoryExists == YES && isDirectory == NO) {
-		BOOL success = [[NSFileManager defaultManager] removeItemAtPath:baseHashPath error:NULL];
+		__block BOOL success = NO;
+		
+		NSBlockOperation *removeItemOperation = [NSBlockOperation blockOperationWithBlock:^{
+			success = [[NSFileManager defaultManager] removeItemAtPath:baseHashPath error:NULL];
+		}];
+		
+		[[self imageIOQueue] addOperation:removeItemOperation];
+		[removeItemOperation waitUntilFinished];		
 		
 		if (success == YES) {
 			directoryExists = NO;
@@ -135,10 +188,15 @@
 	}
 	
 	if (directoryExists == NO) {
-		[[NSFileManager defaultManager] createDirectoryAtPath:baseHashPath
-								  withIntermediateDirectories:YES
-												   attributes:nil
-														error:NULL];
+		NSBlockOperation *createDirectoryOperation = [NSBlockOperation blockOperationWithBlock:^{
+			[[NSFileManager defaultManager] createDirectoryAtPath:baseHashPath
+									  withIntermediateDirectories:YES
+													   attributes:nil
+															error:NULL];
+		}];
+		
+		[[self imageIOQueue] addOperation:createDirectoryOperation];
+		[createDirectoryOperation waitUntilFinished];
 	}
 		
 	NSString *dimensionsRepresentation = [NSString stringWithFormat:@"{%dx%dx%d}",
@@ -146,7 +204,8 @@
 										  (int)size.height,
 										  (int)scale];
 	
-	NSString *imagePath = [[baseHashPath stringByAppendingPathComponent:dimensionsRepresentation] stringByAppendingPathExtension:@"png"];
+	NSString *imagePath = [[baseHashPath stringByAppendingPathComponent:dimensionsRepresentation]
+						   stringByAppendingPathExtension:@"png"];
 	
 	return imagePath;
 }
