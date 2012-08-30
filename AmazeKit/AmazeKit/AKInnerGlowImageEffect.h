@@ -7,24 +7,14 @@
 //
 
 
-#import "AKImageEffect.h"
+#import "AKInnerShadowImageEffect.h"
 
 
-@interface AKInnerGlowImageEffect : AKImageEffect
-
-// The color of the glow. Defaults to white.
-@property (readonly) UIColor	*color;
-
-// The radius of the glow, in points.
-@property (readonly) CGFloat	radius;
-
-// If you know the middle is opaque, set this for performance benefits.
-@property (readonly) CGFloat	maxEdgeDistance;
+@interface AKInnerGlowImageEffect : AKInnerShadowImageEffect
 
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 			  color:(UIColor *)color
-			 radius:(CGFloat)radius
-	maxEdgeDistance:(CGFloat)maxEdgeDistance;
+			 radius:(CGFloat)radius;
 
 @end

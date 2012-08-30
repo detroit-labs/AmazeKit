@@ -23,6 +23,11 @@
 		1F7E80C515D959A70050D130 /* UIImage+AKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E80C315D959A70050D130 /* UIImage+AKCryptography.m */; };
 		1F83BA9C15D0191C00254D53 /* AKMaskImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */; };
 		1F83BA9D15D0191C00254D53 /* AKMaskImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */; };
+		1F96924715EEE9A700D5AE37 /* AKInnerShadowImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F96924515EEE9A700D5AE37 /* AKInnerShadowImageEffect.h */; };
+		1F96924815EEE9A700D5AE37 /* AKInnerShadowImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F96924615EEE9A700D5AE37 /* AKInnerShadowImageEffect.m */; };
+		1F96925115EEFAA800D5AE37 /* UIImage+AKMasking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F96924F15EEFAA800D5AE37 /* UIImage+AKMasking.h */; };
+		1F96925215EEFAA800D5AE37 /* UIImage+AKMasking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F96925015EEFAA800D5AE37 /* UIImage+AKMasking.m */; };
+		1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FA641921586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */; };
 		1FA641A21586D12E00350AC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641A11586D12E00350AC6 /* UIKit.framework */; };
@@ -57,7 +62,6 @@
 		1FDCA63E1587E0040010B272 /* AKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA63D1587E0040010B272 /* AKAppDelegate.m */; };
 		1FDCA6411587E0040010B272 /* AKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA6401587E0040010B272 /* AKViewController.m */; };
 		1FDCA6441587E0040010B272 /* AKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDCA6421587E0040010B272 /* AKViewController.xib */; };
-		1FDCA64B1587E0100010B272 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FEC1AC315C1C33E00C5C0D1 /* AKPatternImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FEC1AC115C1C33E00C5C0D1 /* AKPatternImageEffect.h */; };
 		1FEC1AC415C1C33E00C5C0D1 /* AKPatternImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC1AC215C1C33E00C5C0D1 /* AKPatternImageEffect.m */; };
 		1FFDAC2D1587828A00837D3A /* UIImage+AKPixelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */; };
@@ -65,14 +69,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1FA641A41586D12E00350AC6 /* PBXContainerItemProxy */ = {
+		1F96925315EEFDFC00D5AE37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FA641851586D12E00350AC6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1FA6418D1586D12E00350AC6;
 			remoteInfo = AmazeKit;
 		};
-		1FDCA6491587E00C0010B272 /* PBXContainerItemProxy */ = {
+		1FA641A41586D12E00350AC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FA641851586D12E00350AC6 /* Project object */;
 			proxyType = 1;
@@ -98,6 +102,10 @@
 		1F7E80C315D959A70050D130 /* UIImage+AKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AKCryptography.m"; sourceTree = "<group>"; };
 		1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKMaskImageEffect.h; sourceTree = "<group>"; };
 		1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKMaskImageEffect.m; sourceTree = "<group>"; };
+		1F96924515EEE9A700D5AE37 /* AKInnerShadowImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKInnerShadowImageEffect.h; sourceTree = "<group>"; };
+		1F96924615EEE9A700D5AE37 /* AKInnerShadowImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKInnerShadowImageEffect.m; sourceTree = "<group>"; };
+		1F96924F15EEFAA800D5AE37 /* UIImage+AKMasking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AKMasking.h"; sourceTree = "<group>"; };
+		1F96925015EEFAA800D5AE37 /* UIImage+AKMasking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AKMasking.m"; sourceTree = "<group>"; };
 		1FA6418E1586D12E00350AC6 /* libAmazeKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAmazeKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA641911586D12E00350AC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1FA641961586D12E00350AC6 /* AmazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazeKit.h; sourceTree = "<group>"; };
@@ -168,10 +176,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */,
 				1FDCA6321587E0040010B272 /* CoreGraphics.framework in Frameworks */,
 				1FDCA6311587E0040010B272 /* Foundation.framework in Frameworks */,
 				1FDCA6301587E0040010B272 /* UIKit.framework in Frameworks */,
-				1FDCA64B1587E0100010B272 /* libAmazeKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */,
-				1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -191,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				1F7D4703158CC48A00ABF10D /* AKFileManager.h */,
-				1F7D4704158CC48A00ABF10D /* AKFileManager.m */,
 			);
 			name = "File Manager";
 			sourceTree = "<group>";
@@ -265,22 +271,27 @@
 		1FA641BC1586D27800350AC6 /* Image Effects */ = {
 			isa = PBXGroup;
 			children = (
-				1FA641BD1586D38000350AC6 /* AKImageEffect.h */,
-				1FA641BE1586D38000350AC6 /* AKImageEffect.m */,
 				1FDCA5B11587AC5F0010B272 /* AKButtonBevelImageEffect.h */,
 				1FDCA5B21587AC5F0010B272 /* AKButtonBevelImageEffect.m */,
+				1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */,
 				1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */,
 				1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */,
-				1F0775FC15D6ED610063F923 /* AKMutableColorImageEffect.h */,
-				1F0775FD15D6ED610063F923 /* AKMutableColorImageEffect.m */,
 				1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */,
 				1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */,
+				1FB27E671598F45700347D3D /* AKDrawingUtilities.m */,
+				1F7D4704158CC48A00ABF10D /* AKFileManager.m */,
 				1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */,
 				1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */,
+				1FA641BD1586D38000350AC6 /* AKImageEffect.h */,
+				1FA641BE1586D38000350AC6 /* AKImageEffect.m */,
 				1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */,
 				1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */,
+				1F96924515EEE9A700D5AE37 /* AKInnerShadowImageEffect.h */,
+				1F96924615EEE9A700D5AE37 /* AKInnerShadowImageEffect.m */,
 				1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */,
 				1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */,
+				1F0775FC15D6ED610063F923 /* AKMutableColorImageEffect.h */,
+				1F0775FD15D6ED610063F923 /* AKMutableColorImageEffect.m */,
 				1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */,
 				1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */,
 				1FEC1AC115C1C33E00C5C0D1 /* AKPatternImageEffect.h */,
@@ -302,7 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				1FB27E661598F45700347D3D /* AKDrawingUtilities.h */,
-				1FB27E671598F45700347D3D /* AKDrawingUtilities.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -340,6 +350,8 @@
 				1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */,
 				1F7E80C215D959A70050D130 /* UIImage+AKCryptography.h */,
 				1F7E80C315D959A70050D130 /* UIImage+AKCryptography.m */,
+				1F96924F15EEFAA800D5AE37 /* UIImage+AKMasking.h */,
+				1F96925015EEFAA800D5AE37 /* UIImage+AKMasking.m */,
 				1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */,
 				1FFDAC2C1587828A00837D3A /* UIImage+AKPixelData.m */,
 				1F07760115D820010063F923 /* UIView+AKScaleInfo.h */,
@@ -375,6 +387,8 @@
 				1F0775FE15D6ED610063F923 /* AKMutableColorImageEffect.h in Headers */,
 				1F07760315D820010063F923 /* UIView+AKScaleInfo.h in Headers */,
 				1F7E80C415D959A70050D130 /* UIImage+AKCryptography.h in Headers */,
+				1F96924715EEE9A700D5AE37 /* AKInnerShadowImageEffect.h in Headers */,
+				1F96925115EEFAA800D5AE37 /* UIImage+AKMasking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +442,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1FDCA64A1587E00C0010B272 /* PBXTargetDependency */,
+				1F96925415EEFDFC00D5AE37 /* PBXTargetDependency */,
 			);
 			name = SampleApp;
 			productName = SampleApp;
@@ -523,6 +537,8 @@
 				1F0775FF15D6ED610063F923 /* AKMutableColorImageEffect.m in Sources */,
 				1F07760415D820010063F923 /* UIView+AKScaleInfo.m in Sources */,
 				1F7E80C515D959A70050D130 /* UIImage+AKCryptography.m in Sources */,
+				1F96924815EEE9A700D5AE37 /* AKInnerShadowImageEffect.m in Sources */,
+				1F96925215EEFAA800D5AE37 /* UIImage+AKMasking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,15 +563,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F96925415EEFDFC00D5AE37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FA6418D1586D12E00350AC6 /* AmazeKit */;
+			targetProxy = 1F96925315EEFDFC00D5AE37 /* PBXContainerItemProxy */;
+		};
 		1FA641A51586D12E00350AC6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1FA6418D1586D12E00350AC6 /* AmazeKit */;
 			targetProxy = 1FA641A41586D12E00350AC6 /* PBXContainerItemProxy */;
-		};
-		1FDCA64A1587E00C0010B272 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1FA6418D1586D12E00350AC6 /* AmazeKit */;
-			targetProxy = 1FDCA6491587E00C0010B272 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

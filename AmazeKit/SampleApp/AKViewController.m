@@ -81,9 +81,21 @@
 		// Bevel Effect
 		bevelEffect = [[AKButtonBevelImageEffect alloc] init];
 		
+		// Rounded Corners
+		AKImageEffect *roundedCornerEffect = [[AKCornerRadiusImageEffect alloc] initWithAlpha:1.0f blendMode:kCGBlendModeNormal cornerRadii:AKCornerRadiiMake(40.0f, 10.0f, 5.0f, 80.0f)];
+		
+		// Inner Glow
+		AKInnerGlowImageEffect *innerGlowEffect =
+		[[AKInnerGlowImageEffect alloc] initWithAlpha:0.25f
+											blendMode:kCGBlendModeMultiply
+												color:[UIColor blackColor]
+											   radius:10.0f];
+		
 		[buttonRenderer setImageEffects:@[noiseEffect,
 										 gradientEffect,
 										 colorEffect,
+										 roundedCornerEffect,
+										 innerGlowEffect,
 										 bevelEffect]];
 	}
 	
@@ -144,8 +156,7 @@
 																												green:0.0f
 																												 blue:0.0f
 																												alpha:1.0f]
-																						 radius:5.0f
-																				maxEdgeDistance:5.0f];
+																						 radius:5.0f];
 		
 		[onButtonRenderer setImageEffects:@[noiseEffect,
 										   onGradientEffect,
