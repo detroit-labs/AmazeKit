@@ -70,7 +70,7 @@ static NSString * const kOffsetKey = @"offset";
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
-	UIImage *reverseMask = [sourceImage AK_reverseMaskImage];
+	UIImage *reverseMask = [sourceImage AK_reverseMaskImageNoFeather];
 	
 	CGSize originalImageSize = [sourceImage size];
 	CGFloat originalImageWidth = originalImageSize.width;
@@ -113,8 +113,7 @@ static NSString * const kOffsetKey = @"offset";
 	
 	UIGraphicsEndImageContext();
 	
-	// Context 2: Draw the original image, then the outer border with a shadow, all maksed to the
-	//            original image
+	// Context 2: Draw the outer border with a shadow, maksed to the original image
 	UIGraphicsBeginImageContextWithOptions(CGSizeMake(frameWidth,
 													  frameHeight),
 										   NO,
@@ -132,12 +131,7 @@ static NSString * const kOffsetKey = @"offset";
 	
 	CGContextClipToMask(context, originalImageRect, [sourceImage CGImage]);
 	
-	CGContextDrawImage(context, originalImageRect, [sourceImage CGImage]);
-	
 	CGContextSetShadowWithColor(context, [self offset], radius, [[self color] CGColor]);
-	
-	CGContextSetAlpha(context, [self alpha]);
-	CGContextSetBlendMode(context, [self blendMode]);
 	
 	CGContextDrawImage(context,
 					   CGRectMake(0.0f, 0.0f, frameWidth, frameHeight),
@@ -164,11 +158,27 @@ static NSString * const kOffsetKey = @"offset";
 										   frameHeight),
 					   [maskedImage CGImage]);
 	
-	UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIImage *shadowImage = UIGraphicsGetImageFromCurrentImageContext();
 	
 	UIGraphicsEndImageContext();
 	
-	return finalImage;
+	// Context 4: Render the original image, then the shadow with appearance options.
+	UIGraphicsBeginImageContextWithOptions(originalImageSize, NO, [sourceImage scale]);
+	context = UIGraphicsGetCurrentContext();
+	
+	CGContextTranslateCTM(context, 0.0f, originalImageHeight);
+	CGContextScaleCTM(context, 1.0f, -1.0f);
+	
+	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, originalImageWidth, originalImageHeight), [sourceImage CGImage]);
+	
+	[self applyAppearanceProperties];
+	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, originalImageWidth, originalImageHeight), [shadowImage CGImage]);
+	
+	UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+	
+	UIGraphicsEndImageContext();
+	
+	return renderedImage;
 }
 
 - (NSDictionary *)representativeDictionary
