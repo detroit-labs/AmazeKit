@@ -12,9 +12,11 @@
 #import "AKDrawingUtilities.h"
 
 @interface AKFileManager() {
+	NSFileManager   	*_fileManager;
 	NSOperationQueue	*_imageIOQueue;
 }
 
+- (NSFileManager *)fileManager;
 - (NSOperationQueue *)imageIOQueue;
 
 - (NSString *)pathForHash:(NSString *)hash
@@ -98,7 +100,7 @@
 							 withScale:scale];
 	
 	NSBlockOperation *imageExistsOperation = [NSBlockOperation blockOperationWithBlock:^{
-		imageExists = [[NSFileManager defaultManager] fileExistsAtPath:path];
+		imageExists = [[self fileManager] fileExistsAtPath:path];
 	}];
 	
 	[[self imageIOQueue] addOperation:imageExistsOperation];
@@ -141,6 +143,18 @@
 	}
 }
 
+- (NSFileManager *)fileManager
+{
+	if (_fileManager == nil) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			_fileManager = [[NSFileManager alloc] init];
+		});
+	}
+	
+	return _fileManager;
+}
+
 - (NSOperationQueue *)imageIOQueue
 {
 	if (_imageIOQueue == nil) {
@@ -165,8 +179,8 @@
 	__block BOOL directoryExists = NO;
 	
 	NSBlockOperation *directoryExistsOperation = [NSBlockOperation blockOperationWithBlock:^{
-		directoryExists = [[NSFileManager defaultManager] fileExistsAtPath:baseHashPath
-															   isDirectory:&isDirectory];
+		directoryExists = [[self fileManager] fileExistsAtPath:baseHashPath
+												   isDirectory:&isDirectory];
 	}];
 	
 	[[self imageIOQueue] addOperation:directoryExistsOperation];
@@ -176,11 +190,11 @@
 		__block BOOL success = NO;
 		
 		NSBlockOperation *removeItemOperation = [NSBlockOperation blockOperationWithBlock:^{
-			success = [[NSFileManager defaultManager] removeItemAtPath:baseHashPath error:NULL];
+			success = [[self fileManager] removeItemAtPath:baseHashPath error:NULL];
 		}];
 		
 		[[self imageIOQueue] addOperation:removeItemOperation];
-		[removeItemOperation waitUntilFinished];		
+		[removeItemOperation waitUntilFinished];
 		
 		if (success == YES) {
 			directoryExists = NO;
@@ -189,16 +203,16 @@
 	
 	if (directoryExists == NO) {
 		NSBlockOperation *createDirectoryOperation = [NSBlockOperation blockOperationWithBlock:^{
-			[[NSFileManager defaultManager] createDirectoryAtPath:baseHashPath
-									  withIntermediateDirectories:YES
-													   attributes:nil
-															error:NULL];
+			[[self fileManager] createDirectoryAtPath:baseHashPath
+						  withIntermediateDirectories:YES
+										   attributes:nil
+												error:NULL];
 		}];
 		
 		[[self imageIOQueue] addOperation:createDirectoryOperation];
 		[createDirectoryOperation waitUntilFinished];
 	}
-		
+	
 	NSString *dimensionsRepresentation = [NSString stringWithFormat:@"{%dx%dx%d}",
 										  (int)size.width,
 										  (int)size.height,
