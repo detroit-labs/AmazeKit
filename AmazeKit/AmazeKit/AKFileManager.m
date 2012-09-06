@@ -290,51 +290,57 @@ static const char * kPNGSoftwareValue = "AmazeKit";
 						 atSize:(CGSize)size
 					  withScale:(CGFloat)scale
 {
-	UIImage *cachedImage = nil;
+	__block UIImage *cachedImage = nil;
 	
 	if ([self cachedImageExistsForHash:descriptionHash
 								atSize:size
 							 withScale:scale] == YES) {
-		NSString *path = [self pathForHash:descriptionHash
-									atSize:size
-								 withScale:scale];
 		
-		NSURL *url = [NSURL fileURLWithPath:path];
-		
-		CFStringRef       myKeys[2];
-		CFTypeRef         myValues[2];
-		
-		myKeys[0] = kCGImageSourceShouldCache;
-		myValues[0] = (CFTypeRef)kCFBooleanTrue;
-		myKeys[1] = kCGImageSourceShouldAllowFloat;
-		myValues[1] = (CFTypeRef)kCFBooleanTrue;
-		
-		CFDictionaryRef options = CFDictionaryCreate(kCFAllocatorDefault,
-													   (const void **) myKeys,
-													   (const void **) myValues,
-													   2,
-													   &kCFTypeDictionaryKeyCallBacks,
-													   &kCFTypeDictionaryValueCallBacks);
-
-		CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)url, options);
-		CFRelease(options);
-		
-		if (imageSource != NULL) {
-			// Create an image from the first item in the image source.
-			CGImageRef baseImage = CGImageSourceCreateImageAtIndex(imageSource,
-																   0,
-																   NULL);
+		NSBlockOperation *imageLoadOperation = [NSBlockOperation blockOperationWithBlock:^{
+			NSString *path = [self pathForHash:descriptionHash
+										atSize:size
+									 withScale:scale];
 			
-			if (baseImage != NULL) {
-				cachedImage = [[UIImage alloc] initWithCGImage:baseImage
-														 scale:scale
-												   orientation:UIImageOrientationUp];
+			NSURL *url = [NSURL fileURLWithPath:path];
+			
+			CFStringRef       myKeys[2];
+			CFTypeRef         myValues[2];
+			
+			myKeys[0] = kCGImageSourceShouldCache;
+			myValues[0] = (CFTypeRef)kCFBooleanTrue;
+			myKeys[1] = kCGImageSourceShouldAllowFloat;
+			myValues[1] = (CFTypeRef)kCFBooleanTrue;
+			
+			CFDictionaryRef options = CFDictionaryCreate(kCFAllocatorDefault,
+														 (const void **) myKeys,
+														 (const void **) myValues,
+														 2,
+														 &kCFTypeDictionaryKeyCallBacks,
+														 &kCFTypeDictionaryValueCallBacks);
+			
+			CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)url, options);
+			CFRelease(options);
+			
+			if (imageSource != NULL) {
+				// Create an image from the first item in the image source.
+				CGImageRef baseImage = CGImageSourceCreateImageAtIndex(imageSource,
+																	   0,
+																	   NULL);
 				
-				CGImageRelease(baseImage);
+				if (baseImage != NULL) {
+					cachedImage = [[UIImage alloc] initWithCGImage:baseImage
+															 scale:scale
+													   orientation:UIImageOrientationUp];
+					
+					CGImageRelease(baseImage);
+				}
+				
+				CFRelease(imageSource);
 			}
+		}];
 		
-			CFRelease(imageSource);
-		}
+		[[self imageIOQueue] addOperation:imageLoadOperation];
+		[imageLoadOperation waitUntilFinished];
 	}
 	
 	return cachedImage;
