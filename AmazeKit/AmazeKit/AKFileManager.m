@@ -46,42 +46,56 @@
 
 + (NSString *)amazeKitCachePath
 {
-	return [[self amazeKitCacheURL] path];
+	static NSString *amazeKitCachePath = nil;
+	
+	if (amazeKitCachePath == nil) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			amazeKitCachePath = [[self amazeKitCacheURL] path];
+		});
+	}
+	
+	return amazeKitCachePath;
 }
 
 + (NSURL *)amazeKitCacheURL
 {
-	NSURL *amazeKitCacheURL = nil;
+	static NSURL *amazeKitCacheURL = nil;
 	
-	NSError *error = nil;
-	NSURL *cachesURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
-															  inDomain:NSUserDomainMask
-													 appropriateForURL:nil
-																create:YES
-																 error:&error];
-	
-	if (cachesURL != nil) {
-		amazeKitCacheURL = [cachesURL URLByAppendingPathComponent:@"__AmazeKitCache__"
-													  isDirectory:YES];
-		
-		BOOL isDirectory = NO;
-		
-		if ([[NSFileManager defaultManager] fileExistsAtPath:[amazeKitCacheURL absoluteString]
-												 isDirectory:&isDirectory] == NO) {
+	if (amazeKitCacheURL == nil) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			NSError *error = nil;
+			NSURL *cachesURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
+																	  inDomain:NSUserDomainMask
+															 appropriateForURL:nil
+																		create:YES
+																		 error:&error];
 			
-			NSError *directoryCreationError = nil;
-			BOOL success = [[NSFileManager defaultManager] createDirectoryAtURL:amazeKitCacheURL
-													withIntermediateDirectories:YES
-																	 attributes:nil
-																		  error:&directoryCreationError];
-			
-			if (success == NO) {
-				NSLog(@"Could not create directory at URL %@, error: %@", amazeKitCacheURL, directoryCreationError);
+			if (cachesURL != nil) {
+				amazeKitCacheURL = [cachesURL URLByAppendingPathComponent:@"__AmazeKitCache__"
+															  isDirectory:YES];
+				
+				BOOL isDirectory = NO;
+				
+				if ([[NSFileManager defaultManager] fileExistsAtPath:[amazeKitCacheURL absoluteString]
+														 isDirectory:&isDirectory] == NO) {
+					
+					NSError *directoryCreationError = nil;
+					BOOL success = [[NSFileManager defaultManager] createDirectoryAtURL:amazeKitCacheURL
+															withIntermediateDirectories:YES
+																			 attributes:nil
+																				  error:&directoryCreationError];
+					
+					if (success == NO) {
+						NSLog(@"Could not create directory at URL %@, error: %@", amazeKitCacheURL, directoryCreationError);
+					}
+				}
 			}
-		}
-	}
-	else {
-		NSLog(@"Error finding caches URL: %@", error);
+			else {
+				NSLog(@"Error finding caches URL: %@", error);
+			}
+		});
 	}
 	
 	return amazeKitCacheURL;
