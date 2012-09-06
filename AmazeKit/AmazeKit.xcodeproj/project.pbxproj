@@ -15,6 +15,11 @@
 		1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */; };
 		1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */; };
 		1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */; };
+		1F60297415F828BB002E48E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDCA5F21587DE110010B272 /* CoreGraphics.framework */; };
+		1F60297715F828BB002E48E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297515F828BB002E48E6 /* QuartzCore.framework */; };
+		1F60297815F828BB002E48E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
+		1F65BBEF15F845BD00393818 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297515F828BB002E48E6 /* QuartzCore.framework */; };
+		1F65BBF015F845BD00393818 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
 		1F735BE81590BF9D00EABF1B /* AKButtonImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */; };
 		1F735BE91590BF9D00EABF1B /* AKButtonImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */; };
 		1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4703158CC48A00ABF10D /* AKFileManager.h */; };
@@ -30,7 +35,6 @@
 		1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FA641921586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */; };
-		1FA641A21586D12E00350AC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641A11586D12E00350AC6 /* UIKit.framework */; };
 		1FA641A31586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FA641A61586D12E00350AC6 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FA641AC1586D12E00350AC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FA641AA1586D12E00350AC6 /* InfoPlist.strings */; };
@@ -54,7 +58,6 @@
 		1FDCA5B41587AC5F0010B272 /* AKButtonBevelImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5B21587AC5F0010B272 /* AKButtonBevelImageEffect.m */; };
 		1FDCA5D91587DAC90010B272 /* AKCornerRadiusImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */; };
 		1FDCA5DA1587DAC90010B272 /* AKCornerRadiusImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */; };
-		1FDCA6301587E0040010B272 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641A11586D12E00350AC6 /* UIKit.framework */; };
 		1FDCA6311587E0040010B272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FDCA6321587E0040010B272 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDCA5F21587DE110010B272 /* CoreGraphics.framework */; };
 		1FDCA6381587E0040010B272 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FDCA6361587E0040010B272 /* InfoPlist.strings */; };
@@ -94,6 +97,8 @@
 		1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AKColorStrings.m"; sourceTree = "<group>"; };
 		1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AKCryptography.h"; sourceTree = "<group>"; };
 		1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AKCryptography.m"; sourceTree = "<group>"; };
+		1F60297515F828BB002E48E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1F60297615F828BB002E48E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKButtonImageCoordinator.h; sourceTree = "<group>"; };
 		1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKButtonImageCoordinator.m; sourceTree = "<group>"; };
 		1F7D4703158CC48A00ABF10D /* AKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKFileManager.h; sourceTree = "<group>"; };
@@ -111,7 +116,6 @@
 		1FA641961586D12E00350AC6 /* AmazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazeKit.h; sourceTree = "<group>"; };
 		1FA6419E1586D12E00350AC6 /* AmazeKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmazeKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		1FA641A11586D12E00350AC6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1FA641A91586D12E00350AC6 /* AmazeKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AmazeKitTests-Info.plist"; sourceTree = "<group>"; };
 		1FA641AB1586D12E00350AC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1FA641AD1586D12E00350AC6 /* AmazeKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazeKitTests.h; sourceTree = "<group>"; };
@@ -157,7 +161,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F60297415F828BB002E48E6 /* CoreGraphics.framework in Frameworks */,
 				1FA641921586D12E00350AC6 /* Foundation.framework in Frameworks */,
+				1F60297715F828BB002E48E6 /* QuartzCore.framework in Frameworks */,
+				1F60297815F828BB002E48E6 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */,
-				1FA641A21586D12E00350AC6 /* UIKit.framework in Frameworks */,
 				1FA641A31586D12E00350AC6 /* Foundation.framework in Frameworks */,
 				1FA641A61586D12E00350AC6 /* libAmazeKit.a in Frameworks */,
 			);
@@ -176,10 +182,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */,
 				1FDCA6321587E0040010B272 /* CoreGraphics.framework in Frameworks */,
 				1FDCA6311587E0040010B272 /* Foundation.framework in Frameworks */,
-				1FDCA6301587E0040010B272 /* UIKit.framework in Frameworks */,
+				1F65BBEF15F845BD00393818 /* QuartzCore.framework in Frameworks */,
+				1F65BBF015F845BD00393818 /* UIKit.framework in Frameworks */,
+				1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				1F7D4703158CC48A00ABF10D /* AKFileManager.h */,
+				1F7D4704158CC48A00ABF10D /* AKFileManager.m */,
 			);
 			name = "File Manager";
 			sourceTree = "<group>";
@@ -226,10 +234,11 @@
 		1FA641901586D12E00350AC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1FA641911586D12E00350AC6 /* Foundation.framework */,
-				1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */,
-				1FA641A11586D12E00350AC6 /* UIKit.framework */,
 				1FDCA5F21587DE110010B272 /* CoreGraphics.framework */,
+				1FA641911586D12E00350AC6 /* Foundation.framework */,
+				1F60297515F828BB002E48E6 /* QuartzCore.framework */,
+				1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */,
+				1F60297615F828BB002E48E6 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,7 +288,6 @@
 				1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */,
 				1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */,
 				1FB27E671598F45700347D3D /* AKDrawingUtilities.m */,
-				1F7D4704158CC48A00ABF10D /* AKFileManager.m */,
 				1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */,
 				1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */,
 				1FA641BD1586D38000350AC6 /* AKImageEffect.h */,
@@ -624,10 +632,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
-				WARNING_CFLAGS = (
-					"-Weverything",
-					"-Werror",
-				);
 			};
 			name = Debug;
 		};
@@ -646,10 +650,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				WARNING_CFLAGS = (
-					"-Weverything",
-					"-Werror",
-				);
 			};
 			name = Release;
 		};
@@ -662,6 +662,10 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Werror",
+				);
 			};
 			name = Debug;
 		};
@@ -674,6 +678,10 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Werror",
+				);
 			};
 			name = Release;
 		};
