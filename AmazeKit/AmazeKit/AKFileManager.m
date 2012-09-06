@@ -15,8 +15,8 @@
 
 
 // Constants
-static const char * kImageType = "public.png";
-static const char * kPNGSoftwareValue = "AmazeKit";
+static const char *kImageType = "public.png";
+static const char *kPNGSoftwareValue = "AmazeKit";
 
 
 @interface AKFileManager() {
