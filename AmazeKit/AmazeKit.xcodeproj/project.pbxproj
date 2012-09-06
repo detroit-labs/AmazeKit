@@ -20,6 +20,8 @@
 		1F60297815F828BB002E48E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
 		1F65BBEF15F845BD00393818 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297515F828BB002E48E6 /* QuartzCore.framework */; };
 		1F65BBF015F845BD00393818 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
+		1F65BBF315F84AE500393818 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65BBF215F84AE500393818 /* ImageIO.framework */; };
+		1F65BBF415F84B4B00393818 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65BBF215F84AE500393818 /* ImageIO.framework */; };
 		1F735BE81590BF9D00EABF1B /* AKButtonImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */; };
 		1F735BE91590BF9D00EABF1B /* AKButtonImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */; };
 		1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4703158CC48A00ABF10D /* AKFileManager.h */; };
@@ -99,6 +101,7 @@
 		1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AKCryptography.m"; sourceTree = "<group>"; };
 		1F60297515F828BB002E48E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1F60297615F828BB002E48E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F65BBF215F84AE500393818 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKButtonImageCoordinator.h; sourceTree = "<group>"; };
 		1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKButtonImageCoordinator.m; sourceTree = "<group>"; };
 		1F7D4703158CC48A00ABF10D /* AKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKFileManager.h; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 			files = (
 				1F60297415F828BB002E48E6 /* CoreGraphics.framework in Frameworks */,
 				1FA641921586D12E00350AC6 /* Foundation.framework in Frameworks */,
+				1F65BBF315F84AE500393818 /* ImageIO.framework in Frameworks */,
 				1F60297715F828BB002E48E6 /* QuartzCore.framework in Frameworks */,
 				1F60297815F828BB002E48E6 /* UIKit.framework in Frameworks */,
 			);
@@ -184,6 +188,7 @@
 			files = (
 				1FDCA6321587E0040010B272 /* CoreGraphics.framework in Frameworks */,
 				1FDCA6311587E0040010B272 /* Foundation.framework in Frameworks */,
+				1F65BBF415F84B4B00393818 /* ImageIO.framework in Frameworks */,
 				1F65BBEF15F845BD00393818 /* QuartzCore.framework in Frameworks */,
 				1F65BBF015F845BD00393818 /* UIKit.framework in Frameworks */,
 				1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */,
@@ -236,6 +241,7 @@
 			children = (
 				1FDCA5F21587DE110010B272 /* CoreGraphics.framework */,
 				1FA641911586D12E00350AC6 /* Foundation.framework */,
+				1F65BBF215F84AE500393818 /* ImageIO.framework */,
 				1F60297515F828BB002E48E6 /* QuartzCore.framework */,
 				1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */,
 				1F60297615F828BB002E48E6 /* UIKit.framework */,

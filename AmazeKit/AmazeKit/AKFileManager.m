@@ -9,7 +9,15 @@
 
 #import "AKFileManager.h"
 
+#import <ImageIO/ImageIO.h>
+
 #import "AKDrawingUtilities.h"
+
+
+// Constants
+static const char * kImageType = "public.png";
+static const char * kPNGSoftwareValue = "AmazeKit";
+
 
 @interface AKFileManager() {
 	NSFileManager   	*_fileManager;
@@ -125,36 +133,76 @@
 
 - (void)cacheImage:(UIImage *)image forHash:(NSString *)descriptionHash
 {
-	NSData *imageData = UIImagePNGRepresentation(image);
+	NSString *path = [self pathForHash:descriptionHash
+								atSize:[image size]
+							 withScale:[image scale]];
 	
-	if (imageData != nil) {
-		NSString *path = [self pathForHash:descriptionHash
-									atSize:[image size]
-								 withScale:[image scale]];
-		
-		__block NSError *error = nil;
-		__block BOOL success = NO;
-		
-		NSBlockOperation *imageWritingOperation = [NSBlockOperation blockOperationWithBlock:^{
-			success = [imageData writeToFile:path
-									 options:NSDataWritingAtomic
-									   error:&error];
-			
-			if (success == NO) {
-				NSLog(@"Could not cache image with size %@ and scale %.0f to path: %@ error: %@",
-					  NSStringFromCGSize([image size]),
-					  [image scale],
-					  path,
-					  [error localizedDescription]);
-			}
-		}];
-		
-		// We want writing operations to have a higher priority to minimize the chance that multiple
-		// threads would try to render the same image.
-		[imageWritingOperation setQueuePriority:NSOperationQueuePriorityHigh];
-		
-		[[self imageIOQueue] addOperation:imageWritingOperation];
+	NSURL *url = [NSURL fileURLWithPath:path];
+	
+	static CFStringRef type = NULL;
+	
+	if (type == NULL) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			type = CFStringCreateWithCString(kCFAllocatorDefault,
+											 kImageType,
+											 kCFStringEncodingASCII);
+		});
 	}
+	
+	static CFDictionaryRef imageOptions = NULL;
+	
+	if (imageOptions == NULL) {
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			CFStringRef values[1];
+			CFStringRef keys[1];
+			
+			CFStringRef softwareValue = CFStringCreateWithCString(kCFAllocatorDefault,
+																  kPNGSoftwareValue,
+																  kCFStringEncodingASCII);
+			
+			keys[0] = kCGImagePropertyPNGSoftware;
+			values[0] = softwareValue;
+			
+			imageOptions = CFDictionaryCreate(kCFAllocatorDefault,
+											  (const void **)keys,
+											  (const void **)values,
+											  1,
+											  &kCFTypeDictionaryKeyCallBacks,
+											  &kCFTypeDictionaryValueCallBacks);
+
+			CFRelease(softwareValue);
+		});
+	}
+	
+	NSBlockOperation *imageWritingOperation = [NSBlockOperation blockOperationWithBlock:^{
+		CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)url,
+																			type,
+																			1,
+																			NULL);
+		
+		CGImageDestinationAddImage(destination, [image CGImage], imageOptions);
+	
+		__block bool success = false;
+	
+		success = CGImageDestinationFinalize(destination);
+		
+		CFRelease(destination);
+		
+		if (success == false) {
+			NSLog(@"Could not cache image with size %@ and scale %.0f to path: %@",
+				  NSStringFromCGSize([image size]),
+				  [image scale],
+				  path);
+		}
+	}];
+	
+	// We want writing operations to have a higher priority to minimize the chance that multiple
+	// threads would try to render the same image.
+	[imageWritingOperation setQueuePriority:NSOperationQueuePriorityHigh];
+	
+	[[self imageIOQueue] addOperation:imageWritingOperation];
 }
 
 - (NSFileManager *)fileManager
@@ -247,14 +295,45 @@
 	if ([self cachedImageExistsForHash:descriptionHash
 								atSize:size
 							 withScale:scale] == YES) {
-		cachedImage = [[UIImage alloc] initWithContentsOfFile:[self pathForHash:descriptionHash
-																		 atSize:size
-																	  withScale:scale]];
+		NSString *path = [self pathForHash:descriptionHash
+									atSize:size
+								 withScale:scale];
 		
-		if ((int)[cachedImage scale] != (int)scale) {
-			cachedImage = [[UIImage alloc] initWithCGImage:[cachedImage CGImage]
-													 scale:scale
-											   orientation:[cachedImage imageOrientation]];
+		NSURL *url = [NSURL fileURLWithPath:path];
+		
+		CFStringRef       myKeys[2];
+		CFTypeRef         myValues[2];
+		
+		myKeys[0] = kCGImageSourceShouldCache;
+		myValues[0] = (CFTypeRef)kCFBooleanTrue;
+		myKeys[1] = kCGImageSourceShouldAllowFloat;
+		myValues[1] = (CFTypeRef)kCFBooleanTrue;
+		
+		CFDictionaryRef options = CFDictionaryCreate(kCFAllocatorDefault,
+													   (const void **) myKeys,
+													   (const void **) myValues,
+													   2,
+													   &kCFTypeDictionaryKeyCallBacks,
+													   &kCFTypeDictionaryValueCallBacks);
+
+		CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)url, options);
+		CFRelease(options);
+		
+		if (imageSource != NULL) {
+			// Create an image from the first item in the image source.
+			CGImageRef baseImage = CGImageSourceCreateImageAtIndex(imageSource,
+																   0,
+																   NULL);
+			
+			if (baseImage != NULL) {
+				cachedImage = [[UIImage alloc] initWithCGImage:baseImage
+														 scale:scale
+												   orientation:UIImageOrientationUp];
+				
+				CGImageRelease(baseImage);
+			}
+		
+			CFRelease(imageSource);
 		}
 	}
 	
