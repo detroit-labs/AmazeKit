@@ -17,15 +17,32 @@
 static NSString * const kFrameKeyPath = @"frame";
 
 
-@implementation AKButtonImageCoordinator
+@implementation AKButtonImageCoordinator {
+	NSMutableArray	*_buttons;
+}
 
 @synthesize offImageRenderer = _offImageRenderer;
 @synthesize onImageRenderer = _onImageRenderer;
 
-#pragma mark -
+#pragma mark - Object Lifecycle
+
+- (void)dealloc
+{
+	for (UIButton *button in _buttons) {
+		[self removeButton:button];
+	}
+}
+
+#pragma mark - Button Image Coordinator Lifecycle
 
 - (void)addButton:(UIButton *)button
 {
+	if (_buttons == nil) {
+		_buttons = [[NSMutableArray alloc] init];
+	}
+	
+	[_buttons addObject:button];
+	
 	[button addObserver:self
 			 forKeyPath:kFrameKeyPath
 				options:(NSKeyValueObservingOptionInitial |
@@ -35,8 +52,12 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)removeButton:(UIButton *)button
 {
-	[button removeObserver:self
-				forKeyPath:kFrameKeyPath];
+	if ([_buttons containsObject:button]) {
+		[_buttons removeObject:button];
+		
+		[button removeObserver:self
+					forKeyPath:kFrameKeyPath];
+	}
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath

@@ -17,14 +17,31 @@
 static NSString * const kFrameKeyPath = @"frame";
 
 
-@implementation AKImageCoordinator
+@implementation AKImageCoordinator {
+	NSMutableArray	*_imageViews;
+}
 
 @synthesize imageRenderer = _imageRenderer;
+
+#pragma mark - Object Lifecycle
+
+- (void)dealloc
+{
+	for (UIImageView *imageView in _imageViews) {
+		[self removeImageView:imageView];
+	}
+}
 
 #pragma mark - Image Coordinator Lifecycle
 
 - (void)addImageView:(UIImageView *)imageView
 {
+	if (_imageViews == nil) {
+		_imageViews = [[NSMutableArray alloc] init];
+	}
+	
+	[_imageViews addObject:imageView];
+	
 	[imageView addObserver:self
 				forKeyPath:kFrameKeyPath
 				   options:(NSKeyValueObservingOptionInitial |
@@ -34,8 +51,12 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)removeImageView:(UIImageView *)imageView
 {
-	[imageView removeObserver:self
-				   forKeyPath:kFrameKeyPath];
+	if ([_imageViews containsObject:imageView]) {
+		[_imageViews removeObject:imageView];
+		
+		[imageView removeObserver:self
+					   forKeyPath:kFrameKeyPath];
+	}
 }
 
 #pragma mark - Key-Value Observing
