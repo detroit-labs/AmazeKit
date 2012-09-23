@@ -13,6 +13,7 @@
 
 // Coordinators
 #import "AKButtonImageCoordinator.h"
+#import "AKImageCoordinator.h"
 
 // File Manager
 #import "AKFileManager.h"

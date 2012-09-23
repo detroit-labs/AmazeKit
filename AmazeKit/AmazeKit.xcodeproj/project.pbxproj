@@ -24,6 +24,8 @@
 		1F65BBF415F84B4B00393818 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65BBF215F84AE500393818 /* ImageIO.framework */; };
 		1F735BE81590BF9D00EABF1B /* AKButtonImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */; };
 		1F735BE91590BF9D00EABF1B /* AKButtonImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */; };
+		1F77EBE315FBA156000122B5 /* AKImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F77EBE115FBA156000122B5 /* AKImageCoordinator.h */; };
+		1F77EBE415FBA156000122B5 /* AKImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */; };
 		1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4703158CC48A00ABF10D /* AKFileManager.h */; };
 		1F7D4706158CC48A00ABF10D /* AKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D4704158CC48A00ABF10D /* AKFileManager.m */; };
 		1F7E80C415D959A70050D130 /* UIImage+AKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7E80C215D959A70050D130 /* UIImage+AKCryptography.h */; };
@@ -48,6 +50,7 @@
 		1FA641C31586D5FB00350AC6 /* AmazeKit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */; };
 		1FA641C61586D6FA00350AC6 /* AKNoiseImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */; };
 		1FA641C71586D6FA00350AC6 /* AKNoiseImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */; };
+		1FA95AE8160B5FF00039106B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA95AE7160B5FF00039106B /* Default-568h@2x.png */; };
 		1FB27E551598B3CF00347D3D /* AKInnerGlowImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */; };
 		1FB27E561598B3CF00347D3D /* AKInnerGlowImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */; };
 		1FB27E681598F45700347D3D /* AKDrawingUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB27E661598F45700347D3D /* AKDrawingUtilities.h */; };
@@ -104,6 +107,8 @@
 		1F65BBF215F84AE500393818 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKButtonImageCoordinator.h; sourceTree = "<group>"; };
 		1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKButtonImageCoordinator.m; sourceTree = "<group>"; };
+		1F77EBE115FBA156000122B5 /* AKImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageCoordinator.h; sourceTree = "<group>"; };
+		1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageCoordinator.m; sourceTree = "<group>"; };
 		1F7D4703158CC48A00ABF10D /* AKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKFileManager.h; sourceTree = "<group>"; };
 		1F7D4704158CC48A00ABF10D /* AKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKFileManager.m; sourceTree = "<group>"; };
 		1F7E80C215D959A70050D130 /* UIImage+AKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AKCryptography.h"; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 		1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AmazeKit-Prefix.pch"; sourceTree = "<group>"; };
 		1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKNoiseImageEffect.h; sourceTree = "<group>"; };
 		1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKNoiseImageEffect.m; sourceTree = "<group>"; };
+		1FA95AE7160B5FF00039106B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKInnerGlowImageEffect.h; sourceTree = "<group>"; };
 		1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKInnerGlowImageEffect.m; sourceTree = "<group>"; };
 		1FB27E661598F45700347D3D /* AKDrawingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKDrawingUtilities.h; sourceTree = "<group>"; };
@@ -202,6 +208,9 @@
 			isa = PBXGroup;
 			children = (
 				1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */,
+				1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */,
+				1F77EBE115FBA156000122B5 /* AKImageCoordinator.h */,
+				1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -288,12 +297,10 @@
 			children = (
 				1FDCA5B11587AC5F0010B272 /* AKButtonBevelImageEffect.h */,
 				1FDCA5B21587AC5F0010B272 /* AKButtonBevelImageEffect.m */,
-				1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */,
 				1FDCA5AD1587A8FF0010B272 /* AKColorImageEffect.h */,
 				1FDCA5AE1587A8FF0010B272 /* AKColorImageEffect.m */,
 				1FDCA5D71587DAC90010B272 /* AKCornerRadiusImageEffect.h */,
 				1FDCA5D81587DAC90010B272 /* AKCornerRadiusImageEffect.m */,
-				1FB27E671598F45700347D3D /* AKDrawingUtilities.m */,
 				1FDCA5911587A0BA0010B272 /* AKGradientImageEffect.h */,
 				1FDCA5921587A0BA0010B272 /* AKGradientImageEffect.m */,
 				1FA641BD1586D38000350AC6 /* AKImageEffect.h */,
@@ -327,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB27E661598F45700347D3D /* AKDrawingUtilities.h */,
+				1FB27E671598F45700347D3D /* AKDrawingUtilities.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 		1FDCA6341587E0040010B272 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1FA95AE7160B5FF00039106B /* Default-568h@2x.png */,
 				1FDCA6351587E0040010B272 /* SampleApp-Info.plist */,
 				1FDCA6361587E0040010B272 /* InfoPlist.strings */,
 				1FDCA6391587E0040010B272 /* main.m */,
@@ -403,6 +412,7 @@
 				1F7E80C415D959A70050D130 /* UIImage+AKCryptography.h in Headers */,
 				1F96924715EEE9A700D5AE37 /* AKInnerShadowImageEffect.h in Headers */,
 				1F96925115EEFAA800D5AE37 /* UIImage+AKMasking.h in Headers */,
+				1F77EBE315FBA156000122B5 /* AKImageCoordinator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +479,7 @@
 		1FA641851586D12E00350AC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Detroit Labs";
 			};
 			buildConfigurationList = 1FA641881586D12E00350AC6 /* Build configuration list for PBXProject "AmazeKit" */;
@@ -506,6 +516,7 @@
 			files = (
 				1FDCA6381587E0040010B272 /* InfoPlist.strings in Resources */,
 				1FDCA6441587E0040010B272 /* AKViewController.xib in Resources */,
+				1FA95AE8160B5FF00039106B /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +564,7 @@
 				1F7E80C515D959A70050D130 /* UIImage+AKCryptography.m in Sources */,
 				1F96924815EEE9A700D5AE37 /* AKInnerShadowImageEffect.m in Sources */,
 				1F96925215EEFAA800D5AE37 /* UIImage+AKMasking.m in Sources */,
+				1F77EBE415FBA156000122B5 /* AKImageCoordinator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

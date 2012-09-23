@@ -13,22 +13,12 @@
 
 #import "AKImageRenderer.h"
 
-#import "AKDrawingUtilities.h"
-
 
 static NSString * const kFrameKeyPath = @"frame";
 
 
-@interface AKButtonImageCoordinator()
-
-@property (strong) NSMutableArray	*buttons;
-
-@end
-
-
 @implementation AKButtonImageCoordinator
 
-@synthesize buttons = _buttons;
 @synthesize offImageRenderer = _offImageRenderer;
 @synthesize onImageRenderer = _onImageRenderer;
 
@@ -36,8 +26,6 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)addButton:(UIButton *)button
 {
-	[[self buttons] addObject:button];
-	
 	[button addObserver:self
 			 forKeyPath:kFrameKeyPath
 				options:(NSKeyValueObservingOptionInitial |
@@ -47,8 +35,6 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)removeButton:(UIButton *)button
 {
-	[[self buttons] removeObject:button];
-	
 	[button removeObserver:self
 				forKeyPath:kFrameKeyPath];
 }
