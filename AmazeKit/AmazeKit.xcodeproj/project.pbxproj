@@ -15,6 +15,11 @@
 		1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */; };
 		1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */; };
 		1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */; };
+		1F45CF11161233CA00426F35 /* AKImageEffectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F45CF10161233CA00426F35 /* AKImageEffectTests.m */; };
+		1F45CF131612347800426F35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
+		1F45CF141612348900426F35 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65BBF215F84AE500393818 /* ImageIO.framework */; };
+		1F45CF151612348F00426F35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297515F828BB002E48E6 /* QuartzCore.framework */; };
+		1F45CF161612349F00426F35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDCA5F21587DE110010B272 /* CoreGraphics.framework */; };
 		1F60297415F828BB002E48E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDCA5F21587DE110010B272 /* CoreGraphics.framework */; };
 		1F60297715F828BB002E48E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297515F828BB002E48E6 /* QuartzCore.framework */; };
 		1F60297815F828BB002E48E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
@@ -102,6 +107,8 @@
 		1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AKColorStrings.m"; sourceTree = "<group>"; };
 		1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AKCryptography.h"; sourceTree = "<group>"; };
 		1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AKCryptography.m"; sourceTree = "<group>"; };
+		1F45CF0F161233CA00426F35 /* AKImageEffectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageEffectTests.h; sourceTree = "<group>"; };
+		1F45CF10161233CA00426F35 /* AKImageEffectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageEffectTests.m; sourceTree = "<group>"; };
 		1F60297515F828BB002E48E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1F60297615F828BB002E48E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F65BBF215F84AE500393818 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -182,8 +189,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */,
+				1F45CF161612349F00426F35 /* CoreGraphics.framework in Frameworks */,
 				1FA641A31586D12E00350AC6 /* Foundation.framework in Frameworks */,
+				1F45CF141612348900426F35 /* ImageIO.framework in Frameworks */,
+				1F45CF151612348F00426F35 /* QuartzCore.framework in Frameworks */,
+				1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */,
+				1F45CF131612347800426F35 /* UIKit.framework in Frameworks */,
 				1FA641A61586D12E00350AC6 /* libAmazeKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,9 +287,11 @@
 		1FA641A71586D12E00350AC6 /* AmazeKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				1FA641A81586D12E00350AC6 /* Supporting Files */,
 				1FA641AD1586D12E00350AC6 /* AmazeKitTests.h */,
 				1FA641AE1586D12E00350AC6 /* AmazeKitTests.m */,
-				1FA641A81586D12E00350AC6 /* Supporting Files */,
+				1F45CF0F161233CA00426F35 /* AKImageEffectTests.h */,
+				1F45CF10161233CA00426F35 /* AKImageEffectTests.m */,
 			);
 			path = AmazeKitTests;
 			sourceTree = "<group>";
@@ -573,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA641AF1586D12E00350AC6 /* AmazeKitTests.m in Sources */,
+				1F45CF11161233CA00426F35 /* AKImageEffectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +727,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AmazeKit/AmazeKit-Prefix.pch";
 				INFOPLIST_FILE = "AmazeKitTests/AmazeKitTests-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -728,6 +743,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AmazeKit/AmazeKit-Prefix.pch";
 				INFOPLIST_FILE = "AmazeKitTests/AmazeKitTests-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};

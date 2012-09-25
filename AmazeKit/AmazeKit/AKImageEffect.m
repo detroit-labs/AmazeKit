@@ -80,6 +80,22 @@ static NSString * const kBlendModeKey = @"blendMode";
 	return self;
 }
 
+- (BOOL)isEqual:(id)object
+{
+	BOOL isEqual = NO;
+	
+	AKImageEffect *other = (AKImageEffect *)object;
+	
+	if ([other isKindOfClass:[self class]]) {
+		if (fabsf([other alpha] - [self alpha]) < FLT_EPSILON &&
+			[other blendMode] == [self blendMode]) {
+			isEqual = YES;
+		}
+	}
+	
+	return isEqual;
+}
+
 - (void)applyAppearanceProperties
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
