@@ -19,6 +19,9 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
 // An array of AKImageEffect objects, applied in order.
 @property (strong, nonatomic) NSArray	*imageEffects;
 
+// A dictionary of options that will be applied to all images rendered with the renderer.
+@property (strong) NSDictionary	*options;
+
 - (UIImage *)imageWithSize:(CGSize)size
 					 scale:(CGFloat)scale
 				   options:(NSDictionary *)options;

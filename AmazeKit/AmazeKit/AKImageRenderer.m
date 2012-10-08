@@ -52,6 +52,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 @implementation AKImageRenderer
 
 @synthesize imageEffects = _imageEffects;
+@synthesize options = _options;
 
 #pragma mark - Object Lifecycle
 
@@ -79,6 +80,12 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 				_imageEffects = [_imageEffects arrayByAddingObject:imageEffect];
 			}
 		}
+		
+		NSDictionary *options = [representativeDictionary objectForKey:kRepresentativeDictionaryOptionsKey];
+		
+		if ([options isKindOfClass:[NSDictionary class]] && [options count] > 0) {
+			_options = options;
+		}
 	}
 	
 	return self;
@@ -88,14 +95,24 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 					 scale:(CGFloat)scale
 				   options:(NSDictionary *)options
 {
+	NSMutableDictionary *combinedOptions = [[NSMutableDictionary alloc] init];
+	
+	if ([[self options] count] > 0) {
+		[combinedOptions addEntriesFromDictionary:[self options]];
+	}
+	
+	if ([options count] > 0) {
+		[combinedOptions addEntriesFromDictionary:options];
+	}
+	
 	__block UIImage *image = [self previouslyRenderedImageForSize:size
 														withScale:scale
-														  options:options];
+														  options:combinedOptions];
 	
 	if (image == nil) {
 		UIColor *startingBackgroundColor = [UIColor whiteColor];
 		
-		NSString *backgroundColorHex = [options objectForKey:AKImageRendererOptionKeyInitialBackgroundColor];
+		NSString *backgroundColorHex = [combinedOptions objectForKey:AKImageRendererOptionKeyInitialBackgroundColor];
 		if (backgroundColorHex != nil) {
 			startingBackgroundColor = [UIColor AK_colorWithHexString:backgroundColorHex];
 		}
@@ -122,7 +139,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 											  }];
 		
 		[self saveImage:image
-				options:options];
+				options:combinedOptions];
 	}
 	
 	// Save the image options.
@@ -136,7 +153,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 			savedImages = [NSSet set];
 		}
 		
-		savedImages = [savedImages setByAddingObject:(options == nil ? [NSNull null] : options)];
+		savedImages = [savedImages setByAddingObject:(combinedOptions == nil ? [NSNull null] : combinedOptions)];
 		
 		[_renderedImages setObject:savedImages forKey:NSStringFromCGSize(size)];
 	}
@@ -165,7 +182,10 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 		[representativeDictionaries addObject:[imageEffect representativeDictionary]];
 	}
 	
-	return @{ kImageEffectsKey : representativeDictionaries };
+	return @{
+	kImageEffectsKey : representativeDictionaries,
+	kRepresentativeDictionaryOptionsKey : [self options] == nil ? [NSNull null] : [self options]
+	};
 }
 
 - (NSString *)representativeHash
@@ -175,12 +195,22 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 
 - (NSString *)representativeHashWithOptions:(NSDictionary *)options
 {
+	NSMutableDictionary *combinedOptions = [[NSMutableDictionary alloc] init];
+	
+	if ([[self options] count] > 0) {
+		[combinedOptions addEntriesFromDictionary:[self options]];
+	}
+	
+	if ([options count] > 0) {
+		[combinedOptions addEntriesFromDictionary:options];
+	}
+	
 	NSString *hash = nil;
 	
 	NSMutableDictionary *representativeDictionary = [[self representativeDictionary] mutableCopy];
 	
-	if (options != nil) {
-		[representativeDictionary setObject:options
+	if ([combinedOptions count] > 0) {
+		[representativeDictionary setObject:combinedOptions
 									 forKey:kRepresentativeDictionaryOptionsKey];
 	}
 	
