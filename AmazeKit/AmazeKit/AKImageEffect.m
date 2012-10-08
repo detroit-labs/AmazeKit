@@ -15,6 +15,11 @@
 #import "AKFileManager.h"
 
 
+// KVO Constants
+NSString * const AKImageEffectDirtyKeyPath = @"dirty";
+
+
+// Representation Constants
 static NSString * const kClassKey = @"class";
 static NSString * const kAlphaKey = @"alpha";
 static NSString * const kBlendModeKey = @"blendMode";
@@ -26,6 +31,7 @@ static NSString * const kBlendModeKey = @"blendMode";
 
 @synthesize alpha = _alpha;
 @synthesize blendMode = _blendMode;
+@synthesize dirty = _dirty;
 
 #pragma mark - Image Caching
 
@@ -167,7 +173,7 @@ static NSString * const kBlendModeKey = @"blendMode";
 {
 	NSString *hash = nil;
 	
-	if ([[self class] isImmutable]) {
+	if ([[self class] isImmutable] || [self isDirty] == NO) {
 		hash = _cachedHash;
 	}
 	
@@ -188,6 +194,8 @@ static NSString * const kBlendModeKey = @"blendMode";
 			}
 		}
 	}
+	
+	[self setDirty:NO];
 	
 	return hash;
 }

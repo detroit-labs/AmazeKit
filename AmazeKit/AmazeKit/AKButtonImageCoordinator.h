@@ -15,10 +15,10 @@
 @interface AKButtonImageCoordinator : NSObject
 
 // An image renderer for the “on” state
-@property (strong) AKImageRenderer	*onImageRenderer;
+@property (strong, nonatomic) AKImageRenderer	*onImageRenderer;
 
 // An image renderer for the “off” state
-@property (strong) AKImageRenderer	*offImageRenderer;
+@property (strong, nonatomic) AKImageRenderer	*offImageRenderer;
 
 - (void)addButton:(UIButton *)button;
 - (void)removeButton:(UIButton *)button;

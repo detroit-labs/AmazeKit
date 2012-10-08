@@ -10,11 +10,14 @@
 // Options Dictionary Keys
 extern NSString * const AKImageRendererOptionKeyInitialBackgroundColor;
 
+// Notifications
+extern NSString * const AKImageRendererEffectDidChangeNotification;
+
 
 @interface AKImageRenderer : NSObject
 
 // An array of AKImageEffect objects, applied in order.
-@property (strong) NSArray	*imageEffects;
+@property (strong, nonatomic) NSArray	*imageEffects;
 
 - (UIImage *)imageWithSize:(CGSize)size
 					 scale:(CGFloat)scale

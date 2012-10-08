@@ -10,6 +10,10 @@
 #import "AKImageEffect.h"
 
 
+// KVO Constants
+extern NSString * const AKColorImageEffectColorKeyPath;
+
+
 @interface AKColorImageEffect : AKImageEffect
 
 // The color to paint in the image.

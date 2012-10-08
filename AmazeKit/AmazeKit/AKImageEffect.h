@@ -7,13 +7,20 @@
 //
 
 
+// KVO Constants
+extern NSString * const AKImageEffectDirtyKeyPath;
+
+
 @interface AKImageEffect : NSObject
 
 // Appearance Properties
 @property (readonly) CGFloat    	alpha;
 @property (readonly) CGBlendMode	blendMode;
 
-// Image Effects are immutable, so use the designated initializer.
+// For a mutable image effect, set dirty to YES to force it to rebuild the hash on next use.
+@property (getter = isDirty) BOOL	dirty;
+
+// Image Effects are immutable by default, so use the designated initializer.
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode;
 

@@ -14,7 +14,7 @@
 
 @interface AKImageCoordinator : NSObject
 
-@property (strong) AKImageRenderer	*imageRenderer;
+@property (strong, nonatomic) AKImageRenderer	*imageRenderer;
 
 - (void)addImageView:(UIImageView *)imageView;
 - (void)removeImageView:(UIImageView *)imageView;

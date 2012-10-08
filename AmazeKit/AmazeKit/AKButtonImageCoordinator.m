@@ -17,10 +17,18 @@
 static NSString * const kFrameKeyPath = @"frame";
 
 
-@implementation AKButtonImageCoordinator {
-	NSMutableArray	*_buttons;
-}
+@interface AKButtonImageCoordinator ()
 
+@property (strong) NSMutableArray 	*buttons;
+
+- (void)imageRendererDidUpdate:(NSNotification *)aNotification;
+- (void)renderIntoButton:(UIButton *)button;
+
+@end
+
+@implementation AKButtonImageCoordinator
+
+@synthesize buttons = _buttons;
 @synthesize offImageRenderer = _offImageRenderer;
 @synthesize onImageRenderer = _onImageRenderer;
 
@@ -28,7 +36,7 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)dealloc
 {
-	for (UIButton *button in _buttons) {
+	for (UIButton *button in [self buttons]) {
 		[self removeButton:button];
 	}
 }
@@ -37,11 +45,11 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)addButton:(UIButton *)button
 {
-	if (_buttons == nil) {
-		_buttons = [[NSMutableArray alloc] init];
+	if ([self buttons] == nil) {
+		[self setButtons:[[NSMutableArray alloc] init]];
 	}
 	
-	[_buttons addObject:button];
+	[[self buttons] addObject:button];
 	
 	[button addObserver:self
 			 forKeyPath:kFrameKeyPath
@@ -50,15 +58,74 @@ static NSString * const kFrameKeyPath = @"frame";
 				context:NULL];
 }
 
+- (void)imageRendererDidUpdate:(NSNotification *)aNotification
+{
+	[[self buttons] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		if ([obj isKindOfClass:[UIButton class]]) {
+			[self renderIntoButton:obj];
+		}
+	}];
+}
+
 - (void)removeButton:(UIButton *)button
 {
-	if ([_buttons containsObject:button]) {
-		[_buttons removeObject:button];
+	if ([[self buttons] containsObject:button]) {
+		[[self buttons] removeObject:button];
 		
 		[button removeObserver:self
 					forKeyPath:kFrameKeyPath];
 	}
 }
+
+- (void)renderIntoButton:(UIButton *)button
+{
+	CGSize size = [button frame].size;
+	CGFloat scale = [button AK_scale];
+	
+	[button setBackgroundImage:[[self offImageRenderer] imageWithSize:size
+																scale:scale
+															  options:nil]
+					  forState:UIControlStateNormal];
+	
+	[button setBackgroundImage:[[self onImageRenderer] imageWithSize:size
+															   scale:scale
+															 options:nil]
+					  forState:UIControlStateHighlighted];
+}
+
+- (void)setOffImageRenderer:(AKImageRenderer *)offImageRenderer
+{
+	if (_offImageRenderer != nil) {
+		[[NSNotificationCenter defaultCenter] removeObserver:self
+														name:AKImageRendererEffectDidChangeNotification
+													  object:_offImageRenderer];
+	}
+	
+	_offImageRenderer = offImageRenderer;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(imageRendererDidUpdate:)
+												 name:AKImageRendererEffectDidChangeNotification
+											   object:_offImageRenderer];
+}
+
+- (void)setOnImageRenderer:(AKImageRenderer *)onImageRenderer
+{
+	if (_onImageRenderer != nil) {
+		[[NSNotificationCenter defaultCenter] removeObserver:self
+														name:AKImageRendererEffectDidChangeNotification
+													  object:_onImageRenderer];
+	}
+	
+	_onImageRenderer = onImageRenderer;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(imageRendererDidUpdate:)
+												 name:AKImageRendererEffectDidChangeNotification
+											   object:_onImageRenderer];
+}
+
+#pragma mark - Key-Value Observing
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object
@@ -67,23 +134,7 @@ static NSString * const kFrameKeyPath = @"frame";
 {
 	if ([object isKindOfClass:[UIButton class]]) {
 		UIButton *button = (UIButton *)object;
-		
-		NSValue *frameValue = [change objectForKey:NSKeyValueChangeNewKey];
-		
-		if ([frameValue isKindOfClass:[NSValue class]]) {
-			CGRect frame = [frameValue CGRectValue];
-			CGFloat scale = [button AK_scale];
-			
-			[button setBackgroundImage:[[self offImageRenderer] imageWithSize:frame.size
-																		scale:scale
-																	  options:nil]
-							  forState:UIControlStateNormal];
-			
-			[button setBackgroundImage:[[self onImageRenderer] imageWithSize:frame.size
-																	   scale:scale
-																	 options:nil]
-							  forState:UIControlStateHighlighted];
-		}
+		[self renderIntoButton:button];
 	}
 }
 

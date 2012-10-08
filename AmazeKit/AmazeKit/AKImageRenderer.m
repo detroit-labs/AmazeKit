@@ -20,6 +20,9 @@
 // Options Dictionary Keys
 NSString * const AKImageRendererOptionKeyInitialBackgroundColor = @"AKImageRendererInitialBackgroundColor";
 
+// Notifications
+NSString * const AKImageRendererEffectDidChangeNotification = @"AKImageRendererEffectDidChange";
+
 // Constants
 static NSString * const kImageEffectsKey = @"imageEffects";
 static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
@@ -40,12 +43,24 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 - (void)saveImage:(UIImage *)image
 		  options:(NSDictionary *)options;
 
+- (void)registerImageEffectObservers;
+- (void)unregisterImageEffectObservers;
+
 @end
 
 
 @implementation AKImageRenderer
 
 @synthesize imageEffects = _imageEffects;
+
+#pragma mark - Object Lifecycle
+
+- (void)dealloc
+{
+	[self unregisterImageEffectObservers];
+}
+
+#pragma mark - Image Renderer Lifecycle
 
 - (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary
 {
@@ -129,6 +144,19 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 	return image;
 }
 
+- (void)registerImageEffectObservers
+{
+	[[self imageEffects] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		if ([obj isKindOfClass:[AKImageEffect class]] &&
+			[[(AKImageEffect *)obj class] isImmutable] == NO) {
+			[obj addObserver:self
+				  forKeyPath:AKImageEffectDirtyKeyPath
+					 options:NSKeyValueObservingOptionNew
+					 context:NULL];
+		}
+	}];
+}
+
 - (NSDictionary *)representativeDictionary
 {
 	NSMutableArray *representativeDictionaries = [[NSMutableArray alloc] initWithCapacity:[[self imageEffects] count]];
@@ -181,6 +209,11 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 														  withScale:scale];
 }
 
+- (NSDictionary *)renderedImages
+{
+	return [NSDictionary dictionaryWithDictionary:_renderedImages];
+}
+
 - (UIImage *)previouslyRenderedImageForSize:(CGSize)size
 								  withScale:(CGFloat)scale
 									options:(NSDictionary *)options
@@ -197,9 +230,43 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 									   forHash:[self representativeHashWithOptions:options]];
 }
 
-- (NSDictionary *)renderedImages
+- (void)setImageEffects:(NSArray *)imageEffects
 {
-	return [NSDictionary dictionaryWithDictionary:_renderedImages];
+	[self unregisterImageEffectObservers];
+	
+	_imageEffects = imageEffects;
+	
+	[self registerImageEffectObservers];
 }
+
+- (void)unregisterImageEffectObservers
+{
+	[[self imageEffects] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		if ([obj isKindOfClass:[AKImageEffect class]] &&
+			[[(AKImageEffect *)obj class] isImmutable] == NO) {
+			[obj removeObserver:self
+					 forKeyPath:AKImageEffectDirtyKeyPath];
+		}
+	}];
+}
+
+#pragma mark - Key-Value Observation
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+					  ofObject:(id)object
+						change:(NSDictionary *)change
+					   context:(void *)context
+{
+	if ([object isKindOfClass:[AKImageEffect class]]) {
+		if ([[self imageEffects] containsObject:object]) {
+			if ([keyPath isEqualToString:AKImageEffectDirtyKeyPath]) {
+				[[NSNotificationCenter defaultCenter] postNotificationName:AKImageRendererEffectDidChangeNotification
+																	object:self];
+			}
+		}
+	}
+}
+
+#pragma mark -
 
 @end

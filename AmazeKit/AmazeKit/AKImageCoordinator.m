@@ -17,17 +17,26 @@
 static NSString * const kFrameKeyPath = @"frame";
 
 
-@implementation AKImageCoordinator {
-	NSMutableArray	*_imageViews;
-}
+@interface AKImageCoordinator()
+
+@property (strong) NSMutableArray 	*imageViews;
+
+- (void)imageRendererDidUpdate:(NSNotification *)aNotification;
+- (void)renderIntoImageView:(UIImageView *)imageView;
+
+@end
+
+
+@implementation AKImageCoordinator
 
 @synthesize imageRenderer = _imageRenderer;
+@synthesize imageViews = _imageViews;
 
 #pragma mark - Object Lifecycle
 
 - (void)dealloc
 {
-	for (UIImageView *imageView in _imageViews) {
+	for (UIImageView *imageView in [self imageViews]) {
 		[self removeImageView:imageView];
 	}
 }
@@ -36,11 +45,11 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)addImageView:(UIImageView *)imageView
 {
-	if (_imageViews == nil) {
-		_imageViews = [[NSMutableArray alloc] init];
+	if ([self imageViews] == nil) {
+		[self setImageViews:[[NSMutableArray alloc] init]];
 	}
 	
-	[_imageViews addObject:imageView];
+	[[self imageViews] addObject:imageView];
 	
 	[imageView addObserver:self
 				forKeyPath:kFrameKeyPath
@@ -49,14 +58,46 @@ static NSString * const kFrameKeyPath = @"frame";
 				   context:NULL];
 }
 
+- (void)imageRendererDidUpdate:(NSNotification *)aNotification
+{
+	[[self imageViews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		if ([obj isKindOfClass:[UIImageView class]]) {
+			[self renderIntoImageView:obj];
+		}
+	}];
+}
+
 - (void)removeImageView:(UIImageView *)imageView
 {
-	if ([_imageViews containsObject:imageView]) {
-		[_imageViews removeObject:imageView];
+	if ([[self imageViews] containsObject:imageView]) {
+		[[self imageViews] removeObject:imageView];
 		
 		[imageView removeObserver:self
 					   forKeyPath:kFrameKeyPath];
 	}
+}
+
+- (void)renderIntoImageView:(UIImageView *)imageView
+{
+	[imageView setImage:[[self imageRenderer] imageWithSize:[imageView frame].size
+													  scale:[imageView AK_scale]
+													options:nil]];
+}
+
+- (void)setImageRenderer:(AKImageRenderer *)imageRenderer
+{
+	if (_imageRenderer != nil) {
+		[[NSNotificationCenter defaultCenter] removeObserver:self
+														name:AKImageRendererEffectDidChangeNotification
+													  object:_imageRenderer];
+	}
+	
+	_imageRenderer = imageRenderer;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(imageRendererDidUpdate:)
+												 name:AKImageRendererEffectDidChangeNotification
+											   object:_imageRenderer];
 }
 
 #pragma mark - Key-Value Observing
@@ -67,18 +108,8 @@ static NSString * const kFrameKeyPath = @"frame";
 					   context:(void *)context
 {
 	if ([object isKindOfClass:[UIImageView class]]) {
-		UIImageView *button = (UIImageView *)object;
-		
-		NSValue *frameValue = [change objectForKey:NSKeyValueChangeNewKey];
-		
-		if ([frameValue isKindOfClass:[NSValue class]]) {
-			CGRect frame = [frameValue CGRectValue];
-			CGFloat scale = [button AK_scale];
-			
-			[button setImage:[[self imageRenderer] imageWithSize:frame.size
-														   scale:scale
-														 options:nil]];
-		}
+		UIImageView *imageView = (UIImageView *)object;
+		[self renderIntoImageView:imageView];
 	}
 }
 
