@@ -63,23 +63,13 @@ NSString * const kMaskImageHashKey = @"maskImageHash";
 					   maskImageRef);
 	
 	CGImageRef maskImage = CGBitmapContextCreateImage(context);
-	
-	CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskImage),
-										CGImageGetHeight(maskImage),
-										CGImageGetBitsPerComponent(maskImage),
-										CGImageGetBitsPerPixel(maskImage),
-										CGImageGetBytesPerRow(maskImage),
-										CGImageGetDataProvider(maskImage),
-										NULL,
-										YES);
-	
-	CGImageRef maskedOriginalImage = CGImageCreateWithMask([sourceImage CGImage], mask);
+		
+	CGImageRef maskedOriginalImage = CGImageCreateWithMask([sourceImage CGImage], maskImage);
 	
 	UIImage *renderedImage = [[UIImage alloc] initWithCGImage:maskedOriginalImage
 														scale:[sourceImage scale]
 												  orientation:[sourceImage imageOrientation]];
 	CGImageRelease(maskedOriginalImage);
-	CGImageRelease(mask);
 	CGImageRelease(maskImage);
 	CGContextRelease(context);
 	CGColorSpaceRelease(colorSpace);
