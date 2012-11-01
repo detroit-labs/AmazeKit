@@ -103,10 +103,12 @@ static NSString * const kFrameKeyPath = @"frame";
 	
 	_offImageRenderer = offImageRenderer;
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(imageRendererDidUpdate:)
-												 name:AKImageRendererEffectDidChangeNotification
-											   object:_offImageRenderer];
+	if (_offImageRenderer != nil) {
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(imageRendererDidUpdate:)
+													 name:AKImageRendererEffectDidChangeNotification
+												   object:_offImageRenderer];
+	}
 }
 
 - (void)setOnImageRenderer:(AKImageRenderer *)onImageRenderer
@@ -119,10 +121,12 @@ static NSString * const kFrameKeyPath = @"frame";
 	
 	_onImageRenderer = onImageRenderer;
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(imageRendererDidUpdate:)
-												 name:AKImageRendererEffectDidChangeNotification
-											   object:_onImageRenderer];
+	if (_onImageRenderer != nil) {
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(imageRendererDidUpdate:)
+													 name:AKImageRendererEffectDidChangeNotification
+												   object:_onImageRenderer];
+	}
 }
 
 #pragma mark - Key-Value Observing

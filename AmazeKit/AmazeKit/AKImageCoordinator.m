@@ -36,6 +36,8 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)dealloc
 {
+	[self setImageRenderer:nil];
+	
 	for (UIImageView *imageView in [self imageViews]) {
 		[self removeImageView:imageView];
 	}
@@ -94,11 +96,14 @@ static NSString * const kFrameKeyPath = @"frame";
 	
 	_imageRenderer = imageRenderer;
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(imageRendererDidUpdate:)
-												 name:AKImageRendererEffectDidChangeNotification
-											   object:_imageRenderer];
+	if (_imageRenderer != nil) {
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(imageRendererDidUpdate:)
+													 name:AKImageRendererEffectDidChangeNotification
+												   object:_imageRenderer];
+	}
 }
+
 
 #pragma mark - Key-Value Observing
 
