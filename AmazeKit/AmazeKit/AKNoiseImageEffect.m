@@ -12,6 +12,10 @@
 #import "UIImage+AKPixelData.h"
 
 
+// KVO Constants
+static NSString * const kNoiseTypeKey = @"AKNoiseType";
+
+
 @implementation AKNoiseImageEffect
 
 @synthesize noiseType = _noiseType;
@@ -92,6 +96,26 @@
 	free(imageData);
 
 	return renderedImage;
+}
+
+- (NSDictionary *)representativeDictionary
+{
+	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
+	
+	[dictionary setObject:@([self noiseType]) forKey:kNoiseTypeKey];
+	
+	return [NSDictionary dictionaryWithDictionary:dictionary];
+}
+
+- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary
+{
+	self = [super initWithRepresentativeDictionary:representativeDictionary];
+	
+	if (self) {
+		_noiseType = [[representativeDictionary objectForKey:kNoiseTypeKey] intValue];
+	}
+    
+	return self;
 }
 
 @end
