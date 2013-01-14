@@ -9,6 +9,6 @@ The recommended way to get AmazeKit is to use [CocoaPods](http://www.cocoapods.o
 
 ## Examples
 Here are some great apps using AmazeKit:
-* [BetARound](http://www.sidebetme.com/betaround/)
+* [BetARound](http://www.sidebet.me/betaround/)
 
 AmazeKit was developed in Detroit by [Jeff Kelley](http://github.com/SlaunchaMan) at [Detroit Labs](http://www.detroitlabs.com).
