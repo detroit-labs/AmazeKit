@@ -17,15 +17,15 @@ git checkout gh-pages
 
 popd
 
-rsync -HhavP --delete docs/html/ "${TMPDIR}"
+rsync -HhavP --delete docs/html/ "${TMPDIR}/"
 
 pushd "${TMP_DIR}"
 
 git add --all
 git commit -m "Updated docs for version ${VERSION}."
 
-git push origin gh-pages
+echo git push origin gh-pages
 
 popd
 
-rm -rf "${TMP_DIR}"
+echo rm -rf "${TMP_DIR}"
