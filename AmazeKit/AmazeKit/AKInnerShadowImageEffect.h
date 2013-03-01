@@ -22,16 +22,46 @@
 #import "AKImageEffect.h"
 
 
+/** The AKInnerShadowImageEffect class creates a shadow on the inside of the image.
+ */
+
+
 @interface AKInnerShadowImageEffect : AKImageEffect
 
-@property (readonly) UIColor	*color;
-@property (readonly) CGFloat	radius;
-@property (readonly) CGSize 	offset;
+/**-------------------------------------------
+ * @name Creating an Inner Shadow Image Effect
+ * -------------------------------------------
+ */
 
+/** The designated initializer for an inner shadow image effect.
+ *
+ *  @param alpha The value for the alpha property.
+ *  @param blendMode The value for the blendMode property.
+ *  @param color The color to draw the shadow.
+ *  @param radius The radius for the shadow. This is not the offset, but how far from the offset to
+ *                draw the shadow.
+ *  @param offset The offset (from the origin) to start drawing the shadow.
+ *  @return An initialized image effect.
+ */
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 			  color:(UIColor *)color
 			 radius:(CGFloat)radius
 			 offset:(CGSize)offset;
+
+
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** The color of the shadow. */
+@property (readonly) UIColor	*color;
+
+/** The radius of the shadow. */
+@property (readonly) CGFloat	radius;
+
+/** The offset of the shadow. */
+@property (readonly) CGSize 	offset;
 
 @end
