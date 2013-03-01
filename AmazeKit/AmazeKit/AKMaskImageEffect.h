@@ -37,7 +37,7 @@ extern NSString * const kMaskImageHashKey;
  * ----------------------------------
  */
 
-/** The designated initializer for a pattern image effect.
+/** The designated initializer for a mask image effect.
  *
  *  @param alpha The value for the alpha property.
  *  @param blendMode The value for the blendMode property.

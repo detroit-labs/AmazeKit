@@ -22,6 +22,10 @@
 #import "AKImageEffect.h"
 
 
+/** The AKCornerRadiusImageEffect masks the corners of the layers underneath it.
+ */
+
+
 typedef struct {
     CGFloat topLeft;
     CGFloat topRight;
@@ -49,11 +53,29 @@ extern const AKCornerRadii AKCornerRadiiZero;
 
 @interface AKCornerRadiusImageEffect : AKImageEffect
 
-// The corner radii can be set independently.
-@property (readonly) AKCornerRadii	cornerRadii;
+/**-------------------------------------------
+ * @name Creating a Corner Radius Image Effect
+ * -------------------------------------------
+ */
 
+/** The designated initializer for a corner radius image effect.
+ *
+ *  @param alpha The value for the alpha property.
+ *  @param blendMode The value for the blendMode property.
+ *  @param cornerRadii The value for the cornerRadii property.
+ *  @return An initialized image effect.
+ */
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 		cornerRadii:(AKCornerRadii)cornerRadii;
+
+
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** The radius of each corner. The corner radii can be set independently. */
+@property (readonly) AKCornerRadii	cornerRadii;
 
 @end
