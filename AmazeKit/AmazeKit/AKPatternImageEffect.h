@@ -22,16 +22,40 @@
 #import "AKImageEffect.h"
 
 
+/** The AKPatternImageEffect class repeats a single image as a pattern.
+ */
+
+
 // Constants
 extern NSString * const kPatternImageHashKey;
 
 
 @interface AKPatternImageEffect : AKImageEffect
 
-@property (readonly) UIImage	*patternImage;
+/**-------------------------------------
+ * @name Creating a Pattern Image Effect
+ * -------------------------------------
+ */
 
+/** The designated initializer for a pattern image effect.
+ *
+ *  @param alpha The value for the alpha property.
+ *  @param blendMode The value for the blendMode property.
+ *  @param patternImage The value for the patternImage property.
+ *  @return An initialized image effect.
+ */
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 	   patternImage:(UIImage *)patternImage;
+
+
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** The image to draw as a pattern. This image will be tiled.
+ */
+@property (readonly) UIImage	*patternImage;
 
 @end
