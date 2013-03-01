@@ -42,7 +42,7 @@ extern NSString * const AKColorImageEffectColorKeyPath;
  *
  *  @param alpha The value for the alpha property.
  *  @param blendMode The value for the blendMode property.
- *  @param cornerRadii The value for the cornerRadii property.
+ *  @param color The value for the color property.
  *  @return An initialized image effect.
  */
 - (id)initWithAlpha:(CGFloat)alpha

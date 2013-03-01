@@ -22,8 +22,19 @@
 #import "AKColorImageEffect.h"
 
 
+/** The AKMutableColorImageEffect paints the entire image the given color. As it is mutable, you can
+ *  change the value and re-draw the image at a different color.
+ */
+
+
 @interface AKMutableColorImageEffect : AKColorImageEffect
 
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** The color to paint in the image. */
 @property (strong, readwrite) UIColor	*color;
 
 @end

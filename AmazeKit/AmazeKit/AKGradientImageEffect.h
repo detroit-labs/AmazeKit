@@ -22,6 +22,11 @@
 #import "AKImageEffect.h"
 
 
+/** The AKGradientImageEffect draws a gradient, either vertical or horizontal, between at least two
+ *  intermediate colors.
+ */
+
+
 typedef enum {
 	AKGradientDirectionVertical = 0,
 	AKGradientDirectionHorizontal,
@@ -30,20 +35,41 @@ typedef enum {
 
 @interface AKGradientImageEffect : AKImageEffect
 
-// An array of UIColor objects for the gradient. Must be at least two.
-@property (readonly) NSArray	*colors;
+/**--------------------------------------
+ * @name Creating a Gradient Image Effect
+ * --------------------------------------
+ */
 
-// The direction to draw the gradient in. Defaults to vertical.
-@property (readonly) AKGradientDirection	direction;
-
-// An array of NSNumber objects with values between 0 and 1. Represents the location along the
-// gradient for the color at the corresponding index. If nil, the colors are spaced evenly.
-@property (readonly) NSArray	*locations;
-
+/** The designated initializer for a gradient image effect.
+ *
+ *  @param alpha The value for the alpha property.
+ *  @param blendMode The value for the blendMode property.
+ *  @param colors The value for the colors property.
+ *  @param direction The value for the direction property.
+ *  @param locations The value for the locations property.
+ *  @return An initialized image effect.
+ */
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 			 colors:(NSArray *)colors
 		  direction:(AKGradientDirection)direction
 		  locations:(NSArray *)locations;
+
+
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** An array of UIColor objects for the gradient. Must be at least two. */
+@property (readonly) NSArray	*colors;
+
+/** The direction to draw the gradient in. Defaults to AKGradientDirectionVertical. */
+@property (readonly) AKGradientDirection	direction;
+
+/** An array of NSNumber objects with values between 0 and 1. Represents the location along the
+ *  gradient for the color at the corresponding index. If nil, the colors are spaced evenly.
+ */
+@property (readonly) NSArray	*locations;
 
 @end
