@@ -38,7 +38,8 @@ extern NSString * const AKImageEffectDirtyKeyPath;
 /** The designated initializer for a base image effect.
  *
  *  Because image effects are immutable (for performance reasons), you’ll need to set the proper
- *  values for the properties at time of creation.
+ *  values for the properties at time of creation. Subclasses should specify additional parameters
+ *  in their own initializers.
  *
  *  @param alpha The value for the alpha property.
  *  @param blendMode The value for the blendMode property.
