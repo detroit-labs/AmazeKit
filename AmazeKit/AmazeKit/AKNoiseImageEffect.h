@@ -22,6 +22,11 @@
 #import "AKImageEffect.h"
 
 
+/** The AKNoiseImageEffect class draws random noise. Every pixel is filled with a random value.
+ *  AKNoiseImageEffect uses arc4random_uniform() to ensure a uniform distribution of randomness.
+ */
+
+
 typedef enum {
 	AKNoiseTypeBlackAndWhite = 0,
 	AKNoiseTypeColor
@@ -30,10 +35,30 @@ typedef enum {
 
 @interface AKNoiseImageEffect : AKImageEffect
 
-@property (readonly) AKNoiseType	noiseType;
+/**-------------------------------------------
+ * @name Creating a Noise Image Effect
+ * -------------------------------------------
+ */
 
+/** The designated initializer for a noise image effect.
+ *
+ *  @param alpha The value for the alpha property.
+ *  @param blendMode The value for the blendMode property.
+ *  @param noiseType The value for the noiseType property.
+ *  @return An initialized image effect.
+ */
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 		  noiseType:(AKNoiseType)noiseType;
+
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** The type of noise to draw. AKNoiseTypeBlackAndWhite, the default, draws black-and-white noise,
+ *  while AKNoiseTypeColor draws noise in random colors.
+ */
+@property (readonly) AKNoiseType	noiseType;
 
 @end
