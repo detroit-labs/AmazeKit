@@ -4,9 +4,6 @@ appledoc -o docs/ \
          -h \
 	 --create-docset \
 	 --no-install-docset \
-	 --no-keep-undocumented-objects \
-	 --no-keep-undocumented-members \
-	 --no-search-undocumented-doc \
 	 --project-name AmazeKit \
 	 --project-company Detroit\ Labs \
 	 --project-version $(cat VERSION) \
