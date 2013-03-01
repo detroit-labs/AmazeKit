@@ -12,20 +12,21 @@ fi
 pushd "${TMP_DIR}"
 
 git clone git@github.com:detroit-labs/AmazeKit
+cd AmazeKit/
 git fetch --all
 git checkout gh-pages
 
 popd
 
-rsync -HhavP --delete docs/html/ "${TMPDIR}/"
+rsync -HhavP --delete --exclude=".git/" docs/html/ "${TMP_DIR}/AmazeKit/"
 
-pushd "${TMP_DIR}"
+pushd "${TMP_DIR}/AmazeKit/"
 
 git add --all
 git commit -m "Updated docs for version ${VERSION}."
 
-echo git push origin gh-pages
+git push origin gh-pages
 
 popd
 
-echo rm -rf "${TMP_DIR}"
+rm -rf "${TMP_DIR}"
