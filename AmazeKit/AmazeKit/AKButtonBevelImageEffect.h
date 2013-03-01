@@ -35,12 +35,12 @@ typedef enum {
 
 @interface AKButtonBevelImageEffect : AKImageEffect
 
-/**-------------------------------------------
- * @name Creating an Inner Shadow Image Effect
- * -------------------------------------------
+/**------------------------------------------
+ * @name Creating a Button Bevel Image Effect
+ * ------------------------------------------
  */
 
-/** The designated initializer for an inner shadow image effect.
+/** The designated initializer for a button bevel image effect.
  *
  *  @param alpha The value for the alpha property.
  *  @param blendMode The value for the blendMode property.
