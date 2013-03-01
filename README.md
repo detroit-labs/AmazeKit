@@ -7,6 +7,9 @@ The recommended way to get AmazeKit is to use [CocoaPods](http://www.cocoapods.o
 
 **TODO**: Add instructions for bundling AmazeKit, using a static library, Xcode subproject, and as a Git submodule.
 
+## The `bin` Directory
+In the `bin` directory are two scripts: `gen_docs.sh` and `publish_docs.sh`. These scripts are meant for me to run as a convenience to publish the appledoc docs. Use caution when running them.
+
 ## Examples
 Here are some great apps using AmazeKit:
 * [BetARound](http://www.sidebet.me/betaround/)
