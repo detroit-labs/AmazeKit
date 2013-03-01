@@ -22,16 +22,41 @@
 #import "AKImageEffect.h"
 
 
+/** The AKMaskImageEffect masks the layers beneath it behind a mask image.
+ */
+
+
 // Constants
 extern NSString * const kMaskImageHashKey;
 
 
 @interface AKMaskImageEffect : AKImageEffect
 
-@property (readonly) UIImage	*maskImage;
+/**----------------------------------
+ * @name Creating a Mask Image Effect
+ * ----------------------------------
+ */
 
+/** The designated initializer for a pattern image effect.
+ *
+ *  @param alpha The value for the alpha property.
+ *  @param blendMode The value for the blendMode property.
+ *  @param maskImage The value for the maskImage property.
+ *  @return An initialized image effect.
+ */
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 		  maskImage:(UIImage *)maskImage;
+
+
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** The image to use as a mask. The alpha channel of the image is used—opaque values show the
+ *  underneath layers opaque, transparent values do not.
+ */
+@property (readonly) UIImage	*maskImage;
 
 @end
