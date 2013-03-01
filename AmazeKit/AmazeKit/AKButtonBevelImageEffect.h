@@ -22,6 +22,11 @@
 #import "AKImageEffect.h"
 
 
+/** The AKButtonBevelImageEffect class creates a white bevel on the top of a button image, and a
+ *  black bevel on the botton of the button (or vice-versa).
+ */
+
+
 typedef enum {
 	AKButtonBevelDirectionUp = 0,
 	AKButtonBevelDirectionDown
@@ -30,11 +35,29 @@ typedef enum {
 
 @interface AKButtonBevelImageEffect : AKImageEffect
 
-// “Up,” the default, has a shine on top and a shadow on bottom. “Down” is the reverse.
-@property (readonly) AKButtonBevelDirection	bevelDirection;
+/**-------------------------------------------
+ * @name Creating an Inner Shadow Image Effect
+ * -------------------------------------------
+ */
 
+/** The designated initializer for an inner shadow image effect.
+ *
+ *  @param alpha The value for the alpha property.
+ *  @param blendMode The value for the blendMode property.
+ *  @param bevelDirection The direction of the bevel. AKButtonBevelDirectionUp, the default, has a
+ *         shine on top and a shadow on bottom. AKButtonBevelDirectionDown is the reverse.
+ *  @return An initialized image effect.
+ */
 - (id)initWithAlpha:(CGFloat)alpha
 		  blendMode:(CGBlendMode)blendMode
 	 bevelDirection:(AKButtonBevelDirection)bevelDirection;
+
+/**----------------------------
+ * @name Customizing Appearance
+ * ----------------------------
+ */
+
+/** The direction of the bevel. */
+@property (readonly) AKButtonBevelDirection	bevelDirection;
 
 @end
