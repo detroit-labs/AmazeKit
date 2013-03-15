@@ -16,7 +16,7 @@ cd amazekit.github.com/
 
 popd
 
-rsync -HhavP --delete --exclude=".git/" docs/html/ "${TMP_DIR}/amazekit.github.com/"
+rsync -HhavP --delete --exclude=".git/" --exclude="CNAME" docs/html/ "${TMP_DIR}/amazekit.github.com/"
 
 pushd "${TMP_DIR}/amazekit.github.com/"
 
