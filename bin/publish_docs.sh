@@ -12,11 +12,11 @@ fi
 pushd "${TMP_DIR}"
 
 git clone git@github.com:AmazeKit/amazekit.github.com
+cd amazekit.github.com/
 
 popd
 
-rsync -HhavP --delete --exclude=".git/" docs/html/ "${TMP_DIR}/amazekit.github.com/docs/"
-rsync -HhavP --exclude=".git/" docs/publish/ "${TMP_DIR}/amazekit.github.com/downloads/"
+rsync -HhavP --delete --exclude=".git/" docs/html/ "${TMP_DIR}/amazekit.github.com/"
 
 pushd "${TMP_DIR}/amazekit.github.com/"
 

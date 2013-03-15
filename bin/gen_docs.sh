@@ -8,8 +8,6 @@ appledoc -o docs/ \
 	 --project-version $(cat VERSION) \
 	 --company-id com.detroitlabs \
 	 --no-repeat-first-par \
-	 --docset-feed-url http://amazekit.com/downloads/%DOCSETATOMFILENAME \
-	 --docset-package-url http://amazekit.com/downloads/%DOCSETPACKAGEFILENAME \
 	 --publish-docset \
 	 AmazeKit/AmazeKit/
 
