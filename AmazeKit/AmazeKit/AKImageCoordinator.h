@@ -58,7 +58,7 @@
  */
 - (void)addImageView:(UIImageView *)imageView;
 
-/** Removes an image view to the image coordinator. This will not clear the current image in the
+/** Removes an image view from the image coordinator. This will not clear the current image in the
  *  image view, but will prevent the image coordinator from re-rendering images if the image view’s
  *  frame changes.
  *
