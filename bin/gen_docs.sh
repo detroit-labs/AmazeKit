@@ -1,14 +1,16 @@
 #!/bin/sh
 
 appledoc -o docs/ \
-         -h \
-	 --create-docset \
-	 --no-install-docset \
+	 -d \
+	 --clean-output \
 	 --project-name AmazeKit \
 	 --project-company Detroit\ Labs \
 	 --project-version $(cat VERSION) \
 	 --company-id com.detroitlabs \
 	 --no-repeat-first-par \
+	 --docset-feed-url http://amazekit.com/downloads/%DOCSETATOMFILENAME \
+	 --docset-package-url http://amazekit.com/downloads/%DOCSETPACKAGEFILENAME \
+	 --publish-docset \
 	 AmazeKit/AmazeKit/
 
 appledoc -o docs/ \
