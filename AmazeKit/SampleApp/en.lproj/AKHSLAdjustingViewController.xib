@@ -40,7 +40,7 @@
 					<object class="IBUISlider" id="812783872">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{38, 358}, {234, 23}}</string>
+						<string key="NSFrame">{{38, 402}, {234, 23}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="267622249"/>
@@ -54,7 +54,7 @@
 					<object class="IBUIImageView" id="10434743">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{20, 40}, {280, 280}}</string>
+						<string key="NSFrame">{{20, 40}, {280, 324}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1014279758"/>
@@ -65,7 +65,7 @@
 					<object class="IBUISlider" id="771245076">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{38, 388}, {234, 23}}</string>
+						<string key="NSFrame">{{38, 432}, {234, 23}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="489266205"/>
@@ -79,7 +79,7 @@
 					<object class="IBUISlider" id="513772337">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{38, 418}, {234, 23}}</string>
+						<string key="NSFrame">{{38, 462}, {234, 23}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="261610830"/>
@@ -127,7 +127,7 @@
 					<object class="IBUILabel" id="1014279758">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{20, 362}, {8, 14}}</string>
+						<string key="NSFrame">{{20, 406}, {8, 14}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="812783872"/>
@@ -151,7 +151,7 @@
 					<object class="IBUILabel" id="1060847423">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{20, 392}, {8, 14}}</string>
+						<string key="NSFrame">{{20, 436}, {8, 14}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="771245076"/>
@@ -172,7 +172,7 @@
 					<object class="IBUILabel" id="816527136">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{20, 422}, {7, 14}}</string>
+						<string key="NSFrame">{{20, 466}, {7, 14}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="513772337"/>
@@ -193,7 +193,7 @@
 					<object class="IBUILabel" id="267622249">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">265</int>
-						<string key="NSFrame">{{278, 362}, {22, 14}}</string>
+						<string key="NSFrame">{{278, 406}, {22, 14}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1060847423"/>
@@ -214,7 +214,7 @@
 					<object class="IBUILabel" id="489266205">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">265</int>
-						<string key="NSFrame">{{278, 392}, {22, 14}}</string>
+						<string key="NSFrame">{{278, 436}, {22, 14}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="816527136"/>
@@ -235,7 +235,7 @@
 					<object class="IBUILabel" id="261610830">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">265</int>
-						<string key="NSFrame">{{278, 422}, {22, 14}}</string>
+						<string key="NSFrame">{{278, 466}, {22, 14}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -252,10 +252,10 @@
 						<reference key="IBUIFont" ref="811816987"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUILabel" id="419111986">
+					<object class="IBUILabel" id="792252636">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{20, 328}, {280, 14}}</string>
+						<string key="NSFrame">{{20, 372}, {280, 14}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -281,7 +281,7 @@
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
+				<string key="NSFrame">{{0, 64}, {320, 504}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1061013252"/>
@@ -294,6 +294,26 @@
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
+					<bool key="IBUIPrompted">NO</bool>
+				</object>
+				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
+					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
+					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<array key="dict.sortedKeys">
+							<integer value="1"/>
+							<integer value="3"/>
+						</array>
+						<array key="dict.values">
+							<string>{320, 568}</string>
+							<string>{568, 320}</string>
+						</array>
+					</object>
+					<string key="IBUITargetRuntime">IBCocoaTouchFramework</string>
+					<string key="IBUIDisplayName">Retina 4 Full Screen</string>
+					<int key="IBUIType">2</int>
+				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -367,7 +387,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">hashLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="419111986"/>
+						<reference key="destination" ref="792252636"/>
 					</object>
 					<int key="connectionID">45</int>
 				</object>
@@ -433,7 +453,7 @@
 							<reference ref="267622249"/>
 							<reference ref="489266205"/>
 							<reference ref="261610830"/>
-							<reference ref="419111986"/>
+							<reference ref="792252636"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -494,7 +514,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">44</int>
-						<reference key="object" ref="419111986"/>
+						<reference key="object" ref="792252636"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</array>
@@ -522,7 +542,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">45</int>
+			<int key="maxID">46</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -62,6 +62,8 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	
 	if (self) {
+		[self setTitle:@"HSL Example"];
+		
 		_sliderNumberFormatter = [[NSNumberFormatter alloc] init];
 		
 		[_sliderNumberFormatter setMaximumFractionDigits:3];
