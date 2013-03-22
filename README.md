@@ -63,7 +63,87 @@ This produces the following image output (for an image view with a size of 250 x
 ![Example Image 1](readme_images/example_1.png)
 
 ### Rendering Button Images
+The `AKButtonImageCoordinator` class is like the `AKImageCoordinator` class, but it takes two image renderers instead of one. The “off” image renderer is used for the button’s normal control state, and the “on” image renderer is used for the button’s highlighted control state. The `AKButtonImageCoordinator` takes care of rendering background images for your button and automatically renders them to the correct size. Here’s an example:
 
+    // The butons will have a noise effect, rounded corners, and a gradient in
+    // common.
+    AKNoiseImageEffect *noiseEffect =
+    [[AKNoiseImageEffect alloc] initWithAlpha:0.05f
+                                    blendMode:kCGBlendModeMultiply
+                                    noiseType:AKNoiseTypeBlackAndWhite];
+    
+    UIColor *topColor = [UIColor colorWithRed:144.0f / 255.0f
+                                        green:144.0f / 255.0f
+                                         blue:144.0f / 255.0f
+                                        alpha:1.0f];
+    
+    UIColor *bottomColor = [UIColor colorWithRed:103.0f / 255.0f
+                                           green:103.0f / 255.0f
+                                            blue:103.0f / 255.0f
+                                           alpha:1.0f];
+ 
+    AKGradientImageEffect *gradientImageEffect =
+    [[AKGradientImageEffect alloc] initWithAlpha:1.0f
+                                       blendMode:kCGBlendModeMultiply
+                                          colors:@[topColor, bottomColor]
+                                       direction:AKGradientDirectionVertical
+                                       locations:nil];
+    
+    AKCornerRadii cornerRadii = AKCornerRadiiMake(4.0f, 4.0f, 4.0f, 4.0f);
+
+    AKCornerRadiusImageEffect *cornerRadiusEffect =
+    [[AKCornerRadiusImageEffect alloc] initWithAlpha:1.0f
+                                           blendMode:kCGBlendModeNormal
+                                         cornerRadii:cornerRadii];
+    
+    // The “off” state is blue, the “on” state is red.
+    AKColorImageEffect *onColorEffect =
+    [[AKColorImageEffect alloc] initWithAlpha:1.0f
+                                    blendMode:kCGBlendModeColor
+                                        color:[UIColor redColor]];
+	
+    AKColorImageEffect *offColorEffect =
+    [[AKColorImageEffect alloc] initWithAlpha:1.0f
+                                    blendMode:kCGBlendModeColor
+                                        color:[UIColor blueColor]];
+	
+    // We create two image renderers, one for each state
+    AKImageRenderer *offImageRenderer = [[AKImageRenderer alloc] init];
+    AKImageRenderer *onImageRenderer = [[AKImageRenderer alloc] init];
+    
+    // And we assign the image effects for each.
+    [offImageRenderer setImageEffects:@[
+     noiseEffect,
+     gradientImageEffect,
+     offColorEffect,
+     cornerRadiusEffect
+     ]];
+    
+    [onImageRenderer setImageEffects:@[
+     noiseEffect,
+     gradientImageEffect,
+     onColorEffect,
+     cornerRadiusEffect
+     ]];
+    
+    // Next we create the button image coordinator and assign the image
+    // renderers to it
+    AKButtonImageCoordinator *buttonImageCooordinator =
+    [[AKButtonImageCoordinator alloc] init];
+    
+    [buttonImageCooordinator setOffImageRenderer:offImageRenderer];
+    [buttonImageCooordinator setOnImageRenderer:onImageRenderer];
+    
+    // Finally, we add a button.
+    [buttonImageCooordinator addButton:myButton];
+
+This produces the following image output (for a button that’s 150 x 44 on a Retina display):
+
+<img src="readme_images/example2_off.png"
+     width=150
+     height=44
+     onMouseOver="this.src='readme_images/example2_on.png';"
+     onMouseOut="this.src='readme_images/example2_off.png';">
 
 ## The `bin` Directory
 In the `bin` directory are two scripts: `gen_docs.sh` and `publish_docs.sh`. These scripts are meant for me to run as a convenience to publish the appledoc docs. Use caution when running them.
