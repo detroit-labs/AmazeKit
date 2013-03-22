@@ -1,8 +1,8 @@
 //
-//  AKAppDelegate.h
-//  SampleApp
+//  AKButtonExampleViewController.h
+//  AmazeKit
 //
-//  Created by Jeffrey Kelley on 6/12/12.
+//  Created by Jeff Kelley on 3/22/13.
 //  Copyright (c) 2013 Detroit Labs. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface AKAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface AKButtonExampleViewController : UIViewController
 
 @end

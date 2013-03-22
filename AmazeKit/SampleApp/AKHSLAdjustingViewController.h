@@ -1,5 +1,5 @@
 //
-//  AKViewController.h
+//  AKHSLAdjustingViewController.h
 //  SmapleApp
 //
 //  Created by Jeffrey Kelley on 6/12/12.
@@ -18,8 +18,10 @@
 //  limitations under the License.
 //
 
+
 #import <UIKit/UIKit.h>
 
-@interface AKViewController : UIViewController
+
+@interface AKHSLAdjustingViewController : UIViewController
 
 @end
