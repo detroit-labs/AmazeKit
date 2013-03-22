@@ -20,6 +20,7 @@
 
 #import "AKAppDelegate.h"
 
+#import "AKButtonExampleViewController.h"
 #import "AKMenuViewController.h"
 #import "AKHSLAdjustingViewController.h"
 
@@ -40,7 +41,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	[[AKMenuViewController alloc] initWithStyle:UITableViewStylePlain];
 	
 	[menuViewController setViewControllers:@[
-	 [[AKHSLAdjustingViewController alloc] initWithNibName:nil bundle:nil]
+	 [[AKHSLAdjustingViewController alloc] initWithNibName:nil bundle:nil],
+	 [[AKButtonExampleViewController alloc] initWithNibName:nil bundle:nil]
 	 ]];
 	
 	UINavigationController *navigationController =
