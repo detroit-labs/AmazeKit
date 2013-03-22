@@ -139,11 +139,8 @@ The `AKButtonImageCoordinator` class is like the `AKImageCoordinator` class, but
 
 This produces the following image output (for a button that’s 150 x 44 on a Retina display):
 
-<img src="readme_images/example2_off.png"
-     width=150
-     height=44
-     onMouseOver="this.src='readme_images/example2_on.png';"
-     onMouseOut="this.src='readme_images/example2_off.png';">
+Off: ![Example Image 2 (Off)](readme_images/example2_off.png)
+On: ![Example Image 2 (On)](readme_images/example2_on.png)
 
 ## The `bin` Directory
 In the `bin` directory are two scripts: `gen_docs.sh` and `publish_docs.sh`. These scripts are meant for me to run as a convenience to publish the appledoc docs. Use caution when running them.
