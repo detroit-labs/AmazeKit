@@ -53,10 +53,10 @@ The following code sets up an `AKImageCoordinator`. This class is responsible fo
      colorEffect
      ]];
     
-    _imageCoordinator = [[AKImageCoordinator alloc] init];
-    [_imageCoordinator setImageRenderer:imageRenderer];
+    AKImageCoordinator *imageCoordinator = [[AKImageCoordinator alloc] init];
+    [imageCoordinator setImageRenderer:imageRenderer];
     
-    [_imageCoordinator addImageView:myImageView];
+    [imageCoordinator addImageView:myImageView];
 
 This produces the following image output (for an image view with a size of 250 x 100 on a Retina display):
 
