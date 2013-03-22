@@ -20,18 +20,16 @@
 
 #import "AKAppDelegate.h"
 
-#import "AKViewController.h"
+#import "AKHSLAdjustingViewController.h"
+
 
 @implementation AKAppDelegate
-
-@synthesize window = _window;
-@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-	self.viewController = [[AKViewController alloc] initWithNibName:@"AKViewController" bundle:nil];
+	self.viewController = [[AKHSLAdjustingViewController alloc] initWithNibName:nil bundle:nil];
 	self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
