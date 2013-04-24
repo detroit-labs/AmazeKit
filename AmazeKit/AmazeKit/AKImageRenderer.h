@@ -117,6 +117,4 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
  */
 - (NSDictionary *)representativeDictionary;
 
-ds;fjasfkljds;klfj s;klfas;fhjjklhalsfjkahlskfhs;fjk23;lkjr 2;lkj
-
 @end
