@@ -145,6 +145,9 @@ On: ![Example Image 2 (On)](readme_images/example2_on.png)
 ## The `bin` Directory
 In the `bin` directory are two scripts: `gen_docs.sh` and `publish_docs.sh`. These scripts are meant for me to run as a convenience to publish the appledoc docs. Use caution when running them.
 
+## Build Status
+[![Build Status](https://travis-ci.org/detroit-labs/AmazeKit.png)](https://travis-ci.org/detroit-labs/AmazeKit)
+
 ## Examples
 Here are some great apps using AmazeKit:
 * [BetARound](http://www.sidebet.me/betaround/)
