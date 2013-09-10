@@ -148,8 +148,5 @@ In the `bin` directory are two scripts: `gen_docs.sh` and `publish_docs.sh`. The
 ## Build Status
 [![Build Status](https://travis-ci.org/detroit-labs/AmazeKit.png)](https://travis-ci.org/detroit-labs/AmazeKit)
 
-## Examples
-Here are some great apps using AmazeKit:
-* [BetARound](http://www.sidebet.me/betaround/)
 
 AmazeKit was developed in Detroit by [Jeff Kelley](http://github.com/SlaunchaMan) at [Detroit Labs](http://www.detroitlabs.com).
