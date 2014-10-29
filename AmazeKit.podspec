@@ -10,14 +10,4 @@ Pod::Spec.new do |s|
   s.frameworks   = 'Foundation', 'CoreGraphics', 'ImageIO', 'QuartzCore', 'UIKit'
   s.platform     = :ios
   s.requires_arc = true
-  s.documentation = {
-    :appledoc => [
-      '--project-company', 'Detroit Labs',
-      '--company-id', 'com.detroitlabs',
-      '--no-repeat-first-par',
-      '--no-keep-undocumented-objects',
-      '--no-keep-undocumented-members',
-      '--no-search-undocumented-doc'
-    ]
-  }
 end
