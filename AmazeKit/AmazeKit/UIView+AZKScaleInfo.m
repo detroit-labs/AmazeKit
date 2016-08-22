@@ -1,5 +1,5 @@
 //
-//  UIView+AKScaleInfo.h
+//  UIView+AZKScaleInfo.m
 //  AmazeKit
 //
 //  Created by Jeff Kelley on 8/12/12.
@@ -18,12 +18,19 @@
 //  limitations under the License.
 //
 
+#import "UIView+AZKScaleInfo.h"
 
-#import <UIKit/UIKit.h>
+@implementation UIView (AKScaleInfo)
 
-
-@interface UIView (AKScaleInfo)
-
-- (CGFloat)AK_scale;
+- (CGFloat)azk_scale
+{
+	CGFloat scale = [[UIScreen mainScreen] scale];
+	
+	if ([self window] != nil) {
+		scale = [[[self window] screen] scale];
+	}
+	
+	return scale;
+}
 
 @end

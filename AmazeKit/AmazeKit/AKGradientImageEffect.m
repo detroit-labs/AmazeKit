@@ -21,7 +21,7 @@
 
 #import "AKGradientImageEffect.h"
 
-#import "UIColor+AKColorStrings.h"
+#import "UIColor+AZKColorStrings.h"
 
 
 static NSString * const kColorsKey = @"colors";
@@ -127,7 +127,7 @@ static NSString * const kLocationsKey = @"locations";
 	NSMutableArray *colors = [[NSMutableArray alloc] initWithCapacity:[[self colors] count]];
 	
 	for (UIColor *color in [self colors]) {
-		[colors addObject:[color AK_hexString]];
+		[colors addObject:color.azk_hexString];
 	}
 	
 	[dictionary setObject:colors forKey:kColorsKey];	
@@ -149,7 +149,7 @@ static NSString * const kLocationsKey = @"locations";
 		NSMutableArray *parsedColors = [[NSMutableArray alloc] initWithCapacity:[colors count]];
 		
 		for (NSString *hexString in colors) {
-			[parsedColors addObject:[UIColor AK_colorWithHexString:hexString]];
+			[parsedColors addObject:[UIColor azk_colorWithHexString:hexString]];
 		}
 		
 		_colors = [NSArray arrayWithArray:parsedColors];

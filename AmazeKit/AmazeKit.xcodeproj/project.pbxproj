@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		1F0775FE15D6ED610063F923 /* AKMutableColorImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F0775FC15D6ED610063F923 /* AKMutableColorImageEffect.h */; };
 		1F0775FF15D6ED610063F923 /* AKMutableColorImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0775FD15D6ED610063F923 /* AKMutableColorImageEffect.m */; };
-		1F07760315D820010063F923 /* UIView+AKScaleInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F07760115D820010063F923 /* UIView+AKScaleInfo.h */; };
-		1F07760415D820010063F923 /* UIView+AKScaleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F07760215D820010063F923 /* UIView+AKScaleInfo.m */; };
-		1F26394C15C81DE800DF1244 /* UIColor+AKColorStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */; };
-		1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */; };
-		1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */; };
-		1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */; };
+		1F07760315D820010063F923 /* UIView+AZKScaleInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F07760115D820010063F923 /* UIView+AZKScaleInfo.h */; };
+		1F07760415D820010063F923 /* UIView+AZKScaleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F07760215D820010063F923 /* UIView+AZKScaleInfo.m */; };
+		1F26394C15C81DE800DF1244 /* UIColor+AZKColorStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26394A15C81DE800DF1244 /* UIColor+AZKColorStrings.h */; };
+		1F26394D15C81DE800DF1244 /* UIColor+AZKColorStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26394B15C81DE800DF1244 /* UIColor+AZKColorStrings.m */; };
+		1F26396815C825FD00DF1244 /* NSString+AZKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F26396615C825FD00DF1244 /* NSString+AZKCryptography.h */; };
+		1F26396915C825FD00DF1244 /* NSString+AZKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26396715C825FD00DF1244 /* NSString+AZKCryptography.m */; };
 		1F45CF11161233CA00426F35 /* AKImageEffectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F45CF10161233CA00426F35 /* AKImageEffectTests.m */; };
 		1F45CF131612347800426F35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
 		1F45CF141612348900426F35 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65BBF215F84AE500393818 /* ImageIO.framework */; };
@@ -33,14 +33,14 @@
 		1F77EBE415FBA156000122B5 /* AKImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */; };
 		1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4703158CC48A00ABF10D /* AKFileManager.h */; };
 		1F7D4706158CC48A00ABF10D /* AKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D4704158CC48A00ABF10D /* AKFileManager.m */; };
-		1F7E80C415D959A70050D130 /* UIImage+AKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7E80C215D959A70050D130 /* UIImage+AKCryptography.h */; };
-		1F7E80C515D959A70050D130 /* UIImage+AKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E80C315D959A70050D130 /* UIImage+AKCryptography.m */; };
+		1F7E80C415D959A70050D130 /* UIImage+AZKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7E80C215D959A70050D130 /* UIImage+AZKCryptography.h */; };
+		1F7E80C515D959A70050D130 /* UIImage+AZKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E80C315D959A70050D130 /* UIImage+AZKCryptography.m */; };
 		1F83BA9C15D0191C00254D53 /* AKMaskImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */; };
 		1F83BA9D15D0191C00254D53 /* AKMaskImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */; };
 		1F96924715EEE9A700D5AE37 /* AKInnerShadowImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F96924515EEE9A700D5AE37 /* AKInnerShadowImageEffect.h */; };
 		1F96924815EEE9A700D5AE37 /* AKInnerShadowImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F96924615EEE9A700D5AE37 /* AKInnerShadowImageEffect.m */; };
-		1F96925115EEFAA800D5AE37 /* UIImage+AKMasking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F96924F15EEFAA800D5AE37 /* UIImage+AKMasking.h */; };
-		1F96925215EEFAA800D5AE37 /* UIImage+AKMasking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F96925015EEFAA800D5AE37 /* UIImage+AKMasking.m */; };
+		1F96925115EEFAA800D5AE37 /* UIImage+AZKMasking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F96924F15EEFAA800D5AE37 /* UIImage+AZKMasking.h */; };
+		1F96925215EEFAA800D5AE37 /* UIImage+AZKMasking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F96925015EEFAA800D5AE37 /* UIImage+AZKMasking.m */; };
 		1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FA641921586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FA641A31586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
@@ -53,6 +53,8 @@
 		1FA641C31586D5FB00350AC6 /* AmazeKit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */; };
 		1FA641C61586D6FA00350AC6 /* AKNoiseImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */; };
 		1FA641C71586D6FA00350AC6 /* AKNoiseImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */; };
+		1FA7819B1D6B9ED20091A9E8 /* NSData+AZKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA781991D6B9ED20091A9E8 /* NSData+AZKCryptography.h */; };
+		1FA7819C1D6B9ED20091A9E8 /* NSData+AZKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7819A1D6B9ED20091A9E8 /* NSData+AZKCryptography.m */; };
 		1FA95AE8160B5FF00039106B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA95AE7160B5FF00039106B /* Default-568h@2x.png */; };
 		1FB27E551598B3CF00347D3D /* AKInnerGlowImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */; };
 		1FB27E561598B3CF00347D3D /* AKInnerGlowImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */; };
@@ -78,8 +80,8 @@
 		1FE10A3316FCC4010093821B /* AKButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE10A3216FCC4010093821B /* AKButtonExampleViewController.xib */; };
 		1FEC1AC315C1C33E00C5C0D1 /* AKPatternImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FEC1AC115C1C33E00C5C0D1 /* AKPatternImageEffect.h */; };
 		1FEC1AC415C1C33E00C5C0D1 /* AKPatternImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC1AC215C1C33E00C5C0D1 /* AKPatternImageEffect.m */; };
-		1FFDAC2D1587828A00837D3A /* UIImage+AKPixelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */; };
-		1FFDAC2E1587828A00837D3A /* UIImage+AKPixelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDAC2C1587828A00837D3A /* UIImage+AKPixelData.m */; };
+		1FFDAC2D1587828A00837D3A /* UIImage+AZKPixelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FFDAC2B1587828A00837D3A /* UIImage+AZKPixelData.h */; };
+		1FFDAC2E1587828A00837D3A /* UIImage+AZKPixelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDAC2C1587828A00837D3A /* UIImage+AZKPixelData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,12 +104,12 @@
 /* Begin PBXFileReference section */
 		1F0775FC15D6ED610063F923 /* AKMutableColorImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKMutableColorImageEffect.h; sourceTree = "<group>"; };
 		1F0775FD15D6ED610063F923 /* AKMutableColorImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKMutableColorImageEffect.m; sourceTree = "<group>"; };
-		1F07760115D820010063F923 /* UIView+AKScaleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AKScaleInfo.h"; sourceTree = "<group>"; };
-		1F07760215D820010063F923 /* UIView+AKScaleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AKScaleInfo.m"; sourceTree = "<group>"; };
-		1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AKColorStrings.h"; sourceTree = "<group>"; };
-		1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AKColorStrings.m"; sourceTree = "<group>"; };
-		1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AKCryptography.h"; sourceTree = "<group>"; };
-		1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AKCryptography.m"; sourceTree = "<group>"; };
+		1F07760115D820010063F923 /* UIView+AZKScaleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AZKScaleInfo.h"; sourceTree = "<group>"; };
+		1F07760215D820010063F923 /* UIView+AZKScaleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AZKScaleInfo.m"; sourceTree = "<group>"; };
+		1F26394A15C81DE800DF1244 /* UIColor+AZKColorStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AZKColorStrings.h"; sourceTree = "<group>"; };
+		1F26394B15C81DE800DF1244 /* UIColor+AZKColorStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AZKColorStrings.m"; sourceTree = "<group>"; };
+		1F26396615C825FD00DF1244 /* NSString+AZKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AZKCryptography.h"; sourceTree = "<group>"; };
+		1F26396715C825FD00DF1244 /* NSString+AZKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AZKCryptography.m"; sourceTree = "<group>"; };
 		1F45CF0F161233CA00426F35 /* AKImageEffectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageEffectTests.h; sourceTree = "<group>"; };
 		1F45CF10161233CA00426F35 /* AKImageEffectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageEffectTests.m; sourceTree = "<group>"; };
 		1F60297515F828BB002E48E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -119,14 +121,14 @@
 		1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageCoordinator.m; sourceTree = "<group>"; };
 		1F7D4703158CC48A00ABF10D /* AKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKFileManager.h; sourceTree = "<group>"; };
 		1F7D4704158CC48A00ABF10D /* AKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKFileManager.m; sourceTree = "<group>"; };
-		1F7E80C215D959A70050D130 /* UIImage+AKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AKCryptography.h"; sourceTree = "<group>"; };
-		1F7E80C315D959A70050D130 /* UIImage+AKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AKCryptography.m"; sourceTree = "<group>"; };
+		1F7E80C215D959A70050D130 /* UIImage+AZKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AZKCryptography.h"; sourceTree = "<group>"; };
+		1F7E80C315D959A70050D130 /* UIImage+AZKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AZKCryptography.m"; sourceTree = "<group>"; };
 		1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKMaskImageEffect.h; sourceTree = "<group>"; };
 		1F83BA9B15D0191C00254D53 /* AKMaskImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKMaskImageEffect.m; sourceTree = "<group>"; };
 		1F96924515EEE9A700D5AE37 /* AKInnerShadowImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKInnerShadowImageEffect.h; sourceTree = "<group>"; };
 		1F96924615EEE9A700D5AE37 /* AKInnerShadowImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKInnerShadowImageEffect.m; sourceTree = "<group>"; };
-		1F96924F15EEFAA800D5AE37 /* UIImage+AKMasking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AKMasking.h"; sourceTree = "<group>"; };
-		1F96925015EEFAA800D5AE37 /* UIImage+AKMasking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AKMasking.m"; sourceTree = "<group>"; };
+		1F96924F15EEFAA800D5AE37 /* UIImage+AZKMasking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AZKMasking.h"; sourceTree = "<group>"; };
+		1F96925015EEFAA800D5AE37 /* UIImage+AZKMasking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AZKMasking.m"; sourceTree = "<group>"; };
 		1FA6418E1586D12E00350AC6 /* libAmazeKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAmazeKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA641911586D12E00350AC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1FA641961586D12E00350AC6 /* AmazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazeKit.h; sourceTree = "<group>"; };
@@ -140,6 +142,8 @@
 		1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AmazeKit-Prefix.pch"; sourceTree = "<group>"; };
 		1FA641C41586D6FA00350AC6 /* AKNoiseImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKNoiseImageEffect.h; sourceTree = "<group>"; };
 		1FA641C51586D6FA00350AC6 /* AKNoiseImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKNoiseImageEffect.m; sourceTree = "<group>"; };
+		1FA781991D6B9ED20091A9E8 /* NSData+AZKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AZKCryptography.h"; sourceTree = "<group>"; };
+		1FA7819A1D6B9ED20091A9E8 /* NSData+AZKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AZKCryptography.m"; sourceTree = "<group>"; };
 		1FA95AE7160B5FF00039106B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1FB27E531598B3CF00347D3D /* AKInnerGlowImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKInnerGlowImageEffect.h; sourceTree = "<group>"; };
 		1FB27E541598B3CF00347D3D /* AKInnerGlowImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKInnerGlowImageEffect.m; sourceTree = "<group>"; };
@@ -171,8 +175,8 @@
 		1FE10A3216FCC4010093821B /* AKButtonExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AKButtonExampleViewController.xib; sourceTree = "<group>"; };
 		1FEC1AC115C1C33E00C5C0D1 /* AKPatternImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPatternImageEffect.h; sourceTree = "<group>"; };
 		1FEC1AC215C1C33E00C5C0D1 /* AKPatternImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPatternImageEffect.m; sourceTree = "<group>"; };
-		1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AKPixelData.h"; sourceTree = "<group>"; };
-		1FFDAC2C1587828A00837D3A /* UIImage+AKPixelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AKPixelData.m"; sourceTree = "<group>"; };
+		1FFDAC2B1587828A00837D3A /* UIImage+AZKPixelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AZKPixelData.h"; sourceTree = "<group>"; };
+		1FFDAC2C1587828A00837D3A /* UIImage+AZKPixelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AZKPixelData.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,18 +388,20 @@
 		1FFDAC291587825400837D3A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				1F26396615C825FD00DF1244 /* NSString+AKCryptography.h */,
-				1F26396715C825FD00DF1244 /* NSString+AKCryptography.m */,
-				1F26394A15C81DE800DF1244 /* UIColor+AKColorStrings.h */,
-				1F26394B15C81DE800DF1244 /* UIColor+AKColorStrings.m */,
-				1F7E80C215D959A70050D130 /* UIImage+AKCryptography.h */,
-				1F7E80C315D959A70050D130 /* UIImage+AKCryptography.m */,
-				1F96924F15EEFAA800D5AE37 /* UIImage+AKMasking.h */,
-				1F96925015EEFAA800D5AE37 /* UIImage+AKMasking.m */,
-				1FFDAC2B1587828A00837D3A /* UIImage+AKPixelData.h */,
-				1FFDAC2C1587828A00837D3A /* UIImage+AKPixelData.m */,
-				1F07760115D820010063F923 /* UIView+AKScaleInfo.h */,
-				1F07760215D820010063F923 /* UIView+AKScaleInfo.m */,
+				1FA781991D6B9ED20091A9E8 /* NSData+AZKCryptography.h */,
+				1FA7819A1D6B9ED20091A9E8 /* NSData+AZKCryptography.m */,
+				1F26396615C825FD00DF1244 /* NSString+AZKCryptography.h */,
+				1F26396715C825FD00DF1244 /* NSString+AZKCryptography.m */,
+				1F26394A15C81DE800DF1244 /* UIColor+AZKColorStrings.h */,
+				1F26394B15C81DE800DF1244 /* UIColor+AZKColorStrings.m */,
+				1F7E80C215D959A70050D130 /* UIImage+AZKCryptography.h */,
+				1F7E80C315D959A70050D130 /* UIImage+AZKCryptography.m */,
+				1F96924F15EEFAA800D5AE37 /* UIImage+AZKMasking.h */,
+				1F96925015EEFAA800D5AE37 /* UIImage+AZKMasking.m */,
+				1FFDAC2B1587828A00837D3A /* UIImage+AZKPixelData.h */,
+				1FFDAC2C1587828A00837D3A /* UIImage+AZKPixelData.m */,
+				1F07760115D820010063F923 /* UIView+AZKScaleInfo.h */,
+				1F07760215D820010063F923 /* UIView+AZKScaleInfo.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -411,7 +417,7 @@
 				1FA641BF1586D38000350AC6 /* AKImageEffect.h in Headers */,
 				1FA641C31586D5FB00350AC6 /* AmazeKit-Prefix.pch in Headers */,
 				1FA641C61586D6FA00350AC6 /* AKNoiseImageEffect.h in Headers */,
-				1FFDAC2D1587828A00837D3A /* UIImage+AKPixelData.h in Headers */,
+				1FFDAC2D1587828A00837D3A /* UIImage+AZKPixelData.h in Headers */,
 				1FDCA5931587A0BA0010B272 /* AKGradientImageEffect.h in Headers */,
 				1FDCA5AF1587A8FF0010B272 /* AKColorImageEffect.h in Headers */,
 				1FDCA5B31587AC5F0010B272 /* AKButtonBevelImageEffect.h in Headers */,
@@ -421,14 +427,15 @@
 				1FB27E551598B3CF00347D3D /* AKInnerGlowImageEffect.h in Headers */,
 				1FB27E681598F45700347D3D /* AKDrawingUtilities.h in Headers */,
 				1FEC1AC315C1C33E00C5C0D1 /* AKPatternImageEffect.h in Headers */,
-				1F26394C15C81DE800DF1244 /* UIColor+AKColorStrings.h in Headers */,
-				1F26396815C825FD00DF1244 /* NSString+AKCryptography.h in Headers */,
+				1FA7819B1D6B9ED20091A9E8 /* NSData+AZKCryptography.h in Headers */,
+				1F26394C15C81DE800DF1244 /* UIColor+AZKColorStrings.h in Headers */,
+				1F26396815C825FD00DF1244 /* NSString+AZKCryptography.h in Headers */,
 				1F83BA9C15D0191C00254D53 /* AKMaskImageEffect.h in Headers */,
 				1F0775FE15D6ED610063F923 /* AKMutableColorImageEffect.h in Headers */,
-				1F07760315D820010063F923 /* UIView+AKScaleInfo.h in Headers */,
-				1F7E80C415D959A70050D130 /* UIImage+AKCryptography.h in Headers */,
+				1F07760315D820010063F923 /* UIView+AZKScaleInfo.h in Headers */,
+				1F7E80C415D959A70050D130 /* UIImage+AZKCryptography.h in Headers */,
 				1F96924715EEE9A700D5AE37 /* AKInnerShadowImageEffect.h in Headers */,
-				1F96925115EEFAA800D5AE37 /* UIImage+AKMasking.h in Headers */,
+				1F96925115EEFAA800D5AE37 /* UIImage+AZKMasking.h in Headers */,
 				1F77EBE315FBA156000122B5 /* AKImageCoordinator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,7 +502,7 @@
 		1FA641851586D12E00350AC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Detroit Labs";
 			};
 			buildConfigurationList = 1FA641881586D12E00350AC6 /* Build configuration list for PBXProject "AmazeKit" */;
@@ -547,7 +554,7 @@
 				1FA641BB1586D16700350AC6 /* AKImageRenderer.m in Sources */,
 				1FA641C01586D38000350AC6 /* AKImageEffect.m in Sources */,
 				1FA641C71586D6FA00350AC6 /* AKNoiseImageEffect.m in Sources */,
-				1FFDAC2E1587828A00837D3A /* UIImage+AKPixelData.m in Sources */,
+				1FFDAC2E1587828A00837D3A /* UIImage+AZKPixelData.m in Sources */,
 				1FDCA5941587A0BA0010B272 /* AKGradientImageEffect.m in Sources */,
 				1FDCA5B01587A8FF0010B272 /* AKColorImageEffect.m in Sources */,
 				1FDCA5B41587AC5F0010B272 /* AKButtonBevelImageEffect.m in Sources */,
@@ -557,14 +564,15 @@
 				1FB27E561598B3CF00347D3D /* AKInnerGlowImageEffect.m in Sources */,
 				1FB27E691598F45700347D3D /* AKDrawingUtilities.m in Sources */,
 				1FEC1AC415C1C33E00C5C0D1 /* AKPatternImageEffect.m in Sources */,
-				1F26394D15C81DE800DF1244 /* UIColor+AKColorStrings.m in Sources */,
-				1F26396915C825FD00DF1244 /* NSString+AKCryptography.m in Sources */,
+				1F26394D15C81DE800DF1244 /* UIColor+AZKColorStrings.m in Sources */,
+				1FA7819C1D6B9ED20091A9E8 /* NSData+AZKCryptography.m in Sources */,
+				1F26396915C825FD00DF1244 /* NSString+AZKCryptography.m in Sources */,
 				1F83BA9D15D0191C00254D53 /* AKMaskImageEffect.m in Sources */,
 				1F0775FF15D6ED610063F923 /* AKMutableColorImageEffect.m in Sources */,
-				1F07760415D820010063F923 /* UIView+AKScaleInfo.m in Sources */,
-				1F7E80C515D959A70050D130 /* UIImage+AKCryptography.m in Sources */,
+				1F07760415D820010063F923 /* UIView+AZKScaleInfo.m in Sources */,
+				1F7E80C515D959A70050D130 /* UIImage+AZKCryptography.m in Sources */,
 				1F96924815EEE9A700D5AE37 /* AKInnerShadowImageEffect.m in Sources */,
-				1F96925215EEFAA800D5AE37 /* UIImage+AKMasking.m in Sources */,
+				1F96925215EEFAA800D5AE37 /* UIImage+AZKMasking.m in Sources */,
 				1F77EBE415FBA156000122B5 /* AKImageCoordinator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,11 +644,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -648,10 +665,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -660,13 +681,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
@@ -723,6 +755,7 @@
 				GCC_PREFIX_HEADER = "AmazeKit/AmazeKit-Prefix.pch";
 				INFOPLIST_FILE = "AmazeKitTests/AmazeKitTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.detroitlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -734,6 +767,7 @@
 				GCC_PREFIX_HEADER = "AmazeKit/AmazeKit-Prefix.pch";
 				INFOPLIST_FILE = "AmazeKitTests/AmazeKitTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.detroitlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -750,6 +784,7 @@
 				GCC_PREFIX_HEADER = "SampleApp/SampleApp-Prefix.pch";
 				INFOPLIST_FILE = "SampleApp/SampleApp-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.detroitlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -768,6 +803,7 @@
 				INFOPLIST_FILE = "SampleApp/SampleApp-Info.plist";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.detroitlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

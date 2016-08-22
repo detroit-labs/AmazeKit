@@ -1,8 +1,8 @@
 //
-//  NSString+AKCryptography.h
+//  UIImage+AZKCryptography.h
 //  AmazeKit
 //
-//  Created by Jeff Kelley on 7/31/12.
+//  Created by Jeff Kelley on 8/13/12.
 //  Copyright (c) 2013 Detroit Labs. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,12 +18,14 @@
 //  limitations under the License.
 //
 
+#import <UIKit/UIKit.h>
 
-#import <Foundation/Foundation.h>
+NS_ASSUME_NONNULL_BEGIN
 
+@interface UIImage (AZKCryptography)
 
-@interface NSString (AKCryptography)
-
-- (NSString *)AK_sha1Hash;
+@property (readonly, nonatomic) NSString *azk_sha1Hash;
 
 @end
+
+NS_ASSUME_NONNULL_END

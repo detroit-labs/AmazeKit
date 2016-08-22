@@ -21,7 +21,7 @@
 
 #import "AKImageEffect.h"
 
-#import "NSString+AKCryptography.h"
+#import "NSString+AZKCryptography.h"
 
 #import "AKDrawingUtilities.h"
 #import "AKFileManager.h"
@@ -105,7 +105,7 @@ static NSString * const kBlendModeKey = @"blendMode";
 	AKImageEffect *other = (AKImageEffect *)object;
 	
 	if ([other isKindOfClass:[self class]]) {
-		if (fabsf([other alpha] - [self alpha]) < FLT_EPSILON &&
+		if (fabs([other alpha] - [self alpha]) < FLT_EPSILON &&
 			[other blendMode] == [self blendMode]) {
 			isEqual = YES;
 		}
@@ -201,7 +201,7 @@ static NSString * const kBlendModeKey = @"blendMode";
 				NSString *jsonString = [[NSString alloc] initWithData:jsonRepresentation
 															 encoding:NSUTF8StringEncoding];
 				
-				hash = [jsonString AK_sha1Hash];
+				hash = jsonString.azk_sha1Hash;
 				_cachedHash = hash;
 			}
 		}

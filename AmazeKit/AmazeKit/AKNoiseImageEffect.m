@@ -21,7 +21,7 @@
 
 #import "AKNoiseImageEffect.h"
 
-#import "UIImage+AKPixelData.h"
+#import "UIImage+AZKPixelData.h"
 
 
 // KVO Constants
@@ -54,16 +54,16 @@ static NSString * const kNoiseTypeKey = @"AKNoiseType";
 	CGColorSpaceRef noiseColorSpace = CGColorSpaceCreateDeviceRGB();
 	size_t numberOfComponents = 3;
 	
-	int bitsPerComponent = 8;
-	int bytesPerPixel = ((numberOfComponents + 1) * bitsPerComponent) / 8;
-	int bytesPerRow = bytesPerPixel * width;
+	NSInteger bitsPerComponent = 8;
+	NSInteger bytesPerPixel = ((numberOfComponents + 1) * bitsPerComponent) / 8;
+	NSInteger bytesPerRow = bytesPerPixel * width;
 	
 	// Create the data buffer for the image.
 	uint8_t *imageData = calloc(width * height, bytesPerPixel);
 	
 	for (NSUInteger x = 0; x < width; x++) {
 		for (NSUInteger y = 0; y < height; y++) {
-			int offset = (bytesPerRow * y) + (bytesPerPixel * x);
+			NSInteger offset = (bytesPerRow * y) + (bytesPerPixel * x);
 			
 			if ([self noiseType] == AKNoiseTypeBlackAndWhite) {
 				uint8_t white = arc4random_uniform(UINT8_MAX);

@@ -1,5 +1,5 @@
 //
-//  UIImage+AKPixelData.m
+//  UIImage+AZKPixelData.m
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/12/12.
@@ -18,16 +18,13 @@
 //  limitations under the License.
 //
 
+#import "UIImage+AZKPixelData.h"
 
-#import "UIImage+AKPixelData.h"
+const AZKPixelData AZKPixelDataZero = {0, 0, 0, 0};
 
+@implementation UIImage (AZKPixelData)
 
-const AKPixelData AKPixelDataZero = {0, 0, 0, 0};
-
-
-@implementation UIImage (AKPixelData)
-
-- (NSData *)AK_rawRGBA8888Data
+- (NSData *)azk_rawRGBA8888Data
 {
 	// First get the image into your data buffer
     CGImageRef imageRef = [self CGImage];
@@ -65,15 +62,18 @@ const AKPixelData AKPixelDataZero = {0, 0, 0, 0};
 
 @end
 
-AKPixelData AKGetPixelDataFromRGBA8888Data(uint8_t *rawData, NSUInteger width, NSUInteger height,
-										   NSUInteger x, NSUInteger y)
+AZKPixelData AZKPixelDataFromRGBA8888Data(uint8_t *rawData,
+                                          NSUInteger width,
+                                          NSUInteger height,
+                                          NSUInteger x,
+                                          NSUInteger y)
 {
-	int bytesPerPixel = 4; // ARGB8888
-	int bytesPerRow = bytesPerPixel * width;
+	size_t bytesPerPixel = 4; // ARGB8888
+	size_t bytesPerRow = bytesPerPixel * width;
 	
-	int byteIndex = (bytesPerRow * y) + (x * bytesPerPixel);
+	size_t byteIndex = (bytesPerRow * y) + (x * bytesPerPixel);
 	
-	AKPixelData pixelData;
+	AZKPixelData pixelData;
 	
 	pixelData.red   = rawData[byteIndex];
 	pixelData.green = rawData[byteIndex + 1];

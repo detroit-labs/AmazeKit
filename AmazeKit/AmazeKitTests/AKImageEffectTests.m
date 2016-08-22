@@ -60,7 +60,7 @@
 
 - (void)testHash
 {
-	NSString *expectedHash = @"d458a15c726bfbbd021af1b1ffd6183621a8cef6";
+	NSString *expectedHash = @"432bc9625fee0f5be733bc217504d57ad1e411bf";
 	NSString *hash = [_imageEffect representativeHash];
 	
 	XCTAssertEqualObjects(hash, expectedHash, @"The hash should equal our expected value.");

@@ -21,7 +21,7 @@
 
 #import "AKPatternImageEffect.h"
 
-#import "UIImage+AKCryptography.h"
+#import "UIImage+AZKCryptography.h"
 
 #import "AKDrawingUtilities.h"
 
@@ -44,7 +44,7 @@ NSString * const kPatternImageHashKey = @"patternImageHash";
 	
 	if (self) {
 		_patternImage = patternImage;
-		_patternImageHash = [patternImage AK_sha1Hash];
+		_patternImageHash = patternImage.azk_sha1Hash;
 	}
 	
 	return self;

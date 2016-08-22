@@ -21,8 +21,8 @@
 
 #import "AKInnerShadowImageEffect.h"
 
-#import "UIColor+AKColorStrings.h"
-#import "UIImage+AKMasking.h"
+#import "UIColor+AZKColorStrings.h"
+#import "UIImage+AZKMasking.h"
 
 
 // Defaults
@@ -82,7 +82,7 @@ static NSString * const kOffsetKey = @"offset";
 
 - (UIImage *)renderedImageFromSourceImage:(UIImage *)sourceImage
 {
-	UIImage *reverseMask = [sourceImage AK_reverseMaskImageNoFeather];
+	UIImage *reverseMask = sourceImage.azk_reverseMaskImageNoFeather;
 	
 	CGSize originalImageSize = [sourceImage size];
 	CGFloat originalImageWidth = originalImageSize.width;
@@ -197,7 +197,7 @@ static NSString * const kOffsetKey = @"offset";
 {
 	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
 	
-	[dictionary setObject:[[self color] AK_hexString] forKey:kColorKey];
+	[dictionary setObject:self.color.azk_hexString forKey:kColorKey];
 	[dictionary setObject:@([self radius]) forKey:kRadiusKey];
 	[dictionary setObject:NSStringFromCGSize([self offset]) forKey:kOffsetKey];
 	

@@ -21,7 +21,7 @@
 
 #import "AKButtonImageCoordinator.h"
 
-#import "UIView+AKScaleInfo.h"
+#import "UIView+AZKScaleInfo.h"
 
 #import "AKImageRenderer.h"
 
@@ -92,7 +92,7 @@ static NSString * const kFrameKeyPath = @"frame";
 - (void)renderIntoButton:(UIButton *)button
 {
 	CGSize size = [button frame].size;
-	CGFloat scale = [button AK_scale];
+	CGFloat scale = button.azk_scale;
 	
 	[button setBackgroundImage:[[self offImageRenderer] imageWithSize:size
 																scale:scale
