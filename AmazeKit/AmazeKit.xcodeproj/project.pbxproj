@@ -43,11 +43,9 @@
 		1F96925215EEFAA800D5AE37 /* UIImage+AKMasking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F96925015EEFAA800D5AE37 /* UIImage+AKMasking.m */; };
 		1F96925515EEFE0100D5AE37 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FA641921586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
-		1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */; };
 		1FA641A31586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FA641A61586D12E00350AC6 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FA641AC1586D12E00350AC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FA641AA1586D12E00350AC6 /* InfoPlist.strings */; };
-		1FA641AF1586D12E00350AC6 /* AmazeKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641AE1586D12E00350AC6 /* AmazeKitTests.m */; };
 		1FA641BA1586D16700350AC6 /* AKImageRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641B81586D16700350AC6 /* AKImageRenderer.h */; };
 		1FA641BB1586D16700350AC6 /* AKImageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641B91586D16700350AC6 /* AKImageRenderer.m */; };
 		1FA641BF1586D38000350AC6 /* AKImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641BD1586D38000350AC6 /* AKImageEffect.h */; };
@@ -132,12 +130,9 @@
 		1FA6418E1586D12E00350AC6 /* libAmazeKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAmazeKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA641911586D12E00350AC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1FA641961586D12E00350AC6 /* AmazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazeKit.h; sourceTree = "<group>"; };
-		1FA6419E1586D12E00350AC6 /* AmazeKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmazeKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1FA6419E1586D12E00350AC6 /* AmazeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmazeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA641A91586D12E00350AC6 /* AmazeKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AmazeKitTests-Info.plist"; sourceTree = "<group>"; };
 		1FA641AB1586D12E00350AC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1FA641AD1586D12E00350AC6 /* AmazeKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmazeKitTests.h; sourceTree = "<group>"; };
-		1FA641AE1586D12E00350AC6 /* AmazeKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmazeKitTests.m; sourceTree = "<group>"; };
 		1FA641B81586D16700350AC6 /* AKImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageRenderer.h; sourceTree = "<group>"; };
 		1FA641B91586D16700350AC6 /* AKImageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageRenderer.m; sourceTree = "<group>"; };
 		1FA641BD1586D38000350AC6 /* AKImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageEffect.h; sourceTree = "<group>"; };
@@ -201,7 +196,6 @@
 				1FA641A31586D12E00350AC6 /* Foundation.framework in Frameworks */,
 				1F45CF141612348900426F35 /* ImageIO.framework in Frameworks */,
 				1F45CF151612348F00426F35 /* QuartzCore.framework in Frameworks */,
-				1FA641A01586D12E00350AC6 /* SenTestingKit.framework in Frameworks */,
 				1F45CF131612347800426F35 /* UIKit.framework in Frameworks */,
 				1FA641A61586D12E00350AC6 /* libAmazeKit.a in Frameworks */,
 			);
@@ -258,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				1FA6418E1586D12E00350AC6 /* libAmazeKit.a */,
-				1FA6419E1586D12E00350AC6 /* AmazeKitTests.octest */,
+				1FA6419E1586D12E00350AC6 /* AmazeKitTests.xctest */,
 				1FDCA62E1587E0040010B272 /* SampleApp.app */,
 			);
 			name = Products;
@@ -271,7 +265,6 @@
 				1FA641911586D12E00350AC6 /* Foundation.framework */,
 				1F65BBF215F84AE500393818 /* ImageIO.framework */,
 				1F60297515F828BB002E48E6 /* QuartzCore.framework */,
-				1FA6419F1586D12E00350AC6 /* SenTestingKit.framework */,
 				1F60297615F828BB002E48E6 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -297,8 +290,6 @@
 			children = (
 				1F45CF0F161233CA00426F35 /* AKImageEffectTests.h */,
 				1F45CF10161233CA00426F35 /* AKImageEffectTests.m */,
-				1FA641AD1586D12E00350AC6 /* AmazeKitTests.h */,
-				1FA641AE1586D12E00350AC6 /* AmazeKitTests.m */,
 				1FA641A81586D12E00350AC6 /* Supporting Files */,
 			);
 			path = AmazeKitTests;
@@ -469,7 +460,6 @@
 				1FA641991586D12E00350AC6 /* Sources */,
 				1FA6419A1586D12E00350AC6 /* Frameworks */,
 				1FA6419B1586D12E00350AC6 /* Resources */,
-				1FA6419C1586D12E00350AC6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -478,8 +468,8 @@
 			);
 			name = AmazeKitTests;
 			productName = AmazeKitTests;
-			productReference = 1FA6419E1586D12E00350AC6 /* AmazeKitTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 1FA6419E1586D12E00350AC6 /* AmazeKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		1FDCA62D1587E0040010B272 /* SampleApp */ = {
 			isa = PBXNativeTarget;
@@ -549,22 +539,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1FA6419C1586D12E00350AC6 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		1FA6418A1586D12E00350AC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -599,7 +573,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA641AF1586D12E00350AC6 /* AmazeKitTests.m in Sources */,
 				1F45CF11161233CA00426F35 /* AKImageEffectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,7 +651,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -695,7 +668,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -746,32 +719,22 @@
 		1FA641B61586D12E00350AC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AmazeKit/AmazeKit-Prefix.pch";
 				INFOPLIST_FILE = "AmazeKitTests/AmazeKitTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		1FA641B71586D12E00350AC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AmazeKit/AmazeKit-Prefix.pch";
 				INFOPLIST_FILE = "AmazeKitTests/AmazeKitTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

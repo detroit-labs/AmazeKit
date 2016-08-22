@@ -19,11 +19,11 @@
 //
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "AKImageEffect.h"
 
 
-@interface AKImageEffectTests : SenTestCase
+@interface AKImageEffectTests : XCTestCase
 
 @end

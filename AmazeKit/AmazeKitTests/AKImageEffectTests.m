@@ -41,10 +41,10 @@
 
 - (void)testCreation
 {
-	STAssertNotNil(_imageEffect, @"An image effect should not be nil.");
+	XCTAssertNotNil(_imageEffect, @"An image effect should not be nil.");
 	
-	STAssertEqualsWithAccuracy([_imageEffect alpha], _alpha, 0.01f, @"The image effect should have the same alpha we initialized it with");
-	STAssertEquals([_imageEffect blendMode], _blendMode, @"The image effect should have the same blend mode we initialized it with.");
+	XCTAssertEqualWithAccuracy([_imageEffect alpha], _alpha, 0.01f, @"The image effect should have the same alpha we initialized it with");
+	XCTAssertEqual([_imageEffect blendMode], _blendMode, @"The image effect should have the same blend mode we initialized it with.");
 }
 
 - (void)testDictionaryCreation
@@ -55,7 +55,7 @@
 	@"blendMode" : @(_blendMode)
 	};
 	
-	STAssertEqualObjects([_imageEffect representativeDictionary], correctOutput, @"The representative dictionary should be correct.");
+	XCTAssertEqualObjects([_imageEffect representativeDictionary], correctOutput, @"The representative dictionary should be correct.");
 }
 
 - (void)testHash
@@ -63,7 +63,7 @@
 	NSString *expectedHash = @"d458a15c726bfbbd021af1b1ffd6183621a8cef6";
 	NSString *hash = [_imageEffect representativeHash];
 	
-	STAssertEqualObjects(hash, expectedHash, @"The hash should equal our expected value.");
+	XCTAssertEqualObjects(hash, expectedHash, @"The hash should equal our expected value.");
 }
 
 - (void)testCreationFromDictionary
@@ -72,7 +72,7 @@
 	
 	AKImageEffect *copy = [[AKImageEffect alloc] initWithRepresentativeDictionary:representation];
 	
-	STAssertEqualObjects(_imageEffect, copy, @"An image effect created from its representative dictionary should equal itself.");
+	XCTAssertEqualObjects(_imageEffect, copy, @"An image effect created from its representative dictionary should equal itself.");
 }
 
 @end
