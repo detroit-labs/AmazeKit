@@ -1,5 +1,5 @@
 //
-//  NSString+AKCryptography.m
+//  UIColor+AZKColorStrings.h
 //  AmazeKit
 //
 //  Created by Jeff Kelley on 7/31/12.
@@ -18,30 +18,16 @@
 //  limitations under the License.
 //
 
+#import <UIKit/UIKit.h>
 
-#import "NSString+AKCryptography.h"
+NS_ASSUME_NONNULL_BEGIN
 
-#import <CommonCrypto/CommonDigest.h>
+@interface UIColor (AZKColorStrings)
 
+@property (nonatomic, readonly) NSString *azk_hexString;
 
-@implementation NSString (AKCryptography)
-
-// http://stackoverflow.com/a/7571583/105431
-- (NSString *)AK_sha1Hash
-{
-	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-	
-    CC_SHA1(data.bytes, data.length, digest);
-	
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-	
-    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
-    {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-	
-    return output;
-}
++ (nullable instancetype)azk_colorWithHexString:(NSString *)hexString;
 
 @end
+
+NS_ASSUME_NONNULL_END

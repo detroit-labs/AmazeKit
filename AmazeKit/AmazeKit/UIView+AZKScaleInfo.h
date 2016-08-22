@@ -1,8 +1,8 @@
 //
-//  UIImage+AKMasking.h
+//  UIView+AZKScaleInfo.h
 //  AmazeKit
 //
-//  Created by Jeff Kelley on 8/29/12.
+//  Created by Jeff Kelley on 8/12/12.
 //  Copyright (c) 2013 Detroit Labs. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,17 +18,10 @@
 //  limitations under the License.
 //
 
-
 #import <UIKit/UIKit.h>
 
+@interface UIView (AZKScaleInfo)
 
-@interface UIImage (AKMasking)
-
-// Creates an image with inverted alpha values suitable for use as a mask.
-- (UIImage *)AK_reverseMaskImage;
-
-// Creates a mask image like AK_reverseMaskImage, but where every pixel is either entirely
-// opaque or empty.
-- (UIImage *)AK_reverseMaskImageNoFeather;
+@property (nonatomic, readonly) CGFloat azk_scale;
 
 @end

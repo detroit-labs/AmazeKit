@@ -19,7 +19,7 @@
 //
 
 
-#import "UIImage+AKPixelData.h"
+#import "UIImage+AZKPixelData.h"
 
 
 CGFloat AngleBetweenTwoPoints(CGPoint innerPoint, CGPoint outerPoint);
@@ -28,7 +28,7 @@ CGFloat DistanceBetweenTwoPoints(CGPoint point1, CGPoint point2);
 
 // Finds the distance in an image to the nearst empty pixel (where alpha == 0). Returns the angle in
 // the <angle> parameter.
-CGFloat DistanceToNearestEmptyPixel(AKPixelData *pixelDataBuffer,
+CGFloat DistanceToNearestEmptyPixel(AZKPixelData *pixelDataBuffer,
 									NSUInteger width,
 									NSUInteger height,
 									NSUInteger x,

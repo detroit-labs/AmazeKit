@@ -1,8 +1,8 @@
 //
-//  UIImage+AKCryptography.h
+//  NSString+AZKCryptography.m
 //  AmazeKit
 //
-//  Created by Jeff Kelley on 8/13/12.
+//  Created by Jeff Kelley on 7/31/12.
 //  Copyright (c) 2013 Detroit Labs. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,12 +18,15 @@
 //  limitations under the License.
 //
 
+#import "NSString+AZKCryptography.h"
 
-#import <UIKit/UIKit.h>
+#import "NSData+AZKCryptography.h"
 
+@implementation NSString (AZKCryptography)
 
-@interface UIImage (AKCryptography)
-
-- (NSString *)AK_sha1Hash;
+- (NSString *)azk_sha1Hash
+{
+    return [self dataUsingEncoding:NSUTF8StringEncoding].azk_sha1Hash;
+}
 
 @end

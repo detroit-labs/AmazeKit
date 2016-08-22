@@ -21,7 +21,7 @@
 
 #import "AKInnerGlowImageEffect.h"
 
-#import "UIImage+AKPixelData.h"
+#import "UIImage+AZKPixelData.h"
 
 #import "AKDrawingUtilities.h"
 

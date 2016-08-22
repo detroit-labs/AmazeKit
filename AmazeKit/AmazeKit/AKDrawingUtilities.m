@@ -20,7 +20,7 @@
 
 #import "AKDrawingUtilities.h"
 
-#import "UIImage+AKPixelData.h"
+#import "UIImage+AZKPixelData.h"
 
 CGFloat AngleBetweenTwoPoints(CGPoint innerPoint, CGPoint outerPoint)
 {
@@ -35,7 +35,7 @@ CGFloat DistanceBetweenTwoPoints(CGPoint point1, CGPoint point2)
 	return sqrtf((dx * dx) + (dy * dy));
 }
 
-CGFloat DistanceToNearestEmptyPixel(AKPixelData *pixelDataBuffer,
+CGFloat DistanceToNearestEmptyPixel(AZKPixelData *pixelDataBuffer,
 									NSUInteger width,
 									NSUInteger height,
 									NSUInteger x,
@@ -50,7 +50,7 @@ CGFloat DistanceToNearestEmptyPixel(AKPixelData *pixelDataBuffer,
 	while (distance <= maxRadius && offset <= maxRadius) {
 		for (NSInteger searchX = x - offset; searchX < (NSInteger)(x + offset); searchX++) {
 			for (NSInteger searchY = y - offset; searchY < (NSInteger)(y + offset); searchY++) {
-				AKPixelData pixelData = AKPixelDataZero;
+				AZKPixelData pixelData = AZKPixelDataZero;
 				
 				if (searchX >= 0 && searchY >= 0 && (NSUInteger)searchX < width && (NSUInteger)searchY < height) {
 					pixelData = pixelDataBuffer[(y * width) + x];

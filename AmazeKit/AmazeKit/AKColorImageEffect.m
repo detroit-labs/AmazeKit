@@ -20,7 +20,7 @@
 
 #import "AKColorImageEffect.h"
 
-#import "UIColor+AKColorStrings.h"
+#import "UIColor+AZKColorStrings.h"
 
 
 // KVO Constants
@@ -108,7 +108,8 @@ NSString * const AKColorImageEffectColorKeyPath = @"color";
 {
 	NSMutableDictionary *dictionary = [[super representativeDictionary] mutableCopy];
 	
-	[dictionary setObject:[[self color] AK_hexString] forKey:AKColorImageEffectColorKeyPath];
+	[dictionary setObject:self.color.azk_hexString
+                   forKey:AKColorImageEffectColorKeyPath];
 	
 	return [NSDictionary dictionaryWithDictionary:dictionary];
 }
@@ -118,7 +119,7 @@ NSString * const AKColorImageEffectColorKeyPath = @"color";
 	self = [super initWithRepresentativeDictionary:representativeDictionary];
 	
 	if (self) {
-		_color = [UIColor AK_colorWithHexString:[representativeDictionary objectForKey:AKColorImageEffectColorKeyPath]];
+		_color = [UIColor azk_colorWithHexString:[representativeDictionary objectForKey:AKColorImageEffectColorKeyPath]];
 	}
 	
 	return self;

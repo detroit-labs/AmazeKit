@@ -1,9 +1,9 @@
 //
-//  UIView+AKScaleInfo.m
+//  NSData+AZKCryptography.h
 //  AmazeKit
 //
-//  Created by Jeff Kelley on 8/12/12.
-//  Copyright (c) 2013 Detroit Labs. All rights reserved.
+//  Created by Jeff Kelley on 8/22/16.
+//  Copyright © 2016 Detroit Labs. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,21 +18,14 @@
 //  limitations under the License.
 //
 
+#import <Foundation/Foundation.h>
 
-#import "UIView+AKScaleInfo.h"
+NS_ASSUME_NONNULL_BEGIN
 
+@interface NSData (AZKCryptography)
 
-@implementation UIView (AKScaleInfo)
-
-- (CGFloat)AK_scale
-{
-	CGFloat scale = [[UIScreen mainScreen] scale];
-	
-	if ([self window] != nil) {
-		scale = [[[self window] screen] scale];
-	}
-	
-	return scale;
-}
+@property (readonly, nonatomic) NSString *azk_sha1Hash;
 
 @end
+
+NS_ASSUME_NONNULL_END

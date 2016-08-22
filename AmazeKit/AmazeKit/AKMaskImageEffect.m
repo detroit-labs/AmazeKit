@@ -21,7 +21,7 @@
 
 #import "AKMaskImageEffect.h"
 
-#import "UIImage+AKCryptography.h"
+#import "UIImage+AZKCryptography.h"
 
 
 // Constants
@@ -47,7 +47,7 @@ NSString * const kMaskImageHashKey = @"maskImageHash";
 	
 	if (self) {
 		_maskImage = maskImage;
-		_maskImageHash = [maskImage AK_sha1Hash];
+		_maskImageHash = maskImage.azk_sha1Hash;
 	}
 	
 	return self;

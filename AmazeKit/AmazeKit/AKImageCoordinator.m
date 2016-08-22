@@ -21,7 +21,7 @@
 
 #import "AKImageCoordinator.h"
 
-#import "UIView+AKScaleInfo.h"
+#import "UIView+AZKScaleInfo.h"
 
 #import "AKImageRenderer.h"
 
@@ -94,7 +94,7 @@ static NSString * const kFrameKeyPath = @"frame";
 - (void)renderIntoImageView:(UIImageView *)imageView
 {
 	[imageView setImage:[[self imageRenderer] imageWithSize:[imageView frame].size
-													  scale:[imageView AK_scale]
+													  scale:imageView.azk_scale
 													options:nil]];
 }
 

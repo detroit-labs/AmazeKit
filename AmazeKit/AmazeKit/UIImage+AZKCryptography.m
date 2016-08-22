@@ -1,8 +1,8 @@
 //
-//  UIColor+AKColorStrings.h
+//  UIImage+AKCryptography.m
 //  AmazeKit
 //
-//  Created by Jeff Kelley on 7/31/12.
+//  Created by Jeff Kelley on 8/13/12.
 //  Copyright (c) 2013 Detroit Labs. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,15 @@
 //  limitations under the License.
 //
 
+#import "UIImage+AZKCryptography.h"
 
-#import <UIKit/UIKit.h>
+#import "NSData+AZKCryptography.h"
 
+@implementation UIImage (AZKCryptography)
 
-@interface UIColor (AKColorStrings)
-
-+ (UIColor *)AK_colorWithHexString:(NSString *)hexString;
-- (NSString *)AK_hexString;
+- (NSString *)azk_sha1Hash
+{
+	return UIImagePNGRepresentation(self).azk_sha1Hash;
+}
 
 @end

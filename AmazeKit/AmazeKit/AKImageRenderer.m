@@ -21,8 +21,8 @@
 
 #import "AKImageRenderer.h"
 
-#import "NSString+AKCryptography.h"
-#import "UIColor+AKColorStrings.h"
+#import "NSString+AZKCryptography.h"
+#import "UIColor+AZKColorStrings.h"
 
 #import "AKFileManager.h"
 #import "AKDrawingUtilities.h"
@@ -126,7 +126,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 		
 		NSString *backgroundColorHex = [combinedOptions objectForKey:AKImageRendererOptionKeyInitialBackgroundColor];
 		if (backgroundColorHex != nil) {
-			startingBackgroundColor = [UIColor AK_colorWithHexString:backgroundColorHex];
+			startingBackgroundColor = [UIColor azk_colorWithHexString:backgroundColorHex];
 		}
 		
 		UIGraphicsBeginImageContextWithOptions(size, NO, scale);
@@ -235,7 +235,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 			NSString *jsonString = [[NSString alloc] initWithData:jsonRepresentation
 														 encoding:NSUTF8StringEncoding];
 			
-			hash = [jsonString AK_sha1Hash];
+			hash = [jsonString azk_sha1Hash];
 		}
 	}
 	
