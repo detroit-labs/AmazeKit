@@ -1,2 +1,3 @@
 language: objective-c
 script: bin/build.sh
+osx_image: xcode7.3
