@@ -20,8 +20,8 @@
 
 
 // Categories
-#import "UIColor+AKColorStrings.h"
-#import "UIView+AKScaleInfo.h"
+#import "UIColor+AZKColorStrings.h"
+#import "UIView+AZKScaleInfo.h"
 
 // Coordinators
 #import "AKButtonImageCoordinator.h"
