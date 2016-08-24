@@ -44,4 +44,4 @@
 #import "AKPatternImageEffect.h"
 
 // Image Renderer
-#import "AKImageRenderer.h"
+#import "AZKImageRenderer.h"

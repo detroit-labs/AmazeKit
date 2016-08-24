@@ -22,7 +22,7 @@
 
 #import "UIView+AZKScaleInfo.h"
 
-#import "AKImageRenderer.h"
+#import "AZKImageRenderer.h"
 
 static NSString * const kFrameKeyPath = @"frame";
 
@@ -94,7 +94,7 @@ static NSString * const kFrameKeyPath = @"frame";
                                                 options:nil];
 }
 
-- (void)setImageRenderer:(AKImageRenderer *)imageRenderer
+- (void)setImageRenderer:(AZKImageRenderer *)imageRenderer
 {
 	if (_imageRenderer != nil) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self

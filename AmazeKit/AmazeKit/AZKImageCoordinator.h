@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  off-screen views.
  */
 
-@class AKImageRenderer;
+@class AZKImageRenderer;
 
 @interface AZKImageCoordinator : NSObject
 
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** The image renderer to use when creating images for an image view.
  */
-@property (strong, nonatomic, nullable) AKImageRenderer *imageRenderer;
+@property (strong, nonatomic, nullable) AZKImageRenderer *imageRenderer;
 
 
 /** -------------------------------------

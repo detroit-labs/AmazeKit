@@ -1,5 +1,5 @@
 //
-//  AKImageRenderer.h
+//  AZKImageRenderer.h
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/11/12.
@@ -18,11 +18,16 @@
 //  limitations under the License.
 //
 
+#import <CoreGraphics/CoreGraphics.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-/** The AKImageRenderer class is the workhorse of AmazeKit where image rendering actually happens.
- *  Each image renderer maintains an array of image effects that are rendered in sequence, thereby
- *  producing a final image.
+/** The AKImageRenderer class is the workhorse of AmazeKit where image rendering
+ *  actually happens. Each image renderer maintains an array of image effects that
+ *  are rendered in sequence, thereby producing a final image.
  */
+
+NS_ASSUME_NONNULL_BEGIN
 
 // Options Dictionary Keys
 extern NSString * const AKImageRendererOptionKeyInitialBackgroundColor;
@@ -30,8 +35,9 @@ extern NSString * const AKImageRendererOptionKeyInitialBackgroundColor;
 // Notifications
 extern NSString * const AKImageRendererEffectDidChangeNotification;
 
+@class AKImageEffect;
 
-@interface AKImageRenderer : NSObject
+@interface AZKImageRenderer : NSObject
 
 /**---------------------------
  * @name Customizing Rendering
@@ -40,11 +46,12 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
 
 /** An array of AKImageEffect objects, applied in order.
  */
-@property (strong, nonatomic) NSArray	*imageEffects;
+@property (strong, nonatomic) NSArray<AKImageEffect *> *imageEffects;
 
-/** A dictionary of options that will be applied to all images rendered with the renderer.
+/** A dictionary of options that will be applied to all images rendered with the 
+ *  renderer.
  */
-@property (strong) NSDictionary	*options;
+@property (strong, nonatomic, nullable) NSDictionary<NSString *, id> *options;
 
 
 /**--------------------------
@@ -63,7 +70,7 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
  */
 - (UIImage *)imageWithSize:(CGSize)size
 					 scale:(CGFloat)scale
-				   options:(NSDictionary *)options;
+				   options:(nullable NSDictionary<NSString *, id> *)options;
 
 
 /**-------------
@@ -71,14 +78,14 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
  * -------------
  */
 
-/** Generates a dictionary representing previously-rendered images, useful for generating
- *  pre-rendered images at app startup. The keys are the sizes turned into a string, and the values
- *  are sets containing the options dictionaries passed for that size, or an NSNull object to
- *  represent nil options.
+/** Generates a dictionary representing previously-rendered images, useful for
+ *  generating pre-rendered images at app startup. The keys are the sizes turned 
+ *  into strings, and the values are sets containing the options dictionaries passed 
+ *  for that size, or an NSNull object to represent nil options.
  *
  *  @return A dictionary of previously-rendered image information.
  */
-- (NSDictionary *)renderedImages;
+- (NSDictionary<NSString *, NSSet *> *)renderedImages;
 
 /** For efficient caching, the output from the reprsesentativeDictionary method is converted into
  *  minified canonical JSON, then stored as a sha1 hash.
@@ -93,7 +100,7 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
  *  @param options Settings applied to the image renderer for which the hash is being computed.
  *  @return The hashed dictionary data as an NSString.
  */
-- (NSString *)representativeHashWithOptions:(NSDictionary *)options;
+- (NSString *)representativeHashWithOptions:(nullable NSDictionary<NSString *, id> *)options;
 
 
 /**--------------------
@@ -106,7 +113,7 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
  *  @param representativeDictionary The dictionary to parse into an image renderer.
  *  @return An image renderer initilaized with values from the dictionary.
  */
-- (id)initWithRepresentativeDictionary:(NSDictionary *)representativeDictionary;
+- (id)initWithRepresentativeDictionary:(NSDictionary<NSString *, id> *)representativeDictionary;
 
 /** Every image effect can be represented by a dictionary. This can be converted to and from JSON,
  *  allowing image properties to be stored in a lightweight text format, read from a server, etc.
@@ -115,6 +122,8 @@ extern NSString * const AKImageRendererEffectDidChangeNotification;
  *
  *  @return An NSDictionary completely representing the image renderer.
  */
-- (NSDictionary *)representativeDictionary;
+- (NSDictionary<NSString *, id> *)representativeDictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

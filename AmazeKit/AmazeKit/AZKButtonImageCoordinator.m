@@ -23,7 +23,7 @@
 
 #import "UIView+AZKScaleInfo.h"
 
-#import "AKImageRenderer.h"
+#import "AZKImageRenderer.h"
 
 static NSString * const kFrameKeyPath = @"frame";
 
@@ -103,7 +103,7 @@ static NSString * const kFrameKeyPath = @"frame";
 					  forState:UIControlStateHighlighted];
 }
 
-- (void)setOffImageRenderer:(AKImageRenderer *)offImageRenderer
+- (void)setOffImageRenderer:(AZKImageRenderer *)offImageRenderer
 {
 	if (_offImageRenderer != nil) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self
@@ -121,7 +121,7 @@ static NSString * const kFrameKeyPath = @"frame";
 	}
 }
 
-- (void)setOnImageRenderer:(AKImageRenderer *)onImageRenderer
+- (void)setOnImageRenderer:(AZKImageRenderer *)onImageRenderer
 {
 	if (_onImageRenderer != nil) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self

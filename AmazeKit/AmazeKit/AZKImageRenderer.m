@@ -1,5 +1,5 @@
 //
-//  AKImageRenderer.m
+//  AZKImageRenderer.m
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/11/12.
@@ -18,8 +18,7 @@
 //  limitations under the License.
 //
 
-
-#import "AKImageRenderer.h"
+#import "AZKImageRenderer.h"
 
 #import "NSString+AZKCryptography.h"
 #import "UIColor+AZKColorStrings.h"
@@ -40,9 +39,9 @@ static NSString * const kImageEffectsKey = @"imageEffects";
 static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 
 
-@interface AKImageRenderer() {
-	NSMutableDictionary	*_renderedImages;
-}
+@interface AZKImageRenderer()
+
+@property (nonatomic, readonly, nonnull) NSMutableDictionary<NSString *, NSSet *> *internalRenderedImages;
 
 - (BOOL)renderedImageExistsForSize:(CGSize)size
 						 withScale:(CGFloat)scale
@@ -61,10 +60,11 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 @end
 
 
-@implementation AKImageRenderer
+@implementation AZKImageRenderer
 
 @synthesize imageEffects = _imageEffects;
 @synthesize options = _options;
+@synthesize internalRenderedImages = _internalRenderedImages;
 
 #pragma mark - Object Lifecycle
 
@@ -109,8 +109,8 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 {
 	NSMutableDictionary *combinedOptions = [[NSMutableDictionary alloc] init];
 	
-	if ([[self options] count] > 0) {
-		[combinedOptions addEntriesFromDictionary:[self options]];
+	if ([self.options count] > 0) {
+		[combinedOptions addEntriesFromDictionary:self.options];
 	}
 	
 	if ([options count] > 0) {
@@ -139,45 +139,50 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 		
 		image = UIGraphicsGetImageFromCurrentImageContext();
 		
-		UIGraphicsEndImageContext();
-		
-		[[self imageEffects] enumerateObjectsWithOptions:0
-											  usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-												  AKImageEffect *imageEffect = obj;
-												  
-												  if ([imageEffect isKindOfClass:[AKImageEffect class]]) {
-													  image = [imageEffect renderedImageFromSourceImage:image];
-												  }
-											  }];
+        UIGraphicsEndImageContext();
+        
+        [self.imageEffects enumerateObjectsUsingBlock:^(AKImageEffect * _Nonnull obj,
+                                                        NSUInteger idx,
+                                                        BOOL * _Nonnull stop) {
+            image = [obj renderedImageFromSourceImage:image];
+        }];
 		
 		[self saveImage:image
 				options:combinedOptions];
 	}
 	
 	// Save the image options.
-	if (_renderedImages == nil) {
-		_renderedImages = [[NSMutableDictionary alloc] init];
-	}
-	
-	@synchronized(_renderedImages) {
-		NSSet *savedImages = [_renderedImages objectForKey:NSStringFromCGSize(size)];
+    // TODO: Put this onto a dispatch queue with write barriers.
+	@synchronized(self.internalRenderedImages) {
+		NSSet *savedImages = [self.internalRenderedImages objectForKey:NSStringFromCGSize(size)];
 		if (savedImages == nil) {
 			savedImages = [NSSet set];
 		}
 		
 		savedImages = [savedImages setByAddingObject:(combinedOptions == nil ? [NSNull null] : combinedOptions)];
 		
-		[_renderedImages setObject:savedImages forKey:NSStringFromCGSize(size)];
+		[self.internalRenderedImages setObject:savedImages
+                                        forKey:NSStringFromCGSize(size)];
 	}
 	
 	return image;
 }
 
+- (NSMutableDictionary<NSString *,NSSet *> *)internalRenderedImages
+{
+    if (_internalRenderedImages == nil) {
+        _internalRenderedImages = [[NSMutableDictionary alloc] init];
+    }
+    
+    return _internalRenderedImages;
+}
+
 - (void)registerImageEffectObservers
 {
-	[[self imageEffects] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		if ([obj isKindOfClass:[AKImageEffect class]] &&
-			[[(AKImageEffect *)obj class] isImmutable] == NO) {
+    [self.imageEffects enumerateObjectsUsingBlock:^(AKImageEffect * _Nonnull obj,
+                                                    NSUInteger idx,
+                                                    BOOL * _Nonnull stop) {
+		if ([[obj class] isImmutable] == NO) {
 			[obj addObserver:self
 				  forKeyPath:AKImageEffectDirtyKeyPath
 					 options:NSKeyValueObservingOptionNew
@@ -188,16 +193,16 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 
 - (NSDictionary *)representativeDictionary
 {
-	NSMutableArray *representativeDictionaries = [[NSMutableArray alloc] initWithCapacity:[[self imageEffects] count]];
+	NSMutableArray *representativeDictionaries = [[NSMutableArray alloc] initWithCapacity:self.imageEffects.count];
 	
-	for (AKImageEffect *imageEffect in [self imageEffects]) {
+	for (AKImageEffect *imageEffect in self.imageEffects) {
 		[representativeDictionaries addObject:[imageEffect representativeDictionary]];
 	}
 	
-	return @{
-	kImageEffectsKey : representativeDictionaries,
-	kRepresentativeDictionaryOptionsKey : [self options] == nil ? [NSNull null] : [self options]
-	};
+    return @{
+             kImageEffectsKey : representativeDictionaries,
+             kRepresentativeDictionaryOptionsKey : self.options == nil ? [NSNull null] : self.options
+             };
 }
 
 - (NSString *)representativeHash
@@ -209,8 +214,8 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 {
 	NSMutableDictionary *combinedOptions = [[NSMutableDictionary alloc] init];
 	
-	if ([[self options] count] > 0) {
-		[combinedOptions addEntriesFromDictionary:[self options]];
+	if ([self.options count] > 0) {
+		[combinedOptions addEntriesFromDictionary:self.options];
 	}
 	
 	if ([options count] > 0) {
@@ -242,6 +247,11 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 	return hash;
 }
 
+- (NSDictionary<NSString *,NSSet *> *)renderedImages
+{
+    return [NSDictionary dictionaryWithDictionary:self.internalRenderedImages];
+}
+
 - (BOOL)renderedImageExistsForSize:(CGSize)size
 						 withScale:(CGFloat)scale
 						   options:(NSDictionary *)options
@@ -249,11 +259,6 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
     return [[AZKFileManager defaultManager] cachedImageExistsForHash:[self representativeHashWithOptions:options]
                                                               atSize:size
                                                            withScale:scale];
-}
-
-- (NSDictionary *)renderedImages
-{
-	return [NSDictionary dictionaryWithDictionary:_renderedImages];
 }
 
 - (UIImage *)previouslyRenderedImageForSize:(CGSize)size
@@ -283,9 +288,10 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 
 - (void)unregisterImageEffectObservers
 {
-	[[self imageEffects] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		if ([obj isKindOfClass:[AKImageEffect class]] &&
-			[[(AKImageEffect *)obj class] isImmutable] == NO) {
+    [self.imageEffects enumerateObjectsUsingBlock:^(AKImageEffect * _Nonnull obj,
+                                                    NSUInteger idx,
+                                                    BOOL * _Nonnull stop) {
+		if ([[obj class] isImmutable] == NO) {
 			[obj removeObserver:self
 					 forKeyPath:AKImageEffectDirtyKeyPath];
 		}
@@ -300,7 +306,7 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 					   context:(void *)context
 {
 	if ([object isKindOfClass:[AKImageEffect class]]) {
-		if ([[self imageEffects] containsObject:object]) {
+		if ([self.imageEffects containsObject:object]) {
 			if ([keyPath isEqualToString:AKImageEffectDirtyKeyPath]) {
 				[[NSNotificationCenter defaultCenter] postNotificationName:AKImageRendererEffectDidChangeNotification
 																	object:self];

@@ -46,8 +46,8 @@
 		1FA641A31586D12E00350AC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA641911586D12E00350AC6 /* Foundation.framework */; };
 		1FA641A61586D12E00350AC6 /* libAmazeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA6418E1586D12E00350AC6 /* libAmazeKit.a */; };
 		1FA641AC1586D12E00350AC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FA641AA1586D12E00350AC6 /* InfoPlist.strings */; };
-		1FA641BA1586D16700350AC6 /* AKImageRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641B81586D16700350AC6 /* AKImageRenderer.h */; };
-		1FA641BB1586D16700350AC6 /* AKImageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641B91586D16700350AC6 /* AKImageRenderer.m */; };
+		1FA641BA1586D16700350AC6 /* AZKImageRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641B81586D16700350AC6 /* AZKImageRenderer.h */; };
+		1FA641BB1586D16700350AC6 /* AZKImageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641B91586D16700350AC6 /* AZKImageRenderer.m */; };
 		1FA641BF1586D38000350AC6 /* AKImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641BD1586D38000350AC6 /* AKImageEffect.h */; };
 		1FA641C01586D38000350AC6 /* AKImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA641BE1586D38000350AC6 /* AKImageEffect.m */; };
 		1FA641C31586D5FB00350AC6 /* AmazeKit-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */; };
@@ -135,8 +135,8 @@
 		1FA6419E1586D12E00350AC6 /* AmazeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmazeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA641A91586D12E00350AC6 /* AmazeKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AmazeKitTests-Info.plist"; sourceTree = "<group>"; };
 		1FA641AB1586D12E00350AC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1FA641B81586D16700350AC6 /* AKImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageRenderer.h; sourceTree = "<group>"; };
-		1FA641B91586D16700350AC6 /* AKImageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageRenderer.m; sourceTree = "<group>"; };
+		1FA641B81586D16700350AC6 /* AZKImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZKImageRenderer.h; sourceTree = "<group>"; };
+		1FA641B91586D16700350AC6 /* AZKImageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZKImageRenderer.m; sourceTree = "<group>"; };
 		1FA641BD1586D38000350AC6 /* AKImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageEffect.h; sourceTree = "<group>"; };
 		1FA641BE1586D38000350AC6 /* AKImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageEffect.m; sourceTree = "<group>"; };
 		1FA641C21586D5FB00350AC6 /* AmazeKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AmazeKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -340,8 +340,8 @@
 		1FA641C11586D3B900350AC6 /* Image Renderer */ = {
 			isa = PBXGroup;
 			children = (
-				1FA641B81586D16700350AC6 /* AKImageRenderer.h */,
-				1FA641B91586D16700350AC6 /* AKImageRenderer.m */,
+				1FA641B81586D16700350AC6 /* AZKImageRenderer.h */,
+				1FA641B91586D16700350AC6 /* AZKImageRenderer.m */,
 			);
 			name = "Image Renderer";
 			sourceTree = "<group>";
@@ -413,7 +413,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA641BA1586D16700350AC6 /* AKImageRenderer.h in Headers */,
+				1FA641BA1586D16700350AC6 /* AZKImageRenderer.h in Headers */,
 				1FA641BF1586D38000350AC6 /* AKImageEffect.h in Headers */,
 				1FA641C31586D5FB00350AC6 /* AmazeKit-Prefix.pch in Headers */,
 				1FA641C61586D6FA00350AC6 /* AKNoiseImageEffect.h in Headers */,
@@ -552,7 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA641BB1586D16700350AC6 /* AKImageRenderer.m in Sources */,
+				1FA641BB1586D16700350AC6 /* AZKImageRenderer.m in Sources */,
 				1FA641C01586D38000350AC6 /* AKImageEffect.m in Sources */,
 				1FA641C71586D6FA00350AC6 /* AKNoiseImageEffect.m in Sources */,
 				1FFDAC2E1587828A00837D3A /* UIImage+AZKPixelData.m in Sources */,

@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  button’s normal control state.
  */
 
-@class AKImageRenderer;
+@class AZKImageRenderer;
 
 @interface AZKButtonImageCoordinator : NSObject
 
@@ -50,11 +50,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** An image renderer for the “on” state, corresponding to the button’s highlighted control state.
  */
-@property (strong, nonatomic, nullable) AKImageRenderer *onImageRenderer;
+@property (strong, nonatomic, nullable) AZKImageRenderer *onImageRenderer;
 
 /** An image renderer for the “off” state, corresponding to the button’s normal control state.
  */
-@property (strong, nonatomic, nullable) AKImageRenderer *offImageRenderer;
+@property (strong, nonatomic, nullable) AZKImageRenderer *offImageRenderer;
 
 
 /** ---------------------------------
