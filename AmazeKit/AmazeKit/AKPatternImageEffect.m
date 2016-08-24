@@ -23,7 +23,7 @@
 
 #import "UIImage+AZKCryptography.h"
 
-#import "AKDrawingUtilities.h"
+#import "AZKDrawingUtilities.h"
 
 
 // Constants
@@ -53,10 +53,10 @@ NSString * const kPatternImageHashKey = @"patternImageHash";
 - (UIImage *)renderedImageForSize:(CGSize)size
 						  atScale:(CGFloat)scale
 {
-	CGImageRef patternTileImageRef = [[self patternImage] CGImage];
-	CGSize patternImageSize = AKCGSizeMakeWithScale([[self patternImage] size],
-													[[self patternImage] scale]);
-	
+    CGImageRef patternTileImageRef = [[self patternImage] CGImage];
+    CGSize patternImageSize = AZKCGSizeMakeWithScale([[self patternImage] size],
+                                                     [[self patternImage] scale]);
+    
 	UIGraphicsBeginImageContextWithOptions(size, NO, scale);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	

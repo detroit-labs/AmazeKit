@@ -23,7 +23,7 @@
 
 #import "UIImage+AZKPixelData.h"
 
-#import "AKDrawingUtilities.h"
+#import "AZKDrawingUtilities.h"
 
 
 static const CGFloat kDefaultRadius = 10.0f;

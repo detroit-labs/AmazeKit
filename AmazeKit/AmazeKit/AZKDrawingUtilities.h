@@ -1,5 +1,5 @@
 //
-//  AKDrawingUtilities.h
+//  AZKDrawingUtilities.h
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/25/12.
@@ -18,16 +18,14 @@
 //  limitations under the License.
 //
 
-
 #import "UIImage+AZKPixelData.h"
-
 
 CGFloat AngleBetweenTwoPoints(CGPoint innerPoint, CGPoint outerPoint);
 
 CGFloat DistanceBetweenTwoPoints(CGPoint point1, CGPoint point2);
 
-// Finds the distance in an image to the nearst empty pixel (where alpha == 0). Returns the angle in
-// the <angle> parameter.
+// Finds the distance in an image to the nearst empty pixel (where alpha == 0).
+// Returns the angle in the <angle> parameter.
 CGFloat DistanceToNearestEmptyPixel(AZKPixelData *pixelDataBuffer,
 									NSUInteger width,
 									NSUInteger height,
@@ -37,4 +35,4 @@ CGFloat DistanceToNearestEmptyPixel(AZKPixelData *pixelDataBuffer,
 									CGFloat *angle);
 
 // Multiplies a CGSize by a scale factor;
-CGSize AKCGSizeMakeWithScale(CGSize size, CGFloat scale);
+CGSize AZKCGSizeMakeWithScale(CGSize size, CGFloat scale);

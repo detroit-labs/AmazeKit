@@ -23,7 +23,7 @@
 
 #import <ImageIO/ImageIO.h>
 
-#import "AKDrawingUtilities.h"
+#import "AZKDrawingUtilities.h"
 
 // Constants
 static const char *kImageType = "public.png";

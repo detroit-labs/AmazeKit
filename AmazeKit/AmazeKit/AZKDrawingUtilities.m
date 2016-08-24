@@ -1,5 +1,5 @@
 //
-//  AKDrawingUtilities.m
+//  AZKDrawingUtilities.m
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/25/12.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#import "AKDrawingUtilities.h"
+#import "AZKDrawingUtilities.h"
 
 #import "UIImage+AZKPixelData.h"
 

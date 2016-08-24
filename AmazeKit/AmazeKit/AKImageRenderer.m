@@ -25,7 +25,7 @@
 #import "UIColor+AZKColorStrings.h"
 
 #import "AZKFileManager.h"
-#import "AKDrawingUtilities.h"
+#import "AZKDrawingUtilities.h"
 #import "AKImageEffect.h"
 
 
