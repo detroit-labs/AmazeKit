@@ -1,5 +1,5 @@
 //
-//  AKFileManager.h
+//  AZKFileManager.h
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/16/12.
@@ -18,19 +18,20 @@
 //  limitations under the License.
 //
 
-
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
-/** The AKFileManager class manages image persistence for AmazeKit rendering. Images are cached to
- *  disk to avoid a rendering penalty on each use. AKFileManager uses the ImageIO framework for
- *  blazing-fast disk access and custom PNG saving.
+/** The AZKFileManager class manages image persistence for AmazeKit rendering.
+ *  Images are cached to disk to avoid a rendering penalty on each use.
+ *  AKFileManager uses the ImageIO framework for blazing-fast disk access and custom
+ *  PNG saving.
  *
- *  Generally speaking, you should not use these methods yourself. AmazeKit will cache images as
- *  needed.
+ *  Generally speaking, you should not use these methods yourself. AmazeKit will
+ *  cache images as needed.
  */
 
-@interface AKFileManager : NSObject
+@interface AZKFileManager : NSObject
 
 /** -----------------------------
  *  @name Creating a File Manager
@@ -53,19 +54,19 @@
  *
  *  @return The path in string format.
  */
-+ (NSString *)amazeKitCachePath;
++ (nullable NSString *)amazeKitCachePath;
 
 /** Returns the path to the on-disk cache for images.
  *
  *  @return The path in file URL format.
  */
-+ (NSURL *)amazeKitCacheURL;
++ (nullable NSURL *)amazeKitCacheURL;
 
-/** Returns whether or not an image has already been cached for a given hash. The hash could be
- *  for an AKImageEffect or AKImageRenderer.
+/** Returns whether or not an image has already been cached for a given hash. The
+ *  hash could be for an AKImageEffect or AKImageRenderer.
  *
- *  @param descriptionHash The hashed dictionary representation of the image effect or image
- *                         renderer.
+ *  @param descriptionHash The hashed dictionary representation of the image effect
+ *                         or image renderer.
  *  @param size The size to look for on disk.
  *  @param scale The scale to look for on disk.
  *  @return YES if the file exists, NO if it does not.
@@ -76,8 +77,8 @@
 
 /** Returns a previously-cached image from the on-disk cache.
  *
- *  @param descriptionHash The hashed dictionary representation of the image effect or image
- *                         renderer.
+ *  @param descriptionHash The hashed dictionary representation of the image effect
+ *                         or image renderer.
  *  @param size The size to look for on disk.
  *  @param scale The scale to look for on disk.
  *  @return The cached image.
@@ -86,7 +87,8 @@
 						 atSize:(CGSize)size
 					  withScale:(CGFloat)scale;
 
-/** Saves an image to the on-disk cache. The size and scale are inferred from the image data.
+/** Saves an image to the on-disk cache. The size and scale are inferred from the
+ *  image data.
  *
  *  @param image The image to cache.
  *  @param descriptionHash The hash to use when saving the image.
@@ -95,3 +97,5 @@
            forHash:(NSString *)descriptionHash;
 
 @end
+
+NS_ASSUME_NONNULL_END

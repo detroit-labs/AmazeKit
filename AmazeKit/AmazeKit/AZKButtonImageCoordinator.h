@@ -1,5 +1,5 @@
 //
-//  AKButtonImageCoordinator.h
+//  AZKButtonImageCoordinator.h
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/19/12.
@@ -18,28 +18,30 @@
 //  limitations under the License.
 //
 
-
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
-/** The AKImageCoordinator class is a convenient way to ensure that specific image renderers will
- *  produce appropriately-sized images for displaying in a button.
+/** The AZKImageCoordinator class is a convenient way to ensure that specific image
+ *  renderers will produce appropriately-sized images for displaying in a button.
  *
- *  Typically, you will have a reference to an AKButtonImageCoordinator in a UIViewController class.
- *  Then, in the -viewWillAppear: method of your view controller, you’ll call -addButton: on the
- *  button coordinator, which will take care of setting the appropriate image values. Similarly, in
- *  your implementation of -viewWillDisappear:, you’ll call -removeButton: with the button to
- *  absolve the button image coordinator of responsibility for rendering images for off-screen
- *  views.
+ *  Typically, you will have a reference to an AZKButtonImageCoordinator in a
+ *  UIViewController class. Then, in the -viewWillAppear: method of your view
+ *  controller, you’ll call -addButton: on the button coordinator, which will take
+ *  care of setting the appropriate image values. Similarly, in your implementation
+ *  of -viewWillDisappear:, you’ll call -removeButton: with the button to absolve
+ *  the button image coordinator of responsibility for rendering images for off-
+ *  screen views.
  *
- *  The button image coordinator maintains a reference to two image renderers: onImageRenderer and
- *  offImageRenderer. The onImageRenderer corresponds to the button’s highlighted control state, and
- *  the offImageRenderer corrsponds to the button’s normal control state.
+ *  The button image coordinator maintains a reference to two image renderers:
+ *  onImageRenderer and offImageRenderer. The onImageRenderer corresponds to the
+ *  button’s highlighted control state, and the offImageRenderer corrsponds to the
+ *  button’s normal control state.
  */
 
 @class AKImageRenderer;
 
-@interface AKButtonImageCoordinator : NSObject
+@interface AZKButtonImageCoordinator : NSObject
 
 /** ----------------------------------------------
  *  @name Configuring the Button Image Coordinator
@@ -48,11 +50,11 @@
 
 /** An image renderer for the “on” state, corresponding to the button’s highlighted control state.
  */
-@property (strong, nonatomic) AKImageRenderer	*onImageRenderer;
+@property (strong, nonatomic, nullable) AKImageRenderer *onImageRenderer;
 
 /** An image renderer for the “off” state, corresponding to the button’s normal control state.
  */
-@property (strong, nonatomic) AKImageRenderer	*offImageRenderer;
+@property (strong, nonatomic, nullable) AKImageRenderer *offImageRenderer;
 
 
 /** ---------------------------------
@@ -76,3 +78,5 @@
 - (void)removeButton:(UIButton *)button;
 
 @end
+
+NS_ASSUME_NONNULL_END

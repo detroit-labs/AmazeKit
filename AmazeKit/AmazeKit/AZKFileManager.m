@@ -1,5 +1,5 @@
 //
-//  AKFileManager.m
+//  AZKFileManager.m
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/16/12.
@@ -19,41 +19,40 @@
 //
 
 
-#import "AKFileManager.h"
+#import "AZKFileManager.h"
 
 #import <ImageIO/ImageIO.h>
 
 #import "AKDrawingUtilities.h"
 
-
 // Constants
 static const char *kImageType = "public.png";
 static const char *kPNGSoftwareValue = "AmazeKit";
 
+@interface AZKFileManager()
 
-@interface AKFileManager() {
-	NSFileManager   	*_fileManager;
-	NSOperationQueue	*_imageIOQueue;
-	NSCache         	*_renderedImageCache;
-}
+@property (nonatomic, readonly, nonnull) NSFileManager *fileManager;
+@property (nonatomic, readonly, nonnull) NSOperationQueue *imageIOQueue;
+@property (nonatomic, readonly, nonnull) NSCache *renderedImageCache;
 
-- (NSString *)cacheKeyForHash:(NSString *)hash
-					   atSize:(CGSize)size
-					withScale:(CGFloat)scale;
-- (NSString *)dimensionsRepresentationWithSize:(CGSize)size
-										 scale:(CGFloat)scale;
-- (NSFileManager *)fileManager;
-- (NSOperationQueue *)imageIOQueue;
-- (NSString *)pathForHash:(NSString *)hash
-				   atSize:(CGSize)size
-				withScale:(CGFloat)scale;
-- (NSCache *)renderedImageCache;
+- (nonnull NSString *)cacheKeyForHash:(nonnull NSString *)hash
+                               atSize:(CGSize)size
+                            withScale:(CGFloat)scale;
 
+- (nonnull NSString *)dimensionsRepresentationWithSize:(CGSize)size
+                                                 scale:(CGFloat)scale;
+
+- (nonnull NSString *)pathForHash:(NSString *)hash
+                           atSize:(CGSize)size
+                        withScale:(CGFloat)scale;
 
 @end
 
+@implementation AZKFileManager
 
-@implementation AKFileManager
+@synthesize fileManager = _fileManager;
+@synthesize imageIOQueue = _imageIOQueue;
+@synthesize renderedImageCache = _renderedImageCache;
 
 #pragma mark - Object Lifecycle
 
@@ -78,7 +77,7 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 	if (amazeKitCachePath == nil) {
 		static dispatch_once_t onceToken;
 		dispatch_once(&onceToken, ^{
-			amazeKitCachePath = [[self amazeKitCacheURL] path];
+			amazeKitCachePath = [self.amazeKitCacheURL path];
 		});
 	}
 	
@@ -140,18 +139,19 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 										atSize:size
 									 withScale:scale];
 	
-	imageExists = ([[self renderedImageCache] objectForKey:cacheKey] != nil);
+	imageExists = ([self.renderedImageCache objectForKey:cacheKey] != nil);
 	
 	if (imageExists == NO) {
 		NSString *path = [self pathForHash:descriptionHash
 									atSize:size
 								 withScale:scale];
 		
-		NSBlockOperation *imageExistsOperation = [NSBlockOperation blockOperationWithBlock:^{
-			imageExists = [[self fileManager] fileExistsAtPath:path];
-		}];
+        NSBlockOperation *imageExistsOperation =
+        [NSBlockOperation blockOperationWithBlock:^{
+            imageExists = [self.fileManager fileExistsAtPath:path];
+        }];
 		
-		[[self imageIOQueue] addOperation:imageExistsOperation];
+		[self.imageIOQueue addOperation:imageExistsOperation];
 		[imageExistsOperation waitUntilFinished];
 	}
 	
@@ -162,8 +162,7 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 						 atSize:(CGSize)size
 					  withScale:(CGFloat)scale
 {
-	
-	__block UIImage *cachedImage = nil;
+    __block UIImage *cachedImage = nil;
 	
 	if ([self cachedImageExistsForHash:descriptionHash
 								atSize:size
@@ -172,7 +171,7 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 											atSize:size
 										 withScale:scale];
 		
-		cachedImage = [[self renderedImageCache] objectForKey:cacheKey];
+        cachedImage = [self.renderedImageCache objectForKey:cacheKey];
 		
 		if (cachedImage == nil) {
 			NSBlockOperation *imageLoadOperation = [NSBlockOperation blockOperationWithBlock:^{
@@ -219,14 +218,12 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 				}
 			}];
 			
-			[[self imageIOQueue] addOperation:imageLoadOperation];
+			[self.imageIOQueue addOperation:imageLoadOperation];
 			[imageLoadOperation waitUntilFinished];
 			
 			if (cachedImage != nil) {
-				[[self renderedImageCache] setObject:cachedImage
-											  forKey:[self cacheKeyForHash:descriptionHash
-																	atSize:size
-																 withScale:scale]];
+                [self.renderedImageCache setObject:cachedImage
+                                            forKey:cacheKey];
 			}
 		}
 	}
@@ -288,7 +285,7 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 																			1,
 																			NULL);
 		
-		CGImageDestinationAddImage(destination, [image CGImage], imageOptions);
+		CGImageDestinationAddImage(destination, image.CGImage, imageOptions);
 	
 		__block bool success = false;
 	
@@ -308,12 +305,12 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 	// threads would try to render the same image.
 	[imageWritingOperation setQueuePriority:NSOperationQueuePriorityHigh];
 	
-	[[self imageIOQueue] addOperation:imageWritingOperation];
+	[self.imageIOQueue addOperation:imageWritingOperation];
 	
-	[[self renderedImageCache] setObject:image
-								  forKey:[self cacheKeyForHash:descriptionHash
-														atSize:imageSize
-													 withScale:imageScale]];
+    [self.renderedImageCache setObject:image
+                                forKey:[self cacheKeyForHash:descriptionHash
+                                                      atSize:imageSize
+                                                   withScale:imageScale]];
 }
 
 - (NSString *)cacheKeyForHash:(NSString *)hash
@@ -368,21 +365,21 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 	__block BOOL directoryExists = NO;
 	
 	NSBlockOperation *directoryExistsOperation = [NSBlockOperation blockOperationWithBlock:^{
-		directoryExists = [[self fileManager] fileExistsAtPath:baseHashPath
-												   isDirectory:&isDirectory];
+		directoryExists = [self.fileManager fileExistsAtPath:baseHashPath
+                                                 isDirectory:&isDirectory];
 	}];
 	
-	[[self imageIOQueue] addOperation:directoryExistsOperation];
+	[self.imageIOQueue addOperation:directoryExistsOperation];
 	[directoryExistsOperation waitUntilFinished];
 	
 	if (directoryExists == YES && isDirectory == NO) {
 		__block BOOL success = NO;
 		
 		NSBlockOperation *removeItemOperation = [NSBlockOperation blockOperationWithBlock:^{
-			success = [[self fileManager] removeItemAtPath:baseHashPath error:NULL];
+			success = [self.fileManager removeItemAtPath:baseHashPath error:NULL];
 		}];
 		
-		[[self imageIOQueue] addOperation:removeItemOperation];
+		[self.imageIOQueue addOperation:removeItemOperation];
 		[removeItemOperation waitUntilFinished];
 		
 		if (success == YES) {
@@ -392,13 +389,13 @@ static const char *kPNGSoftwareValue = "AmazeKit";
 	
 	if (directoryExists == NO) {
 		NSBlockOperation *createDirectoryOperation = [NSBlockOperation blockOperationWithBlock:^{
-			[[self fileManager] createDirectoryAtPath:baseHashPath
-						  withIntermediateDirectories:YES
-										   attributes:nil
-												error:NULL];
-		}];
+            [self.fileManager createDirectoryAtPath:baseHashPath
+                        withIntermediateDirectories:YES
+                                         attributes:nil
+                                              error:NULL];
+        }];
 		
-		[[self imageIOQueue] addOperation:createDirectoryOperation];
+		[self.imageIOQueue addOperation:createDirectoryOperation];
 		[createDirectoryOperation waitUntilFinished];
 	}
 	

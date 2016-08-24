@@ -24,11 +24,11 @@
 #import "UIView+AZKScaleInfo.h"
 
 // Coordinators
-#import "AKButtonImageCoordinator.h"
-#import "AKImageCoordinator.h"
+#import "AZKButtonImageCoordinator.h"
+#import "AZKImageCoordinator.h"
 
 // File Manager
-#import "AKFileManager.h"
+#import "AZKFileManager.h"
 
 // Image Effects
 #import "AKImageEffect.h"

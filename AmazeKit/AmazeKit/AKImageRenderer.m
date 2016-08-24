@@ -24,7 +24,7 @@
 #import "NSString+AZKCryptography.h"
 #import "UIColor+AZKColorStrings.h"
 
-#import "AKFileManager.h"
+#import "AZKFileManager.h"
 #import "AKDrawingUtilities.h"
 #import "AKImageEffect.h"
 
@@ -246,9 +246,9 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 						 withScale:(CGFloat)scale
 						   options:(NSDictionary *)options
 {
-	return [[AKFileManager defaultManager] cachedImageExistsForHash:[self representativeHashWithOptions:options]
-															 atSize:size
-														  withScale:scale];
+    return [[AZKFileManager defaultManager] cachedImageExistsForHash:[self representativeHashWithOptions:options]
+                                                              atSize:size
+                                                           withScale:scale];
 }
 
 - (NSDictionary *)renderedImages
@@ -260,16 +260,16 @@ static NSString * const kRepresentativeDictionaryOptionsKey = @"options";
 								  withScale:(CGFloat)scale
 									options:(NSDictionary *)options
 {
-	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHashWithOptions:options]
-													   atSize:size
-													withScale:scale];
+    return [[AZKFileManager defaultManager] cachedImageForHash:[self representativeHashWithOptions:options]
+                                                        atSize:size
+                                                     withScale:scale];
 }
 
 - (void)saveImage:(UIImage *)image
 		  options:(NSDictionary *)options
 {
-	[[AKFileManager defaultManager] cacheImage:image
-									   forHash:[self representativeHashWithOptions:options]];
+	[[AZKFileManager defaultManager] cacheImage:image
+                                        forHash:[self representativeHashWithOptions:options]];
 }
 
 - (void)setImageEffects:(NSArray *)imageEffects

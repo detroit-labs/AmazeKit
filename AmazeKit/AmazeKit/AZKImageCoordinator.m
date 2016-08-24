@@ -18,28 +18,24 @@
 //  limitations under the License.
 //
 
-
-#import "AKImageCoordinator.h"
+#import "AZKImageCoordinator.h"
 
 #import "UIView+AZKScaleInfo.h"
 
 #import "AKImageRenderer.h"
 
-
 static NSString * const kFrameKeyPath = @"frame";
 
+@interface AZKImageCoordinator()
 
-@interface AKImageCoordinator()
-
-@property (strong) NSMutableArray 	*imageViews;
+@property (strong) NSMutableArray<UIImageView *> *imageViews;
 
 - (void)imageRendererDidUpdate:(NSNotification *)aNotification;
 - (void)renderIntoImageView:(UIImageView *)imageView;
 
 @end
 
-
-@implementation AKImageCoordinator
+@implementation AZKImageCoordinator
 
 @synthesize imageRenderer = _imageRenderer;
 @synthesize imageViews = _imageViews;
@@ -48,9 +44,9 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)dealloc
 {
-	[self setImageRenderer:nil];
+    self.imageRenderer = nil;
 	
-	for (UIImageView *imageView in [self imageViews]) {
+	for (UIImageView *imageView in self.imageViews) {
 		[self removeImageView:imageView];
 	}
 }
@@ -59,11 +55,11 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)addImageView:(UIImageView *)imageView
 {
-	if ([self imageViews] == nil) {
+	if (self.imageViews == nil) {
 		[self setImageViews:[[NSMutableArray alloc] init]];
 	}
 	
-	[[self imageViews] addObject:imageView];
+	[self.imageViews addObject:imageView];
 	
 	[imageView addObserver:self
 				forKeyPath:kFrameKeyPath
@@ -74,17 +70,17 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)imageRendererDidUpdate:(NSNotification *)aNotification
 {
-	[[self imageViews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		if ([obj isKindOfClass:[UIImageView class]]) {
-			[self renderIntoImageView:obj];
-		}
+    [self.imageViews enumerateObjectsUsingBlock:^(UIImageView * _Nonnull obj,
+                                                  NSUInteger idx,
+                                                  BOOL * _Nonnull stop) {
+        [self renderIntoImageView:obj];
 	}];
 }
 
 - (void)removeImageView:(UIImageView *)imageView
 {
-	if ([[self imageViews] containsObject:imageView]) {
-		[[self imageViews] removeObject:imageView];
+	if ([self.imageViews containsObject:imageView]) {
+		[self.imageViews removeObject:imageView];
 		
 		[imageView removeObserver:self
 					   forKeyPath:kFrameKeyPath];
@@ -93,9 +89,9 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)renderIntoImageView:(UIImageView *)imageView
 {
-	[imageView setImage:[[self imageRenderer] imageWithSize:[imageView frame].size
-													  scale:imageView.azk_scale
-													options:nil]];
+    imageView.image = [self.imageRenderer imageWithSize:imageView.frame.size
+                                                  scale:imageView.azk_scale
+                                                options:nil];
 }
 
 - (void)setImageRenderer:(AKImageRenderer *)imageRenderer

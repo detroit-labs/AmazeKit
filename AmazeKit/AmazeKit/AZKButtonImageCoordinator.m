@@ -1,5 +1,5 @@
 //
-//  AKButtonImageCoordinator.m
+//  AZKButtonImageCoordinator.m
 //  AmazeKit
 //
 //  Created by Jeffrey Kelley on 6/19/12.
@@ -19,26 +19,24 @@
 //
 
 
-#import "AKButtonImageCoordinator.h"
+#import "AZKButtonImageCoordinator.h"
 
 #import "UIView+AZKScaleInfo.h"
 
 #import "AKImageRenderer.h"
 
-
 static NSString * const kFrameKeyPath = @"frame";
 
+@interface AZKButtonImageCoordinator ()
 
-@interface AKButtonImageCoordinator ()
-
-@property (strong) NSMutableArray 	*buttons;
+@property (strong) NSMutableArray<UIButton *> *buttons;
 
 - (void)imageRendererDidUpdate:(NSNotification *)aNotification;
 - (void)renderIntoButton:(UIButton *)button;
 
 @end
 
-@implementation AKButtonImageCoordinator
+@implementation AZKButtonImageCoordinator
 
 @synthesize buttons = _buttons;
 @synthesize offImageRenderer = _offImageRenderer;
@@ -48,7 +46,7 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)dealloc
 {
-	for (UIButton *button in [self buttons]) {
+	for (UIButton *button in self.buttons) {
 		[self removeButton:button];
 	}
 }
@@ -57,11 +55,11 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)addButton:(UIButton *)button
 {
-	if ([self buttons] == nil) {
+	if (self.buttons == nil) {
 		[self setButtons:[[NSMutableArray alloc] init]];
 	}
 	
-	[[self buttons] addObject:button];
+	[self.buttons addObject:button];
 	
 	[button addObserver:self
 			 forKeyPath:kFrameKeyPath
@@ -72,17 +70,17 @@ static NSString * const kFrameKeyPath = @"frame";
 
 - (void)imageRendererDidUpdate:(NSNotification *)aNotification
 {
-	[[self buttons] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		if ([obj isKindOfClass:[UIButton class]]) {
-			[self renderIntoButton:obj];
-		}
+    [self.buttons enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj,
+                                               NSUInteger idx,
+                                               BOOL * _Nonnull stop) {
+        [self renderIntoButton:obj];
 	}];
 }
 
 - (void)removeButton:(UIButton *)button
 {
-	if ([[self buttons] containsObject:button]) {
-		[[self buttons] removeObject:button];
+	if ([self.buttons containsObject:button]) {
+		[self.buttons removeObject:button];
 		
 		[button removeObserver:self
 					forKeyPath:kFrameKeyPath];
@@ -94,14 +92,14 @@ static NSString * const kFrameKeyPath = @"frame";
 	CGSize size = [button frame].size;
 	CGFloat scale = button.azk_scale;
 	
-	[button setBackgroundImage:[[self offImageRenderer] imageWithSize:size
-																scale:scale
-															  options:nil]
-					  forState:UIControlStateNormal];
+	[button setBackgroundImage:[self.offImageRenderer imageWithSize:size
+                                                              scale:scale
+                                                            options:nil]
+                      forState:UIControlStateNormal];
 	
-	[button setBackgroundImage:[[self onImageRenderer] imageWithSize:size
-															   scale:scale
-															 options:nil]
+    [button setBackgroundImage:[self.onImageRenderer imageWithSize:size
+                                                             scale:scale
+                                                           options:nil]
 					  forState:UIControlStateHighlighted];
 }
 

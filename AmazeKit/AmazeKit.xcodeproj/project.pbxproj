@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,12 +27,12 @@
 		1F65BBF015F845BD00393818 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F60297615F828BB002E48E6 /* UIKit.framework */; };
 		1F65BBF315F84AE500393818 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65BBF215F84AE500393818 /* ImageIO.framework */; };
 		1F65BBF415F84B4B00393818 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65BBF215F84AE500393818 /* ImageIO.framework */; };
-		1F735BE81590BF9D00EABF1B /* AKButtonImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */; };
-		1F735BE91590BF9D00EABF1B /* AKButtonImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */; };
-		1F77EBE315FBA156000122B5 /* AKImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F77EBE115FBA156000122B5 /* AKImageCoordinator.h */; };
-		1F77EBE415FBA156000122B5 /* AKImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */; };
-		1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4703158CC48A00ABF10D /* AKFileManager.h */; };
-		1F7D4706158CC48A00ABF10D /* AKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D4704158CC48A00ABF10D /* AKFileManager.m */; };
+		1F735BE81590BF9D00EABF1B /* AZKButtonImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F735BE61590BF9D00EABF1B /* AZKButtonImageCoordinator.h */; };
+		1F735BE91590BF9D00EABF1B /* AZKButtonImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F735BE71590BF9D00EABF1B /* AZKButtonImageCoordinator.m */; };
+		1F77EBE315FBA156000122B5 /* AZKImageCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F77EBE115FBA156000122B5 /* AZKImageCoordinator.h */; };
+		1F77EBE415FBA156000122B5 /* AZKImageCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F77EBE215FBA156000122B5 /* AZKImageCoordinator.m */; };
+		1F7D4705158CC48A00ABF10D /* AZKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7D4703158CC48A00ABF10D /* AZKFileManager.h */; };
+		1F7D4706158CC48A00ABF10D /* AZKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D4704158CC48A00ABF10D /* AZKFileManager.m */; };
 		1F7E80C415D959A70050D130 /* UIImage+AZKCryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7E80C215D959A70050D130 /* UIImage+AZKCryptography.h */; };
 		1F7E80C515D959A70050D130 /* UIImage+AZKCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E80C315D959A70050D130 /* UIImage+AZKCryptography.m */; };
 		1F83BA9C15D0191C00254D53 /* AKMaskImageEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */; };
@@ -115,12 +115,12 @@
 		1F60297515F828BB002E48E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1F60297615F828BB002E48E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F65BBF215F84AE500393818 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKButtonImageCoordinator.h; sourceTree = "<group>"; };
-		1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKButtonImageCoordinator.m; sourceTree = "<group>"; };
-		1F77EBE115FBA156000122B5 /* AKImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKImageCoordinator.h; sourceTree = "<group>"; };
-		1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKImageCoordinator.m; sourceTree = "<group>"; };
-		1F7D4703158CC48A00ABF10D /* AKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKFileManager.h; sourceTree = "<group>"; };
-		1F7D4704158CC48A00ABF10D /* AKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKFileManager.m; sourceTree = "<group>"; };
+		1F735BE61590BF9D00EABF1B /* AZKButtonImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZKButtonImageCoordinator.h; sourceTree = "<group>"; };
+		1F735BE71590BF9D00EABF1B /* AZKButtonImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZKButtonImageCoordinator.m; sourceTree = "<group>"; };
+		1F77EBE115FBA156000122B5 /* AZKImageCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZKImageCoordinator.h; sourceTree = "<group>"; };
+		1F77EBE215FBA156000122B5 /* AZKImageCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZKImageCoordinator.m; sourceTree = "<group>"; };
+		1F7D4703158CC48A00ABF10D /* AZKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZKFileManager.h; sourceTree = "<group>"; };
+		1F7D4704158CC48A00ABF10D /* AZKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZKFileManager.m; sourceTree = "<group>"; };
 		1F7E80C215D959A70050D130 /* UIImage+AZKCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AZKCryptography.h"; sourceTree = "<group>"; };
 		1F7E80C315D959A70050D130 /* UIImage+AZKCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AZKCryptography.m"; sourceTree = "<group>"; };
 		1F83BA9A15D0191C00254D53 /* AKMaskImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKMaskImageEffect.h; sourceTree = "<group>"; };
@@ -224,10 +224,10 @@
 		1F735BE41590BF8E00EABF1B /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				1F735BE61590BF9D00EABF1B /* AKButtonImageCoordinator.h */,
-				1F735BE71590BF9D00EABF1B /* AKButtonImageCoordinator.m */,
-				1F77EBE115FBA156000122B5 /* AKImageCoordinator.h */,
-				1F77EBE215FBA156000122B5 /* AKImageCoordinator.m */,
+				1F735BE61590BF9D00EABF1B /* AZKButtonImageCoordinator.h */,
+				1F735BE71590BF9D00EABF1B /* AZKButtonImageCoordinator.m */,
+				1F77EBE115FBA156000122B5 /* AZKImageCoordinator.h */,
+				1F77EBE215FBA156000122B5 /* AZKImageCoordinator.m */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 		1F7D4701158CC47300ABF10D /* File Manager */ = {
 			isa = PBXGroup;
 			children = (
-				1F7D4703158CC48A00ABF10D /* AKFileManager.h */,
-				1F7D4704158CC48A00ABF10D /* AKFileManager.m */,
+				1F7D4703158CC48A00ABF10D /* AZKFileManager.h */,
+				1F7D4704158CC48A00ABF10D /* AZKFileManager.m */,
 			);
 			name = "File Manager";
 			sourceTree = "<group>";
@@ -422,8 +422,8 @@
 				1FDCA5AF1587A8FF0010B272 /* AKColorImageEffect.h in Headers */,
 				1FDCA5B31587AC5F0010B272 /* AKButtonBevelImageEffect.h in Headers */,
 				1FDCA5D91587DAC90010B272 /* AKCornerRadiusImageEffect.h in Headers */,
-				1F7D4705158CC48A00ABF10D /* AKFileManager.h in Headers */,
-				1F735BE81590BF9D00EABF1B /* AKButtonImageCoordinator.h in Headers */,
+				1F7D4705158CC48A00ABF10D /* AZKFileManager.h in Headers */,
+				1F735BE81590BF9D00EABF1B /* AZKButtonImageCoordinator.h in Headers */,
 				1FB27E551598B3CF00347D3D /* AKInnerGlowImageEffect.h in Headers */,
 				1FB27E681598F45700347D3D /* AKDrawingUtilities.h in Headers */,
 				1FEC1AC315C1C33E00C5C0D1 /* AKPatternImageEffect.h in Headers */,
@@ -436,7 +436,7 @@
 				1F7E80C415D959A70050D130 /* UIImage+AZKCryptography.h in Headers */,
 				1F96924715EEE9A700D5AE37 /* AKInnerShadowImageEffect.h in Headers */,
 				1F96925115EEFAA800D5AE37 /* UIImage+AZKMasking.h in Headers */,
-				1F77EBE315FBA156000122B5 /* AKImageCoordinator.h in Headers */,
+				1F77EBE315FBA156000122B5 /* AZKImageCoordinator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,11 +502,12 @@
 		1FA641851586D12E00350AC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AZK;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Detroit Labs";
 			};
 			buildConfigurationList = 1FA641881586D12E00350AC6 /* Build configuration list for PBXProject "AmazeKit" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -559,8 +560,8 @@
 				1FDCA5B01587A8FF0010B272 /* AKColorImageEffect.m in Sources */,
 				1FDCA5B41587AC5F0010B272 /* AKButtonBevelImageEffect.m in Sources */,
 				1FDCA5DA1587DAC90010B272 /* AKCornerRadiusImageEffect.m in Sources */,
-				1F7D4706158CC48A00ABF10D /* AKFileManager.m in Sources */,
-				1F735BE91590BF9D00EABF1B /* AKButtonImageCoordinator.m in Sources */,
+				1F7D4706158CC48A00ABF10D /* AZKFileManager.m in Sources */,
+				1F735BE91590BF9D00EABF1B /* AZKButtonImageCoordinator.m in Sources */,
 				1FB27E561598B3CF00347D3D /* AKInnerGlowImageEffect.m in Sources */,
 				1FB27E691598F45700347D3D /* AKDrawingUtilities.m in Sources */,
 				1FEC1AC415C1C33E00C5C0D1 /* AKPatternImageEffect.m in Sources */,
@@ -573,7 +574,7 @@
 				1F7E80C515D959A70050D130 /* UIImage+AZKCryptography.m in Sources */,
 				1F96924815EEE9A700D5AE37 /* AKInnerShadowImageEffect.m in Sources */,
 				1F96925215EEFAA800D5AE37 /* UIImage+AZKMasking.m in Sources */,
-				1F77EBE415FBA156000122B5 /* AKImageCoordinator.m in Sources */,
+				1F77EBE415FBA156000122B5 /* AZKImageCoordinator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

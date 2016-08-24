@@ -11,7 +11,7 @@ The recommended way to get AmazeKit is to use [CocoaPods](http://www.cocoapods.o
 The best way to see how AmazeKit works is to see it in action. Let’s look at a couple of common use cases and see what they produce:
 
 ### Rendering an Individual Image
-The following code sets up an `AKImageCoordinator`. This class is responsible for rendering an image into a `UIImageView`, automatically rendering it at the appropriate size:
+The following code sets up an `AZKImageCoordinator`. This class is responsible for rendering an image into a `UIImageView`, automatically rendering it at the appropriate size:
 
     // Noise Effect
     AKNoiseImageEffect *noiseEffect =
@@ -53,7 +53,7 @@ The following code sets up an `AKImageCoordinator`. This class is responsible fo
      colorEffect
      ]];
     
-    AKImageCoordinator *imageCoordinator = [[AKImageCoordinator alloc] init];
+    AZKImageCoordinator *imageCoordinator = [[AZKImageCoordinator alloc] init];
     [imageCoordinator setImageRenderer:imageRenderer];
     
     [imageCoordinator addImageView:myImageView];
@@ -63,7 +63,7 @@ This produces the following image output (for an image view with a size of 250 x
 ![Example Image 1](readme_images/example_1.png)
 
 ### Rendering Button Images
-The `AKButtonImageCoordinator` class is like the `AKImageCoordinator` class, but it takes two image renderers instead of one. The “off” image renderer is used for the button’s normal control state, and the “on” image renderer is used for the button’s highlighted control state. The `AKButtonImageCoordinator` takes care of rendering background images for your button and automatically renders them to the correct size. Here’s an example:
+The `AZKButtonImageCoordinator` class is like the `AZKImageCoordinator` class, but it takes two image renderers instead of one. The “off” image renderer is used for the button’s normal control state, and the “on” image renderer is used for the button’s highlighted control state. The `AZKButtonImageCoordinator` takes care of rendering background images for your button and automatically renders them to the correct size. Here’s an example:
 
     // The butons will have a noise effect, rounded corners, and a gradient in
     // common.
@@ -128,8 +128,8 @@ The `AKButtonImageCoordinator` class is like the `AKImageCoordinator` class, but
     
     // Next we create the button image coordinator and assign the image
     // renderers to it
-    AKButtonImageCoordinator *buttonImageCooordinator =
-    [[AKButtonImageCoordinator alloc] init];
+    AZKButtonImageCoordinator *buttonImageCooordinator =
+    [[AZKButtonImageCoordinator alloc] init];
     
     [buttonImageCooordinator setOffImageRenderer:offImageRenderer];
     [buttonImageCooordinator setOnImageRenderer:onImageRenderer];
@@ -140,6 +140,7 @@ The `AKButtonImageCoordinator` class is like the `AKImageCoordinator` class, but
 This produces the following image output (for a button that’s 150 x 44 on a Retina display):
 
 Off: ![Example Image 2 (Off)](readme_images/example2_off.png)
+
 On: ![Example Image 2 (On)](readme_images/example2_on.png)
 
 ## The `bin` Directory

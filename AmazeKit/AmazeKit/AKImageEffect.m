@@ -24,7 +24,7 @@
 #import "NSString+AZKCryptography.h"
 
 #import "AKDrawingUtilities.h"
-#import "AKFileManager.h"
+#import "AZKFileManager.h"
 
 
 // KVO Constants
@@ -54,16 +54,16 @@ static NSString * const kBlendModeKey = @"blendMode";
 
 - (void)cacheRenderedImage:(UIImage *)image
 {
-	[[AKFileManager defaultManager] cacheImage:image
-									   forHash:[self representativeHash]];
+	[[AZKFileManager defaultManager] cacheImage:image
+									    forHash:[self representativeHash]];
 }
 
 - (UIImage *)previouslyRenderedImageForSize:(CGSize)size
 									atScale:(CGFloat)scale
 {
-	return [[AKFileManager defaultManager] cachedImageForHash:[self representativeHash]
-													   atSize:size
-													withScale:scale];
+    return [[AZKFileManager defaultManager] cachedImageForHash:[self representativeHash]
+                                                        atSize:size
+                                                     withScale:scale];
 }
 
 #pragma mark -
